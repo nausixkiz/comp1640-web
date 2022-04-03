@@ -17,6 +17,6 @@ Auth::routes(['register' => false]);
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-    Route::resource('users', App\Http\Controllers\UserController::class);
+    Route::resource('users', App\Http\Controllers\UserController::class)->except(['show']);
     Route::resource('posts', App\Http\Controllers\PostController::class);
 });

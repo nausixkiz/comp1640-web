@@ -50,57 +50,62 @@
                                         <td>{{ $user['phone'] }}</td>
                                         <td>
                                             <div class="btn-group" role="group">
-                                                <button type="button" class="btn btn-sm btn-warning waves-effect waves-light"
-                                                        data-bs-toggle="modal" data-bs-target="#{{ 'view-user-' . $user['id'] }}">
+                                                <button type="button"
+                                                        class="btn btn-sm btn-warning waves-effect waves-light"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#{{ 'view-user-' . $user['id'] }}">
                                                     <i class="mdi mdi-account-question"></i>
                                                 </button>
-                                                <div id="{{ 'view-user-' . $user['id'] }}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="{{ 'view-user-' . $user['id'] }}" aria-hidden="true">
+                                                <div id="{{ 'view-user-' . $user['id'] }}" class="modal fade"
+                                                     tabindex="-1" role="dialog"
+                                                     aria-labelledby="{{ 'view-user-' . $user['id'] }}"
+                                                     aria-hidden="true">
                                                     <div class="modal-dialog modal-lg">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h5 class="modal-title" id="{{ 'view-user-' . $user['id'] }}">{{ $user['name'] }} Details</h5>
-                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                <h5 class="modal-title"
+                                                                    id="{{ 'view-user-' . $user['id'] }}">{{ $user['name'] }}
+                                                                    Details</h5>
+                                                                <button type="button" class="btn-close"
+                                                                        data-bs-dismiss="modal"
+                                                                        aria-label="Close"></button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                <img class="avatar-sm rounded mx-auto d-block pb-5"
-                                                                     src="{{ Avatar::create($user['name'])->toBase64() }}"
-                                                                     alt="{{ $user['name'] }}">
-                                                                <table class="table table-striped table-borderless">
-                                                                    <tbody>
-                                                                    <tr>
-                                                                        <th scope="row">Id</th>
-                                                                        <td>{{ $user['id'] }}</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <th scope="row">Name</th>
-                                                                        <td>{{ $user['name'] }}</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <th scope="row">Email</th>
-                                                                        <td>{{ $user['email'] }}</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <th scope="row">Role</th>
-                                                                        <td>{{ $user['role'] }}</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <th scope="row">Gender</th>
-                                                                        <td>{{ $user['gender'] }}</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <th scope="row">Phone</th>
-                                                                        <td>{{ $user['phone'] }}</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <th scope="row">Address</th>
-                                                                        <td>{{ $user['address'] }}</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <th scope="row">Birthday</th>
-                                                                        <td>{{ $user['birth'] }}</td>
-                                                                    </tr>
-                                                                    </tbody>
-                                                                </table>
+                                                                <div class="text-center">
+                                                                    <img class="avatar-xl rounded-circle"
+                                                                         src="{{ Avatar::create($user['name'])->toBase64() }}"
+                                                                         alt="{{ $user['name'] }}"
+                                                                    width="100" height="100">
+                                                                </div>
+
+
+                                                                <dl class="row mb-0">
+                                                                    <dt class="col-sm-3">Id</dt>
+                                                                    <dd class="col-sm-9">{{ $user['id'] }}</dd>
+
+                                                                    <dt class="col-sm-3">Name</dt>
+                                                                    <dd class="col-sm-9">{{ $user['name'] }}</dd>
+
+                                                                    <dt class="col-sm-3">Email</dt>
+                                                                    <dd class="col-sm-9">{{ $user['email'] }}</dd>
+
+                                                                    <dt class="col-sm-3 text-truncate">Role</dt>
+                                                                    <dd class="col-sm-9">{{ $user['role'] }}</dd>
+
+                                                                    <dt class="col-sm-3 text-truncate">Gender</dt>
+                                                                    <dd class="col-sm-9">{{ $user['gender'] }}</dd>
+
+                                                                    <dt class="col-sm-3 text-truncate">Phone</dt>
+                                                                    <dd class="col-sm-9">{{ $user['phone'] }}</dd>
+
+                                                                    <dt class="col-sm-3 text-truncate">Address</dt>
+                                                                    <dd class="col-sm-9">{{ $user['address'] }}</dd>
+
+                                                                    <dt class="col-sm-3 text-truncate">Birthday</dt>
+                                                                    <dd class="col-sm-9">{{ $user['birth'] }}</dd>
+                                                                </dl>
+
+
                                                             </div>
                                                         </div>
                                                     </div>
