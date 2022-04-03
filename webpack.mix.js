@@ -11,6 +11,10 @@ const mix = require('laravel-mix');
  |
  */
 
+mix.copyDirectory('resources//images', 'public/images');
+
 mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css')
+    .sass('resources/scss/app.scss', 'public/css')
+    .sass('resources/scss/bootstrap-custom.scss', 'public/css')
+    .sass('resources/scss/icons.scss', 'public/css')
     .sourceMaps();
