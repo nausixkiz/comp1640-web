@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\User;
 use App\Transformers\PostTransformer;
 use App\Transformers\UserTransformer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class PostController extends Controller
 {
@@ -16,8 +18,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view('contents.user.index', [
-            'users' => Post::all()->transformWith(new PostTransformer())->toArray(),
+        return view('contents.post.index', [
+            'posts' => Post::all()->transformWith(new PostTransformer())->toArray(),
         ]);
     }
 
@@ -28,7 +30,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('contents.post.create');
     }
 
     /**
@@ -84,6 +86,10 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Post::destroy($id);
+
+        Session::flash('flash_success_message', 'Post successfully deleted!');
+
+        return back();
     }
 }

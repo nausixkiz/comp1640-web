@@ -25,14 +25,15 @@
                 </li>
 
                 <li>
-                    <a href="{{ route('posts.index') }}" class="waves-effect">
-                        <i class="mdi mdi-account"></i>
-                        <span>{{ __('Post List') }}</span>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="mdi mdi-note-multiple"></i>
+                        <span>Post</span>
                     </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('posts.index') }}">List</a></li>
+                        <li><a href="{{ route('posts.create') }}">Create</a></li>
+                    </ul>
                 </li>
-
-
-                <li class="menu-title">{{ __('Management') }}</li>
 
             </ul>
         </div>
