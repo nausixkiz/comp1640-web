@@ -20,10 +20,11 @@
                                 <tr>
                                     <th>Name</th>
                                     <th>Email</th>
+                                    <th>Role</th>
                                     <th>Gender</th>
                                     <th>Phone</th>
                                     <th>Address</th>
-                                    <th>Birth</th>
+                                    <th>Birthday</th>
                                 </tr>
                                 </thead>
 
@@ -33,6 +34,7 @@
                                     <tr>
                                         <td>{{ $user['name'] }}</td>
                                         <td>{{ $user['email'] }}</td>
+                                        <td>{{ $user['role'] }}</td>
                                         <td>{{ $user['gender'] }}</td>
                                         <td>{{ $user['phone'] }}</td>
                                         <td>{{ $user['address'] }}</td>
