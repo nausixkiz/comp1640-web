@@ -15,10 +15,19 @@
                     </a>
                 </li>
 
+                <li class="menu-title">{{ __('Management') }}</li>
+
                 <li>
                     <a href="{{ route('users.index') }}" class="waves-effect">
                         <i class="mdi mdi-account"></i>
                         <span>{{ __('User List') }}</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ route('posts.index') }}" class="waves-effect">
+                        <i class="mdi mdi-account"></i>
+                        <span>{{ __('Post List') }}</span>
                     </a>
                 </li>
 

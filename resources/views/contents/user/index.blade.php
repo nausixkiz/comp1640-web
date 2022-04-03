@@ -18,13 +18,11 @@
                                    style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead>
                                 <tr>
-                                    <th>Name</th>
-                                    <th>Email</th>
+                                    <th>Id</th>
+                                    <th>Info</th>
                                     <th>Role</th>
                                     <th>Gender</th>
                                     <th>Phone</th>
-                                    <th>Address</th>
-                                    <th>Birthday</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
@@ -33,26 +31,98 @@
                                 <tbody>
                                 @foreach($users['data'] as $user)
                                     <tr>
-                                        <td>{{ $user['name'] }}</td>
-                                        <td>{{ $user['email'] }}</td>
+                                        <td>{{ $user['id'] }}</td>
+                                        <td>
+                                            <div class="d-flex mb-4">
+                                                <div class="flex-shrink-0 me-3">
+                                                    <img class="rounded-circle avatar-sm"
+                                                         src="{{ Avatar::create($user['name'])->toBase64() }}"
+                                                         alt="{{ $user['name'] }}">
+                                                </div>
+                                                <div class="flex-grow-1">
+                                                    <h4 class="font-size-16">{{ $user['name'] }}</h4>
+                                                    <p class="text-muted font-size-13">{{ $user['email'] }}</p>
+                                                </div>
+                                            </div>
+                                        </td>
                                         <td>{{ $user['role'] }}</td>
                                         <td>{{ $user['gender'] }}</td>
                                         <td>{{ $user['phone'] }}</td>
-                                        <td>{{ $user['address'] }}</td>
-                                        <td>{{ $user['birth'] }}</td>
                                         <td>
-                                            <a type="button" class="btn btn-sm btn-primary waves-effect waves-light" href="{{ route('users.edit', $user['id']) }}">
-                                                <i class="mdi mdi-account-edit"></i> Edit
-                                            </a>
-                                            <a type="button" class="btn btn-sm btn-danger waves-effect waves-light"  onclick="event.preventDefault();
-                                                     document.getElementById('{{ 'delete-user-' . $user['id'] }}').submit();">
-                                                <i class="mdi mdi-account-remove"></i> Remove
-                                            </a>
-                                            <form id="{{ 'delete-user-' . $user['id'] }}"  action="{{ route('users.destroy', $user['id']) }}" method="POST" class="d-none">
-                                                @method('DELETE')
-                                                @csrf
-                                            </form>
+                                            <div class="btn-group" role="group">
+                                                <button type="button" class="btn btn-sm btn-warning waves-effect waves-light"
+                                                        data-bs-toggle="modal" data-bs-target="#{{ 'view-user-' . $user['id'] }}">
+                                                    <i class="mdi mdi-account-question"></i>
+                                                </button>
+                                                <div id="{{ 'view-user-' . $user['id'] }}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="{{ 'view-user-' . $user['id'] }}" aria-hidden="true">
+                                                    <div class="modal-dialog modal-lg">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="{{ 'view-user-' . $user['id'] }}">{{ $user['name'] }} Details</h5>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <img class="avatar-sm rounded mx-auto d-block pb-5"
+                                                                     src="{{ Avatar::create($user['name'])->toBase64() }}"
+                                                                     alt="{{ $user['name'] }}">
+                                                                <table class="table table-striped table-borderless">
+                                                                    <tbody>
+                                                                    <tr>
+                                                                        <th scope="row">Id</th>
+                                                                        <td>{{ $user['id'] }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th scope="row">Name</th>
+                                                                        <td>{{ $user['name'] }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th scope="row">Email</th>
+                                                                        <td>{{ $user['email'] }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th scope="row">Role</th>
+                                                                        <td>{{ $user['role'] }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th scope="row">Gender</th>
+                                                                        <td>{{ $user['gender'] }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th scope="row">Phone</th>
+                                                                        <td>{{ $user['phone'] }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th scope="row">Address</th>
+                                                                        <td>{{ $user['address'] }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th scope="row">Birthday</th>
+                                                                        <td>{{ $user['birth'] }}</td>
+                                                                    </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
 
+                                                <a type="button" class="btn btn-sm btn-primary waves-effect waves-light"
+                                                   href="{{ route('users.edit', $user['id']) }}">
+                                                    <i class="mdi mdi-account-edit"></i>
+                                                </a>
+                                                <a type="button" class="btn btn-sm btn-danger waves-effect waves-light"
+                                                   onclick="event.preventDefault();
+                                                       document.getElementById('{{ 'delete-user-' . $user['id'] }}').submit();">
+                                                    <i class="mdi mdi-account-remove"></i>
+                                                </a>
+                                                <form id="{{ 'delete-user-' . $user['id'] }}"
+                                                      action="{{ route('users.destroy', $user['id']) }}" method="POST"
+                                                      class="d-none">
+                                                    @method('DELETE')
+                                                    @csrf
+                                                </form>
+
+                                            </div>
                                         </td>
                                     </tr>
                                 @endforeach
