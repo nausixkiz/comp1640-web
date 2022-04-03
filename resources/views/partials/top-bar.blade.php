@@ -68,6 +68,9 @@
                         <i class="ri-shut-down-line align-middle me-1 text-danger"></i>
                         {{ __('Logout') }}
                     </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
                 </div>
             </div>
         </div>

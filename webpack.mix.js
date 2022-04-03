@@ -22,9 +22,17 @@ mix.js('resources/js/app.js', 'public/js')
     .sourceMaps()
 
 mix.extract([
-    'jquery', 'bootstrap-sass', 'datatables.net', 'datatables.net-bs'
+    'jquery', 'bootstrap-sass',
+    'datatables.net', 'datatables.net-bs',
+    'toastr', 'sweetalert2',
     ])
     .autoload({
         jquery: ['$', 'window.jQuery', 'jQuery', 'jquery'],
-        DataTable : 'datatables.net-bs'
-    });
+        DataTable : 'datatables.net-bs',
+        // Swal : ['window.Swal', 'Swal', 'sweetalert2'],
+        // toastr : 'toastr'
+    })
+
+if (mix.inProduction()) {
+    mix.version();
+}

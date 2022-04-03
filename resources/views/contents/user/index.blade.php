@@ -25,6 +25,7 @@
                                     <th>Phone</th>
                                     <th>Address</th>
                                     <th>Birthday</th>
+                                    <th>Action</th>
                                 </tr>
                                 </thead>
 
@@ -39,6 +40,20 @@
                                         <td>{{ $user['phone'] }}</td>
                                         <td>{{ $user['address'] }}</td>
                                         <td>{{ $user['birth'] }}</td>
+                                        <td>
+                                            <a type="button" class="btn btn-sm btn-primary waves-effect waves-light" href="{{ route('users.edit', $user['id']) }}">
+                                                <i class="mdi mdi-account-edit"></i> Edit
+                                            </a>
+                                            <a type="button" class="btn btn-sm btn-danger waves-effect waves-light"  onclick="event.preventDefault();
+                                                     document.getElementById('{{ 'delete-user-' . $user['id'] }}').submit();">
+                                                <i class="mdi mdi-account-remove"></i> Remove
+                                            </a>
+                                            <form id="{{ 'delete-user-' . $user['id'] }}"  action="{{ route('users.destroy', $user['id']) }}" method="POST" class="d-none">
+                                                @method('DELETE')
+                                                @csrf
+                                            </form>
+
+                                        </td>
                                     </tr>
                                 @endforeach
                                 </tbody>

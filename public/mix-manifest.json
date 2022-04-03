@@ -1,9 +1,11 @@
 {
     "/js/plugins/datatable.js": "/js/plugins/datatable.js",
     "/js/app.js": "/js/app.js",
+    "/js/manifest.js": "/js/manifest.js",
     "/css/app.css": "/css/app.css",
     "/css/icons.css": "/css/icons.css",
     "/css/bootstrap-custom.css": "/css/bootstrap-custom.css",
+    "/js/vendor.js": "/js/vendor.js",
     "/images/bg.jpg": "/images/bg.jpg",
     "/images/favicon.ico": "/images/favicon.ico",
     "/images/logo-dark.png": "/images/logo-dark.png",

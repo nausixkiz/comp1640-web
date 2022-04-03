@@ -1,15 +1,18 @@
 window._ = require('lodash');
 
-try {
+// try {
     window.$ = window.jQuery = require('jquery');
     window.Popper = require('@popperjs/core');
     require('bootstrap');
     require('simplebar');
     require('metismenu');
     window.Waves = require('node-waves');
-} catch (e) {
-    console.log(e);
-}
+    window.toastr = require('toastr');
+    window.Swal = require('sweetalert2');
+
+// } catch (e) {
+//     console.log(e);
+// }
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
