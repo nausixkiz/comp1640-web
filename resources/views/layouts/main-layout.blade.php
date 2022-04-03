@@ -21,12 +21,18 @@
 
 </head>
 
-<body class="bg-pattern">
-    <div class="bg-overlay"></div>
+<body data-sidebar="dark">
+    <div id="layout-wrapper">
+        @include('partials.top-bar')
+        @include('partials.left-sidebar')
+        <div class="main-content">
+            @yield('content')
 
-    @yield('content')
+            @include("partials/footer")
+        </div>
+    </div>
 
-    @include('panels.scripts')
+@include('panels.scripts')
 
 </body>
 

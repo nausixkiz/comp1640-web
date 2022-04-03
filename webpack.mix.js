@@ -11,10 +11,20 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.copyDirectory('resources//images', 'public/images');
+mix.copyDirectory('resources/images', 'public/images')
+
+mix.js('resources/js/plugins/datatable.js', 'public/js/plugins')
 
 mix.js('resources/js/app.js', 'public/js')
     .sass('resources/scss/app.scss', 'public/css')
     .sass('resources/scss/bootstrap-custom.scss', 'public/css')
     .sass('resources/scss/icons.scss', 'public/css')
-    .sourceMaps();
+    .sourceMaps()
+
+mix.extract([
+    'jquery', 'bootstrap-sass', 'datatables.net', 'datatables.net-bs'
+    ])
+    .autoload({
+        jquery: ['$', 'window.jQuery', 'jQuery', 'jquery'],
+        DataTable : 'datatables.net-bs'
+    });

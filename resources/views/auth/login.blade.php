@@ -1,4 +1,4 @@
-@extends('layouts.main-layout')
+@extends('layouts.auth-layout')
 @section('title', 'Login')
 @section('content')
     <div class="account-pages my-5 pt-5">
