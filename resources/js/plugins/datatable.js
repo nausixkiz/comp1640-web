@@ -19,8 +19,8 @@ require('datatables.net-select-bs4');
 require('datatables.net-keytable');
 require('datatables.net-rowgroup');
 // pdfMake
-var pdfMake = require('pdfmake/build/pdfmake.js');
-var pdfFonts = require('pdfmake/build/vfs_fonts.js');
+const pdfMake = require('pdfmake/build/pdfmake.js');
+const pdfFonts = require('pdfmake/build/vfs_fonts.js');
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 $(document).ready(function () {
