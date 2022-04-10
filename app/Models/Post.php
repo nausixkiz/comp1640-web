@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Cviebrock\EloquentSluggable\Sluggable;
 use CyrildeWit\EloquentViewable\Contracts\Viewable;
 use CyrildeWit\EloquentViewable\InteractsWithViews;
 use Database\Factories\PostFactory;
@@ -10,22 +11,22 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Post extends Model implements Viewable
+class Post extends Model implements Viewable, HasMedia
 {
     use HasFactory;
     use InteractsWithViews;
+    use InteractsWithMedia;
+    use Sluggable;
+
 
     protected $fillable = [
         'name',
         'description',
-        'slug',
         'contents',
-        'status',
-        'is_featured',
-        'start_date',
-        'end_date',
-        'image',
+        'slug',
     ];
 
     /**
@@ -51,6 +52,15 @@ class Post extends Model implements Viewable
     public function comments(): HasMany
     {
         return $this->hasMany(Comment::class);
+    }
+
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'name'
+            ]
+        ];
     }
 
 }

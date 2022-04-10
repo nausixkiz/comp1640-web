@@ -1,7 +1,10 @@
 {
     "/js/plugins/datatable.js": "/js/plugins/datatable.js",
+    "/js/plugins/twitter-bootstrap-wizard.js": "/js/plugins/twitter-bootstrap-wizard.js",
+    "/js/plugins/ckeditor-basic.js": "/js/plugins/ckeditor-basic.js",
     "/js/app.js": "/js/app.js",
     "/js/manifest.js": "/js/manifest.js",
+    "/css/plugins.css": "/css/plugins.css",
     "/css/app.css": "/css/app.css",
     "/css/icons.css": "/css/icons.css",
     "/css/bootstrap-custom.css": "/css/bootstrap-custom.css",

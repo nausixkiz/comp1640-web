@@ -28,11 +28,7 @@ class PostFactory extends Factory
         return [
             'name' => $this->faker->name,
             'description' => $this->faker->text,
-            'slug' => $this->faker->slug,
             'contents' => $this->faker->text,
-            'status' => $this->faker->text,
-            'is_featured' => $this->faker->boolean,
-            'image' => $this->faker->imageUrl(),
         ];
     }
 }

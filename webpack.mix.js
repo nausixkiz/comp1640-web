@@ -14,24 +14,22 @@ const mix = require('laravel-mix');
 mix.copyDirectory('resources/images', 'public/images')
 
 mix.js('resources/js/plugins/datatable.js', 'public/js/plugins')
+    .js('resources/js/plugins/twitter-bootstrap-wizard.js', 'public/js/plugins')
+    .js('resources/js/plugins/ckeditor-basic.js', 'public/js/plugins')
 
 mix.js('resources/js/app.js', 'public/js')
     .sass('resources/scss/app.scss', 'public/css')
     .sass('resources/scss/bootstrap-custom.scss', 'public/css')
     .sass('resources/scss/icons.scss', 'public/css')
+    .sass('resources/scss/plugins.scss', 'public/css')
     .sourceMaps()
 
 mix.extract([
-    'jquery', 'bootstrap-sass',
+    'jquery', '@popperjs/core', 'bootstrap', 'simplebar', 'metismenu', 'node-waves',
     'datatables.net', 'datatables.net-bs',
     'toastr', 'sweetalert2',
+    'twitter-bootstrap-wizard',
     ])
-    .autoload({
-        jquery: ['$', 'window.jQuery', 'jQuery', 'jquery'],
-        DataTable : 'datatables.net-bs',
-        // Swal : ['window.Swal', 'Swal', 'sweetalert2'],
-        // toastr : 'toastr'
-    })
 
 if (mix.inProduction()) {
     mix.version();

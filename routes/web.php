@@ -17,6 +17,8 @@ Auth::routes(['register' => false]);
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
     Route::resource('users', App\Http\Controllers\UserController::class)->except(['show']);
     Route::resource('posts', App\Http\Controllers\PostController::class);
+    Route::resource('comments', App\Http\Controllers\CommentController::class)->only(['index', 'destroy']);
 });

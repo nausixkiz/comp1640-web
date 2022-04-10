@@ -16,12 +16,9 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('slug');
             $table->text('description')->nullable();
-            $table->string('slug')->unique();
             $table->longText('contents');
-            $table->string('status')->default('published');
-            $table->boolean('is_featured')->default(false);
-            $table->string('image');
             // Relationships
             $table->foreignId('category_id')
                 ->constrained('categories')

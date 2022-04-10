@@ -26,7 +26,13 @@
         @include('partials.top-bar')
         @include('partials.left-sidebar')
         <div class="main-content">
-            @yield('content')
+            <div class="page-content">
+                <div class="container-fluid">
+                    <div class="row">
+                        @yield('content')
+                    </div>
+                </div>
+            </div>
 
             @include("partials/footer")
         </div>

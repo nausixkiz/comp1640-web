@@ -3,7 +3,7 @@ window._ = require('lodash');
 // try {
     window.$ = window.jQuery = require('jquery');
     window.Popper = require('@popperjs/core');
-    require('bootstrap');
+    window.bootstrap = require('bootstrap');
     require('simplebar');
     require('metismenu');
     window.Waves = require('node-waves');
