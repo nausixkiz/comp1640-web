@@ -18,8 +18,6 @@ class CommentFactory extends Factory
     {
         return [
             'contents' => $this->faker->paragraph(),
-            'like_count' => $this->faker->numberBetween(0, 100),
-            'dislike_count' => $this->faker->numberBetween(0, 100),
         ];
     }
 }
