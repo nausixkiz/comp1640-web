@@ -32,8 +32,6 @@ class Post extends Model implements Viewable, HasMedia, Likeable
         'short_description',
         'contents',
         'slug',
-        'like_count',
-        'dislike_count'
     ];
 
     /**
