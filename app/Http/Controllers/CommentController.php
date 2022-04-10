@@ -3,13 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
+use App\Models\Post;
 use App\Transformers\CommentTransfermer;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
+use Symfony\Component\Console\Input\Input;
 
 class CommentController extends Controller
 {
@@ -23,6 +27,25 @@ class CommentController extends Controller
         return view('contents.comment.index', [
             'comments' => Comment::all()->transformWith(new CommentTransfermer())->toArray(),
         ]);
+    }
+
+    public function store(Request $request)
+    {
+        Validator::make($request->all(), [
+            'contents' => ['required', 'string', 'max:255'],
+            'post-slug' => ['required', 'string', 'max:255', 'exists:posts,slug'],
+            'g-recaptcha-response' => ['required', 'captcha'],
+        ])->validate();
+
+        $post = Post::findBySlugOrFail($request->input('post-slug'));
+
+        $comment = new Comment();
+        $comment->contents = $request->input('contents');
+        $comment->user()->associate(Auth::user());
+        $comment->post()->associate($post);
+        $comment->save();
+
+        return redirect()->back()->with('flash_success_message', 'Comment created successfully');
     }
 
 

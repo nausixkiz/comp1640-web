@@ -15,7 +15,9 @@
                                 <div class="flex-grow-1 overflow-hidden">
                                     <p class="mb-1">Users</p>
                                     <h5 class="mb-3">2.2k</h5>
-                                    <p class="text-truncate mb-0"><span class="text-success me-2"> 0.02% <i class="ri-arrow-right-up-line align-bottom ms-1"></i></span> From previous</p>
+                                    <p class="text-truncate mb-0"><span class="text-success me-2"> 0.02% <i
+                                                class="ri-arrow-right-up-line align-bottom ms-1"></i></span> From
+                                        previous</p>
                                 </div>
                             </div>
                         </div>
@@ -35,7 +37,9 @@
                                 <div class="flex-grow-1 overflow-hidden">
                                     <p class="mb-1">Views per minute</p>
                                     <h5 class="mb-3">50</h5>
-                                    <p class="text-truncate mb-0"><span class="text-success me-2"> 1.7% <i class="ri-arrow-right-up-line align-bottom ms-1"></i></span> From previous</p>
+                                    <p class="text-truncate mb-0"><span class="text-success me-2"> 1.7% <i
+                                                class="ri-arrow-right-up-line align-bottom ms-1"></i></span> From
+                                        previous</p>
                                 </div>
                             </div>
                         </div>
@@ -55,7 +59,9 @@
                                 <div class="flex-grow-1 overflow-hidden">
                                     <p class="mb-1">Bounce Rate</p>
                                     <h5 class="mb-3">24.03 %</h5>
-                                    <p class="text-truncate mb-0"><span class="text-danger me-2"> 0.01% <i class="ri-arrow-right-down-line align-bottom ms-1"></i></span> From previous</p>
+                                    <p class="text-truncate mb-0"><span class="text-danger me-2"> 0.01% <i
+                                                class="ri-arrow-right-down-line align-bottom ms-1"></i></span> From
+                                        previous</p>
                                 </div>
                             </div>
                         </div>
@@ -79,7 +85,9 @@
                                 <div class="flex-grow-1 overflow-hidden">
                                     <p class="mb-1">New Visitors</p>
                                     <h5 class="mb-3">435</h5>
-                                    <p class="text-truncate mb-0"><span class="text-success me-2"> 0.01% <i class="ri-arrow-right-up-line align-bottom ms-1"></i></span> From previous</p>
+                                    <p class="text-truncate mb-0"><span class="text-success me-2"> 0.01% <i
+                                                class="ri-arrow-right-up-line align-bottom ms-1"></i></span> From
+                                        previous</p>
                                 </div>
                             </div>
                         </div>
@@ -129,22 +137,30 @@
                                     <div class="col-4 border-end">
                                         <div>
                                             <p class="mb-2">
-                                                <i class="mdi mdi-circle font-size-12 text-primary me-1"></i> Expenses</p>
-                                            <h5 class="font-size-16 mb-0">$ 8,524 <span class="text-success font-size-12">
+                                                <i class="mdi mdi-circle font-size-12 text-primary me-1"></i> Expenses
+                                            </p>
+                                            <h5 class="font-size-16 mb-0">$ 8,524 <span
+                                                    class="text-success font-size-12">
                                                     <i class="mdi mdi-menu-up font-size-14 me-1"></i>1.2 %</span>
                                             </h5>
                                         </div>
                                     </div>
                                     <div class="col-4 border-end">
                                         <div>
-                                            <p class="mb-2"><i class="mdi mdi-circle font-size-12 text-light me-1"></i> Maintenance</p>
-                                            <h5 class="font-size-16 mb-0">$ 8,524 <span class="text-success font-size-12"><i class="mdi mdi-menu-up font-size-14 me-1"></i>2.0 %</span></h5>
+                                            <p class="mb-2"><i class="mdi mdi-circle font-size-12 text-light me-1"></i>
+                                                Maintenance</p>
+                                            <h5 class="font-size-16 mb-0">$ 8,524 <span
+                                                    class="text-success font-size-12"><i
+                                                        class="mdi mdi-menu-up font-size-14 me-1"></i>2.0 %</span></h5>
                                         </div>
                                     </div>
                                     <div class="col-4">
                                         <div>
-                                            <p class="mb-2"><i class="mdi mdi-circle font-size-12 text-danger me-1"></i> Profit</p>
-                                            <h5 class="font-size-16 mb-0">$ 8,524 <span class="text-success font-size-12"><i class="mdi mdi-menu-up font-size-14 me-1"></i>0.4 %</span></h5>
+                                            <p class="mb-2"><i class="mdi mdi-circle font-size-12 text-danger me-1"></i>
+                                                Profit</p>
+                                            <h5 class="font-size-16 mb-0">$ 8,524 <span
+                                                    class="text-success font-size-12"><i
+                                                        class="mdi mdi-menu-up font-size-14 me-1"></i>0.4 %</span></h5>
                                         </div>
                                     </div>
                                 </div>
@@ -183,7 +199,8 @@
                                 <div class="col-4">
                                     <div class="social-source text-center mt-3">
                                         <div class="avatar-xs mx-auto mb-3">
-                                                        <span class="avatar-title rounded-circle bg-primary font-size-18">
+                                                        <span
+                                                            class="avatar-title rounded-circle bg-primary font-size-18">
                                                             <i class="ri  ri-facebook-circle-fill text-white"></i>
                                                         </span>
                                         </div>
@@ -205,7 +222,8 @@
                                 <div class="col-4">
                                     <div class="social-source text-center mt-3">
                                         <div class="avatar-xs mx-auto mb-3">
-                                                        <span class="avatar-title rounded-circle bg-danger font-size-18">
+                                                        <span
+                                                            class="avatar-title rounded-circle bg-danger font-size-18">
                                                             <i class="ri ri-instagram-line text-white"></i>
                                                         </span>
                                         </div>
@@ -233,14 +251,17 @@
                                     <li class="py-3">
                                         <div class="d-flex">
                                             <div class="avatar-xs align-self-center me-3">
-                                                <div class="avatar-title rounded-circle bg-light text-primary font-size-18">
+                                                <div
+                                                    class="avatar-title rounded-circle bg-light text-primary font-size-18">
                                                     <i class="ri-checkbox-circle-line"></i>
                                                 </div>
                                             </div>
                                             <div class="flex-grow-1">
                                                 <p class="text-muted mb-2">Completed</p>
                                                 <div class="progress progress-sm animated-progess">
-                                                    <div class="progress-bar bg-success" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    <div class="progress-bar bg-success" role="progressbar"
+                                                         style="width: 70%" aria-valuenow="70" aria-valuemin="0"
+                                                         aria-valuemax="100"></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -248,14 +269,17 @@
                                     <li class="py-3">
                                         <div class="d-flex">
                                             <div class="avatar-xs align-self-center me-3">
-                                                <div class="avatar-title rounded-circle bg-light text-primary font-size-18">
+                                                <div
+                                                    class="avatar-title rounded-circle bg-light text-primary font-size-18">
                                                     <i class="ri-calendar-2-line"></i>
                                                 </div>
                                             </div>
                                             <div class="flex-grow-1">
                                                 <p class="text-muted mb-2">Pending</p>
                                                 <div class="progress progress-sm animated-progess">
-                                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 45%" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    <div class="progress-bar bg-warning" role="progressbar"
+                                                         style="width: 45%" aria-valuenow="45" aria-valuemin="0"
+                                                         aria-valuemax="100"></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -263,14 +287,17 @@
                                     <li class="py-3">
                                         <div class="d-flex">
                                             <div class="avatar-xs align-self-center me-3">
-                                                <div class="avatar-title rounded-circle bg-light text-primary font-size-18">
+                                                <div
+                                                    class="avatar-title rounded-circle bg-light text-primary font-size-18">
                                                     <i class="ri-close-circle-line"></i>
                                                 </div>
                                             </div>
                                             <div class="flex-grow-1">
                                                 <p class="text-muted mb-2">Cancel</p>
                                                 <div class="progress progress-sm animated-progess">
-                                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 19%" aria-valuenow="19" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    <div class="progress-bar bg-danger" role="progressbar"
+                                                         style="width: 19%" aria-valuenow="19" aria-valuemin="0"
+                                                         aria-valuemax="100"></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -318,7 +345,8 @@
                                 <a href="#" class="text-body d-block">
                                     <div class="d-flex py-3">
                                         <div class="flex-shrink-0 me-3 align-self-center">
-                                            <img class="rounded-circle avatar-xs" alt="" src="assets/images/users/avatar-2.jpg">
+                                            <img class="rounded-circle avatar-xs" alt=""
+                                                 src="assets/images/users/avatar-2.jpg">
                                         </div>
 
                                         <div class="flex-grow-1 overflow-hidden">
@@ -336,7 +364,8 @@
                                     <div class="d-flex py-3">
                                         <div class="flex-shrink-0 me-3 align-self-center">
                                             <div class="avatar-xs">
-                                                            <span class="avatar-title bg-soft-primary rounded-circle text-primary">
+                                                            <span
+                                                                class="avatar-title bg-soft-primary rounded-circle text-primary">
                                                                 <i class="mdi mdi-account-supervisor"></i>
                                                             </span>
                                             </div>
@@ -355,7 +384,8 @@
                                 <a href="#" class="text-body d-block">
                                     <div class="d-flex py-3">
                                         <div class="flex-shrink-0 me-3 align-self-center">
-                                            <img class="rounded-circle avatar-xs" alt="" src="assets/images/users/avatar-3.jpg">
+                                            <img class="rounded-circle avatar-xs" alt=""
+                                                 src="assets/images/users/avatar-3.jpg">
                                         </div>
                                         <div class="flex-grow-1 overflow-hidden">
                                             <h5 class="font-size-14 mb-1">Frank Martin</h5>
@@ -372,7 +402,8 @@
                                     <div class="d-flex py-3">
                                         <div class="flex-shrink-0 me-3 align-self-center">
                                             <div class="avatar-xs">
-                                                            <span class="avatar-title bg-soft-primary rounded-circle text-primary">
+                                                            <span
+                                                                class="avatar-title bg-soft-primary rounded-circle text-primary">
                                                                 <i class="mdi mdi-email-outline"></i>
                                                             </span>
                                             </div>
@@ -446,13 +477,13 @@
                                 <table class="table table-centered table-nowrap mb-0">
                                     <thead>
                                     <tr>
-                                        <th scope="col"  style="width: 50px;">
+                                        <th scope="col" style="width: 50px;">
                                             <div class="form-check">
                                                 <input type="checkbox" class="form-check-input" id="customCheckall">
                                                 <label class="form-check-label" for="customCheckall"></label>
                                             </div>
                                         </th>
-                                        <th scope="col"  style="width: 60px;"></th>
+                                        <th scope="col" style="width: 60px;"></th>
                                         <th scope="col">ID & Name</th>
                                         <th scope="col">Date</th>
                                         <th scope="col">Price</th>
@@ -471,7 +502,8 @@
                                             </div>
                                         </td>
                                         <td>
-                                            <img src="assets/images/users/avatar-2.jpg" alt="user" class="avatar-xs rounded-circle" />
+                                            <img src="assets/images/users/avatar-2.jpg" alt="user"
+                                                 class="avatar-xs rounded-circle"/>
                                         </td>
                                         <td>
                                             <p class="mb-1 font-size-12">#AP1234</p>
@@ -501,7 +533,8 @@
                                         </td>
                                         <td>
                                             <div class="avatar-xs">
-                                                                <span class="avatar-title rounded-circle bg-soft-primary text-success">
+                                                                <span
+                                                                    class="avatar-title rounded-circle bg-soft-primary text-success">
                                                                     W
                                                                 </span>
                                             </div>
@@ -533,7 +566,8 @@
                                             </div>
                                         </td>
                                         <td>
-                                            <img src="assets/images/users/avatar-3.jpg" alt="user" class="avatar-xs rounded-circle" />
+                                            <img src="assets/images/users/avatar-3.jpg" alt="user"
+                                                 class="avatar-xs rounded-circle"/>
                                         </td>
                                         <td>
                                             <p class="mb-1 font-size-12">#AP1236</p>
@@ -562,7 +596,8 @@
                                             </div>
                                         </td>
                                         <td>
-                                            <img src="assets/images/users/avatar-6.jpg" alt="user" class="avatar-xs rounded-circle" />
+                                            <img src="assets/images/users/avatar-6.jpg" alt="user"
+                                                 class="avatar-xs rounded-circle"/>
                                         </td>
                                         <td>
                                             <p class="mb-1 font-size-12">#AP1237</p>
@@ -592,7 +627,8 @@
                                         </td>
                                         <td>
                                             <div class="avatar-xs">
-                                                                <span class="avatar-title rounded-circle bg-soft-primary text-success">
+                                                                <span
+                                                                    class="avatar-title rounded-circle bg-soft-primary text-success">
                                                                     R
                                                                 </span>
                                             </div>

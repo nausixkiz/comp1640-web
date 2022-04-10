@@ -16,8 +16,6 @@ return new class extends Migration
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
             $table->text('contents');
-            $table->bigInteger('like_count')->default(0);
-            $table->bigInteger('dislike_count')->default(0);
             // Relationship
             $table->foreignId('post_id')
                 ->constrained('posts')

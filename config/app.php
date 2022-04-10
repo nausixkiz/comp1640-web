@@ -171,14 +171,14 @@ return [
         Spatie\Permission\PermissionServiceProvider::class,
         Laravolt\Avatar\ServiceProvider::class,
         CyrildeWit\EloquentViewable\EloquentViewableServiceProvider::class,
-        Yoeunes\Toastr\ToastrServiceProvider::class,
+        Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
 
         /*
          * Application Service Providers...
          */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
+         App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
@@ -197,6 +197,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         'Avatar'    => Laravolt\Avatar\Facade::class,
+        'NoCaptcha' => Anhskohbo\NoCaptcha\Facades\NoCaptcha::class,
     ])->toArray(),
 
 ];

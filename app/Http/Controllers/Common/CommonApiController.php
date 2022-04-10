@@ -14,5 +14,4 @@ class CommonApiController extends BaseController
     use DispatchesJobs;
     use ValidatesRequests;
     use ApiResponseFormat;
-
 }

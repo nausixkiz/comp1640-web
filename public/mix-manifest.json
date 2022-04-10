@@ -1,7 +1,9 @@
 {
     "/js/plugins/datatable.js": "/js/plugins/datatable.js",
-    "/js/plugins/twitter-bootstrap-wizard.js": "/js/plugins/twitter-bootstrap-wizard.js",
     "/js/plugins/ckeditor-basic.js": "/js/plugins/ckeditor-basic.js",
+    "/js/plugins/dropzone.js": "/js/plugins/dropzone.js",
+    "/js/plugins/bootstrap-fileinput.js": "/js/plugins/bootstrap-fileinput.js",
+    "/js/plugins/select2.js": "/js/plugins/select2.js",
     "/js/app.js": "/js/app.js",
     "/js/manifest.js": "/js/manifest.js",
     "/css/plugins.css": "/css/plugins.css",
@@ -10,8 +12,5 @@
     "/css/bootstrap-custom.css": "/css/bootstrap-custom.css",
     "/js/vendor.js": "/js/vendor.js",
     "/images/bg.jpg": "/images/bg.jpg",
-    "/images/favicon.ico": "/images/favicon.ico",
-    "/images/logo-dark.png": "/images/logo-dark.png",
-    "/images/logo-light.png": "/images/logo-light.png",
-    "/images/logo-sm.png": "/images/logo-sm.png"
+    "/images/favicon.ico": "/images/favicon.ico"
 }

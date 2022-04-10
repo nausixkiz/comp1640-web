@@ -4,8 +4,140 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "42b3a36679306045b95a91812852a9d9",
+    "content-hash": "12df2f9f18ea26a23685b6b9aebbf1fd",
     "packages": [
+        {
+            "name": "anhskohbo/no-captcha",
+            "version": "3.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/anhskohbo/no-captcha.git",
+                "reference": "e12233006da3063f5cf4ce959cae05a6676faedd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/anhskohbo/no-captcha/zipball/e12233006da3063f5cf4ce959cae05a6676faedd",
+                "reference": "e12233006da3063f5cf4ce959cae05a6676faedd",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^6.2|^7.0",
+                "illuminate/support": "^5.0|^6.0|^7.0|^8.0|^9.0",
+                "php": ">=5.5.5"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.8|^9.5.10"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Anhskohbo\\NoCaptcha\\NoCaptchaServiceProvider"
+                    ],
+                    "aliases": {
+                        "NoCaptcha": "Anhskohbo\\NoCaptcha\\Facades\\NoCaptcha"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Anhskohbo\\NoCaptcha\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "anhskohbo",
+                    "email": "anhskohbo@gmail.com"
+                }
+            ],
+            "description": "No CAPTCHA reCAPTCHA For Laravel.",
+            "keywords": [
+                "captcha",
+                "laravel",
+                "laravel4",
+                "laravel5",
+                "laravel6",
+                "no-captcha",
+                "recaptcha"
+            ],
+            "support": {
+                "issues": "https://github.com/anhskohbo/no-captcha/issues",
+                "source": "https://github.com/anhskohbo/no-captcha/tree/3.4.0"
+            },
+            "time": "2022-02-10T02:50:24+00:00"
+        },
+        {
+            "name": "brainstud/file-vault",
+            "version": "v2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/brainstudnl/file-vault.git",
+                "reference": "55e6dfbe32b7bd96fef8313cf48f1ed71d4d4e0d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/brainstudnl/file-vault/zipball/55e6dfbe32b7bd96fef8313cf48f1ed71d4d4e0d",
+                "reference": "55e6dfbe32b7bd96fef8313cf48f1ed71d4d4e0d",
+                "shasum": ""
+            },
+            "require": {
+                "ext-openssl": "*",
+                "illuminate/support": "^8.0 || ^9.0 ",
+                "php": "^8.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^6.0|^7.0",
+                "phpstan/phpstan": "^1.4",
+                "phpunit/phpunit": "^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Brainstud\\FileVault\\FileVaultServiceProvider"
+                    ],
+                    "aliases": {
+                        "FileVault": "Brainstud\\FileVault\\Facades\\FileVault"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Brainstud\\FileVault\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Niek Pijp",
+                    "email": "niek@brainstud.com",
+                    "role": "Developer"
+                }
+            ],
+            "homepage": "https://github.com/brainstudnl/file-vault",
+            "keywords": [
+                "CBC",
+                "decrypt",
+                "decryption",
+                "encrypt",
+                "encryption",
+                "file",
+                "file-vault",
+                "laravel",
+                "php"
+            ],
+            "support": {
+                "source": "https://github.com/brainstudnl/file-vault/tree/v2.0.0"
+            },
+            "time": "2022-03-22T07:13:25+00:00"
+        },
         {
             "name": "brick/math",
             "version": "0.9.3",
@@ -6420,88 +6552,6 @@
                 "source": "https://github.com/webmozarts/assert/tree/1.10.0"
             },
             "time": "2021-03-09T10:59:23+00:00"
-        },
-        {
-            "name": "yoeunes/toastr",
-            "version": "v1.2.7",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/yoeunes/toastr.git",
-                "reference": "ff1af05918e2cd9e725a0a811c9a14546c8f1219"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/yoeunes/toastr/zipball/ff1af05918e2cd9e725a0a811c9a14546c8f1219",
-                "reference": "ff1af05918e2cd9e725a0a811c9a14546c8f1219",
-                "shasum": ""
-            },
-            "require": {
-                "ext-json": "*",
-                "illuminate/session": "^5.5 || ^6.0 || ^7.0 || ^8.0 || ^9.0",
-                "illuminate/support": "^5.5 || ^6.0 || ^7.0 || ^8.0 || ^9.0",
-                "php": ">=7.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Yoeunes\\Toastr\\ToastrServiceProvider"
-                    ],
-                    "aliases": {
-                        "Toastr": "Yoeunes\\Toastr\\Facades\\Toastr"
-                    }
-                }
-            },
-            "autoload": {
-                "files": [
-                    "src/helpers.php"
-                ],
-                "psr-4": {
-                    "Yoeunes\\Toastr\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Younes Khoubza",
-                    "email": "younes.khoubza@gmail.com",
-                    "homepage": "https://github.com/yoeunes",
-                    "role": "Developer"
-                }
-            ],
-            "description": "toastr.js flush notifications for Laravel and Lumen",
-            "homepage": "https://github.com/yoeunes/toastr",
-            "keywords": [
-                "alerts",
-                "flush",
-                "flush messages",
-                "flush notifications",
-                "laravel",
-                "laravel 5",
-                "laravel 6",
-                "laravel 7",
-                "laravel flush notifications",
-                "laravel notification",
-                "laravel notify",
-                "laravel toastr",
-                "lumen",
-                "messages",
-                "notification",
-                "php",
-                "toastr",
-                "toastr js",
-                "yoeunes"
-            ],
-            "support": {
-                "docs": "https://github.com/yoeunes/toastr/README.md",
-                "email": "younes.khoubza@gmail.com",
-                "issues": "https://github.com/yoeunes/toastr/issues",
-                "source": "https://github.com/yoeunes/toastr"
-            },
-            "time": "2022-01-28T20:29:38+00:00"
         }
     ],
     "packages-dev": [

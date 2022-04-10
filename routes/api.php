@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\DevController;
+use App\Http\Controllers\Api\FileController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,3 +17,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/bump-data', [DevController::class, 'bumpData']);
+
+Route::post('document-upload', [FileController::class, 'uploadDocument'])->name('api.document-upload');

@@ -21,10 +21,9 @@
 
 </head>
 
-<body data-sidebar="dark">
+<body data-topbar="light" data-layout="horizontal">
     <div id="layout-wrapper">
-        @include('partials.top-bar')
-        @include('partials.left-sidebar')
+        @include('partials.menu')
         <div class="main-content">
             <div class="page-content">
                 <div class="container-fluid">
@@ -38,7 +37,10 @@
         </div>
     </div>
 
-@include('panels.scripts')
+    <!-- Right bar overlay-->
+    <div class="rightbar-overlay"></div>
+
+    @include('panels.scripts')
 
 </body>
 

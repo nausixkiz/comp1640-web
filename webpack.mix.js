@@ -14,8 +14,10 @@ const mix = require('laravel-mix');
 mix.copyDirectory('resources/images', 'public/images')
 
 mix.js('resources/js/plugins/datatable.js', 'public/js/plugins')
-    .js('resources/js/plugins/twitter-bootstrap-wizard.js', 'public/js/plugins')
     .js('resources/js/plugins/ckeditor-basic.js', 'public/js/plugins')
+    .js('resources/js/plugins/dropzone.js', 'public/js/plugins')
+    .js('resources/js/plugins/bootstrap-fileinput.js', 'public/js/plugins')
+    .js('resources/js/plugins/select2.js', 'public/js/plugins')
 
 mix.js('resources/js/app.js', 'public/js')
     .sass('resources/scss/app.scss', 'public/css')
@@ -27,8 +29,7 @@ mix.js('resources/js/app.js', 'public/js')
 mix.extract([
     'jquery', '@popperjs/core', 'bootstrap', 'simplebar', 'metismenu', 'node-waves',
     'datatables.net', 'datatables.net-bs',
-    'toastr', 'sweetalert2',
-    'twitter-bootstrap-wizard',
+    'toastr', 'sweetalert2', 'select2', 'bootstrap-fileinput',
     ])
 
 if (mix.inProduction()) {

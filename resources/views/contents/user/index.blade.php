@@ -75,7 +75,7 @@
                                                                     <img class="avatar-xl rounded-circle"
                                                                          src="{{ Avatar::create($user['name'])->toBase64() }}"
                                                                          alt="{{ $user['name'] }}"
-                                                                    width="100" height="100">
+                                                                         width="100" height="100">
                                                                 </div>
 
 
