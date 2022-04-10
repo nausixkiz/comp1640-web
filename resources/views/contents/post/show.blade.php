@@ -49,9 +49,7 @@
                                                  alt="{{ $document->name }}">
                                             @break
                                             @default
-                                            <img class="card-img-top img-fluid"
-                                                 src="{{ $document->getUrl($conversion) }}"
-                                                 alt="{{ $media->name }}">
+                                                {{ $document }}
                                             @break
                                         @endswitch
 
