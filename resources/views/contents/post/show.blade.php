@@ -50,8 +50,7 @@
                                             @break
                                             @default
                                             <img class="card-img-top img-fluid"
-                                                 @if($loadingAttributeValue) loading="{{ $loadingAttributeValue }}"
-                                                 @endif src="{{ $document->getUrl($conversion) }}"
+                                                 src="{{ $document->getUrl($conversion) }}"
                                                  alt="{{ $media->name }}">
                                             @break
                                         @endswitch
