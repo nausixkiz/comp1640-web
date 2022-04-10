@@ -41,6 +41,8 @@ class CommentController extends Controller
 
         $comment = new Comment();
         $comment->contents = $request->input('contents');
+        $comment->is_anonymous = $request->input('comment-as-anonymous', 'off') === 'on';
+
         $comment->user()->associate(Auth::user());
         $comment->post()->associate($post);
         $comment->save();

@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
             $table->text('contents');
+            $table->boolean('is_anonymous');
             // Relationship
             $table->foreignId('post_id')
                 ->constrained('posts')

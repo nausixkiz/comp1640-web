@@ -95,18 +95,13 @@
                         <div class="dropdown-menu" aria-labelledby="topnav-apps">
                             <a href="{{ route('dashboard') }}" class="dropdown-item">{{ __('Dashboard') }}</a>
                             <a href="{{ route('users.index') }}" class="dropdown-item">{{ __('User Management') }}</a>
-                            <div class="dropdown">
-                                <a class="dropdown-item dropdown-toggle arrow-none" href="javascript:void(0)" id="topnav-post-management"
-                                   role="button">
-                                    {{ __('Post (Idea) Management') }} <div class="arrow-down"></div>
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="topnav-post-management">
-                                    <a href="{{ route('posts.index') }}" class="dropdown-item">{{ __('List All Post (Idea)') }}</a>
-                                    <a href="{{ route('posts.create') }}" class="dropdown-item">{{ __('Create New Post (Idea)') }}</a>
-                                </div>
-                            </div>
+                            <a href="{{ route('posts.index') }}" class="dropdown-item">{{ __('Post (Idea) Management') }}</a>
                             <a href="{{ route('comments.index') }}" class="dropdown-item">{{ __('Comment Management') }}</a>
                         </div>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="{{ route('posts.create') }}" class="nav-link"><i class="mdi mdi-post"></i> {{ __('Create New Post (Idea)') }}</a>
                     </li>
                 </ul>
             </div>

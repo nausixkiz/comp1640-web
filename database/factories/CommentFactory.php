@@ -18,6 +18,7 @@ class CommentFactory extends Factory
     {
         return [
             'contents' => $this->faker->paragraph(),
+            'is_anonymous' => $this->faker->boolean(),
         ];
     }
 }

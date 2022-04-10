@@ -1,5 +1,5 @@
 @extends('layouts.main-layout')
-@section('title', 'Homepage')
+@section('title', $post->name)
 
 @section('content')
     <div class="row mb-4">
@@ -49,7 +49,7 @@
                                                  alt="{{ $document->name }}">
                                             @break
                                             @default
-                                                {{ $document->img()->attributes(['class' => 'card-img-top img-fluid']) }}
+                                            {{ $document->img()->attributes(['class' => 'card-img-top img-fluid']) }}
                                             @break
                                         @endswitch
 
@@ -66,7 +66,7 @@
                     <div class="d-flex mb-3">
                         <div class="p-2">
                             <a
-                               class="btn btn-secondary waves-effect mt-4">
+                                class="btn btn-secondary waves-effect mt-4">
                                 <i class="dripicons-thumbs-up"></i> Like
                             </a>
                             <a href="email-compose.html" class="btn btn-secondary waves-effect mt-4">
@@ -92,25 +92,26 @@
         <div class="col-md-9">
             <div class="headings d-flex justify-content-between align-items-center mb-3">
                 <h5><i class="dripicons-conversation"></i> Unread comments <span
-                        class="badge bg-info">{{ $post->comments->count() }}</h5>
+                        class="badge bg-info">{{ $comment_total }}</h5>
             </div>
-            @if($post->comments->count() == 0)
+            @if($comments->count() == 0)
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title mb-4">No comments yet</h4>
                     </div>
                 </div>
             @else
-                @foreach($post->comments as $comment)
+                @foreach($comments as $comment)
                     <div class="card p-3">
                         <div class="card-body">
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="d-flex">
                                     <div class="flex-shrink-0">
                                         <img
-                                            src="{{ Avatar::create($comment->user->name)->toBase64() }}"
+                                            src="@if($comment->isAnonymousComment()) {{ Avatar::create('Anonymous')->toBase64() }} @else {{ Avatar::create($comment->user->name)->toBase64() }} @endif"
                                             class="rounded-circle avatar-md mb-4 mb-lg-0 shadow-2"
-                                            alt="{{ $comment->user->name }}" width="90"
+                                            alt="@if($comment->isAnonymousComment()) Anonymous @else {{ $comment->user->name }} @endif"
+                                            width="90"
                                             height="90">
                                     </div>
                                     <div class="flex-grow-1 ms-4 ps-3">
@@ -122,7 +123,8 @@
                                                 </p>
                                             </blockquote>
                                             <figcaption class="blockquote-footer">
-                                                {{ $comment->user->name }} in <cite
+                                                By @if($comment->isAnonymousComment())
+                                                    Anonymous @else {{ $comment->user->name }} @endif in <cite
                                                     title="Source Title">{{ $comment->created_at }}</cite>
                                             </figcaption>
                                         </figure>
@@ -133,6 +135,15 @@
 
                     </div>
                 @endforeach
+                <div class="card">
+                    <div class="card-body">
+                        <div class="justify-content-between align-items-center text-center">
+                            <div class="d-inline-block ">
+                                {!! $comments->links('contents.custom.pagination') !!}
+                            </div>
+                        </div>
+                    </div>
+                </div>
             @endif
         </div>
     </div>
@@ -140,14 +151,13 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-body">
-
                     <div>
-                        <form action="{{ route('comments.store') }}" method="POST">
+                        <form action="{{ route('comments.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" name="post-slug" value="{{ $post->slug }}" hidden>
                             <div class="mb-3">
                                 <textarea class="form-control @error('contents') is-invalid @enderror" name="contents"
-                                          rows="3"></textarea>
+                                          rows="3" placeholder="Leave an comment for this post..."></textarea>
                                 @error('contents')
                                 <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -162,9 +172,27 @@
                                     </span>
                                 @enderror
                             </div>
-                            <div class="d-flex justify-content-end btn-toolbar mb-0">
-                                <button class="btn btn-info waves-effect waves-light"><span>Send</span>
-                                    <i class="fab fa-telegram-plane ms-2"></i></button>
+                            <div class="mb-3">
+                                <div class="d-flex btn-toolbar mb-3 mt-5">
+                                    <div class="p-2">
+                                        <input
+                                            class="form-check-input @error('comment-as-anonymous') is-invalid @enderror"
+                                            type="checkbox"
+                                            id="comment-as-anonymous" name="comment-as-anonymous">
+                                        <label class="form-check-label" for="comment-as-anonymous">
+                                            Post this comment anonymously
+                                        </label>
+                                        @error('comment-as-anonymous')
+                                        <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="ms-auto p-2">
+                                        <button class="btn btn-info waves-effect waves-light"><span>Send</span>
+                                            <i class="fab fa-telegram-plane ms-2"></i></button>
+                                    </div>
+                                </div>
                             </div>
                         </form>
                     </div>
