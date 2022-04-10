@@ -12,6 +12,7 @@ class Comment extends Model
 
     protected $fillable = [
         'contents',
+        'is_anonymous',
     ];
 
     public function user(): BelongsTo
@@ -22,6 +23,11 @@ class Comment extends Model
     public function post(): BelongsTo
     {
         return $this->belongsTo(Post::class);
+    }
+
+    public function isAnonymousComment(): bool
+    {
+        return $this->is_anonymous;
     }
 
 }

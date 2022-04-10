@@ -95,7 +95,8 @@ class PostController extends Controller
 
         return view('contents.post.show', [
             'post' => $post,
-            'comments' => $post->comments()->get(),
+            'comments' => $post->comments()->paginate(3),
+            'comment_total' => $post->comments()->count(),
         ]);
     }
 
