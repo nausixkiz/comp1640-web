@@ -49,7 +49,7 @@
                                                  alt="{{ $document->name }}">
                                             @break
                                             @default
-                                                {{ $document }}
+                                                {{ $document->img()->attributes(['class' => 'card-img-top img-fluid']) }}
                                             @break
                                         @endswitch
 
