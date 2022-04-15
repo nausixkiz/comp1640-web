@@ -23,7 +23,6 @@ return new class extends Migration
             $table->string('phone')->unique();
             $table->string('address', 100)->nullable();
             $table->date('birth')->nullable();
-            $table->string('profile_photo_path', 2048)->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

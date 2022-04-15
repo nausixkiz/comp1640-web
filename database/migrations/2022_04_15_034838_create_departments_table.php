@@ -13,11 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create('departments', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 120)->unique();
-            $table->string('slug', 400)->nullable();
-            $table->string('status', 60)->default('published');
+            $table->string('name');
+            $table->date('closure_date');
+            $table->date('second_closure_date');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('departments');
     }
 };

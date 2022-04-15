@@ -13,18 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('files', function (Blueprint $table) {
+        Schema::create('dislikes', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->text('local_name');
-            $table->text('original_name');
-            $table->string('mime_type');
-            $table->string('size');
-            $table->string('path');
-            $table->string('md5');
-            // Relationships
-            $table->foreignId('post_id')
-                ->constrained('posts')
+            $table->morphs('dislike_able');
+            $table->foreignId('user_id')
+                ->constrained('users')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
             $table->timestamps();
@@ -38,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('files');
+        Schema::dropIfExists('dislikes');
     }
 };
