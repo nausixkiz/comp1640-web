@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,7 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Auth::routes(['register' => false]);
+Auth::routes([
+    'register' => false,
+    'verify' => false,
+]);
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
@@ -24,4 +28,5 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('posts/{slug}/download-all-documents', [App\Http\Controllers\PostController::class, 'downloadAllDocuments'])->name('posts.download-all-documents');
     Route::get('posts/{slug}/{media}/download', [App\Http\Controllers\PostController::class, 'downloadADocument'])->name('posts.download-a-document');
     Route::resource('comments', App\Http\Controllers\CommentController::class)->only(['index', 'store', 'destroy']);
+    Route::resource('categories', App\Http\Controllers\CategoryController::class);
 });
