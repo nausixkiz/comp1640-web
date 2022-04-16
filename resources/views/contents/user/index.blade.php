@@ -2,11 +2,7 @@
 @section('title', 'User Management')
 
 @section('content')
-    <div class="page-content">
-        <div class="container-fluid">
-
-            <div class="row">
-                <div class="col-12">
+    <div class="col-12">
                     <div class="card">
                         <div class="card-body">
 
@@ -135,11 +131,7 @@
                             </table>
                         </div>
                     </div>
-                </div> <!-- end col -->
-            </div>
-
-        </div>
-    </div>
+                </div>
 @stop
 
 @push('page-scripts')
