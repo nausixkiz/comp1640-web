@@ -18,8 +18,12 @@ class Category extends Model
 
     protected $fillable = [
         'name',
-        'status',
     ];
+
+    public function department(): BelongsTo
+    {
+        return $this->belongsTo(Department::class);
+    }
 
     public function posts(): HasMany
     {

@@ -2,14 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Contracts\Likeable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
-use App\Contracts\Likeable;
 
 class User extends Authenticatable
 {
@@ -78,9 +77,20 @@ class User extends Authenticatable
         return $this;
     }
 
-    public function unlike( $likeable): self
+    public function hasLiked(Likeable $likeable): bool
     {
-        if (! $this->hasLiked($likeable)) {
+        if (!$likeable->exists) {
+            return false;
+        }
+
+        return $likeable->likes()
+            ->whereHas('user', fn($q) => $q->whereId($this->id))
+            ->exists();
+    }
+
+    public function unlike($likeable): self
+    {
+        if (!$this->hasLiked($likeable)) {
             return $this;
         }
 
@@ -89,17 +99,6 @@ class User extends Authenticatable
             ->delete();
 
         return $this;
-    }
-
-    public function hasLiked(Likeable $likeable): bool
-    {
-        if (! $likeable->exists) {
-            return false;
-        }
-
-        return $likeable->likes()
-            ->whereHas('user', fn($q) =>  $q->whereId($this->id))
-            ->exists();
     }
 
     public function getRoleName()

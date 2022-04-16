@@ -100,6 +100,7 @@
                             <div class="dropdown-menu" aria-labelledby="topnav-apps">
                                 <a href="{{ route('dashboard') }}" class="dropdown-item">{{ __('Dashboard') }}</a>
                                 <a href="{{ route('users.index') }}" class="dropdown-item">{{ __('User Management') }}</a>
+                                <a href="{{ route('departments.index') }}" class="dropdown-item">{{ __('Department Management') }}</a>
                                 <a href="{{ route('categories.index') }}" class="dropdown-item">{{ __('Category Management') }}</a>
                                 <a href="{{ route('posts.index') }}" class="dropdown-item">{{ __('Post (Idea) Management') }}</a>
                                 <a href="{{ route('comments.index') }}" class="dropdown-item">{{ __('Comment Management') }}</a>

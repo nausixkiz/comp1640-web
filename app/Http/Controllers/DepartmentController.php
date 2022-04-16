@@ -83,6 +83,12 @@ class DepartmentController extends Controller
     public function update(Request $request, string $slug)
     {
         try {
+            Validator::make($request->all(), [
+                'name' => ['required', 'string', 'max:255'],
+                'start_closure_date' => ['required', 'date'],
+                'end_closure_date' => ['required', 'date'],
+            ])->validate();
+
             $department = Department::findBySlugOrFail($slug);
             $department->update([
                 'name' => $request->input('name'),

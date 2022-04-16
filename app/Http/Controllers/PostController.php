@@ -149,7 +149,7 @@ class PostController extends Controller
     {
         $post = Post::findBySlugOrFail($slug);
 
-        if($post->hasMedia('documents')) {
+        if ($post->hasMedia('documents')) {
             // Let's get some media.
             $documents = $post->getMedia('documents');
 
