@@ -93,29 +93,28 @@
                             <span>{{ __('Home') }}</span>
                         </a>
                     </li>
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle arrow-none" href="javascript:void(0)" id="topnav-apps"
-                           role="button">
-                            <i class="ri-apps-2-line me-2"></i>{{ __('Management') }}
-                            <div class="arrow-down"></div>
-                        </a>
-                        @if(\Illuminate\Support\Facades\Auth::user()->hasRole('Super Administrator'))
-                            <div class="dropdown-menu" aria-labelledby="topnav-apps">
-                                <a href="{{ route('dashboard') }}" class="dropdown-item">{{ __('Dashboard') }}</a>
-                                <a href="{{ route('users.index') }}"
-                                   class="dropdown-item">{{ __('User Management') }}</a>
-                                <a href="{{ route('departments.index') }}"
-                                   class="dropdown-item">{{ __('Department Management') }}</a>
-                                <a href="{{ route('categories.index') }}"
-                                   class="dropdown-item">{{ __('Category Management') }}</a>
-                                <a href="{{ route('posts.index') }}"
-                                   class="dropdown-item">{{ __('Post (Idea) Management') }}</a>
-                                <a href="{{ route('comments.index') }}"
-                                   class="dropdown-item">{{ __('Comment Management') }}</a>
-                            </div>
-                        @endif
-                    </li>
+                    @if(\Illuminate\Support\Facades\Auth::user()->hasRole('Super Administrator'))
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle arrow-none" href="javascript:void(0)" id="topnav-apps"
+                               role="button">
+                                <i class="ri-apps-2-line me-2"></i>{{ __('Management') }}
+                                <div class="arrow-down"></div>
+                            </a>
+                                <div class="dropdown-menu" aria-labelledby="topnav-apps">
+                                    <a href="{{ route('dashboard') }}" class="dropdown-item">{{ __('Dashboard') }}</a>
+                                    <a href="{{ route('users.index') }}"
+                                       class="dropdown-item">{{ __('User Management') }}</a>
+                                    <a href="{{ route('departments.index') }}"
+                                       class="dropdown-item">{{ __('Department Management') }}</a>
+                                    <a href="{{ route('categories.index') }}"
+                                       class="dropdown-item">{{ __('Category Management') }}</a>
+                                    <a href="{{ route('posts.index') }}"
+                                       class="dropdown-item">{{ __('Post (Idea) Management') }}</a>
+                                    <a href="{{ route('comments.index') }}"
+                                       class="dropdown-item">{{ __('Comment Management') }}</a>
+                                </div>
+                        </li>
+                    @endif
                 </ul>
             </div>
         </nav>
