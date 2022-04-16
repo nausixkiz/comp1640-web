@@ -58,7 +58,7 @@
                         </div>
                         <div class="col-6">
                             <div class="col-sm-8 justify-content-between align-content-center text-center  offset-sm-2">
-                                <label for="category-select" class="form-label @error('$category') is-invalid @enderror">Category</label>
+                                <label for="category-select" class="form-label @error('category') is-invalid @enderror">Category</label>
                                 <select class="form-control" id="category-select" name="category">
                                     @foreach($departments as $department)
                                         <optgroup label="{{ $department->name }}">
