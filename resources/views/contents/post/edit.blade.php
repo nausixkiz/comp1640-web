@@ -9,14 +9,15 @@
                 <p class="card-title-desc">Lorem</p>
             </div>
             <div class="card-body">
-                <form class="create-new-idea-form" action="{{ route('posts.store') }}" method="POST"
+                <form class="create-new-idea-form" action="{{ route('posts.update', $post->slug) }}" method="POST"
                       enctype="multipart/form-data">
                     @csrf
+                    @method('PUT')
                     <div class="mb-3">
                         <div class="col-6">
                             <label class="form-label" for="name">Name</label>
                             <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
-                                   name="name" value="{{ old('name') }}"
+                                   name="name" value="{{ old('name', $post->name) }}"
                                    required/>
                         </div>
                     </div>
@@ -25,7 +26,7 @@
                         <div>
                             <textarea required class="form-control @error('short-description') is-invalid @enderror"
                                       id="short-description" name="short-description"
-                                      rows="5">{{ old('short-description') }}</textarea>
+                                      rows="5">{{ old('short-description', $post->short_description) }}</textarea>
                             @error('short-description')
                             <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -40,7 +41,7 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                         @enderror
-                        <textarea id="content-editor" name="contents">{{ old('contents') }}</textarea>
+                        <textarea id="content-editor" name="contents">{{ old('contents', $post->contents) }}</textarea>
                     </div>
                     <div class="mb-3 d-flex">
 
@@ -48,7 +49,7 @@
                             <div class="col-sm-8 justify-content-between align-content-center text-center  offset-sm-2">
                                 <label for="contents" class="form-label">Image Preview</label>
                                 <input type="file" class="form-control @error('thumbnail') is-invalid @enderror" id="thumbnail"
-                                       name="thumbnail" accept="image/*" required>
+                                       name="thumbnail" accept="image/*">
                                 @error('thumbnail')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -62,9 +63,9 @@
                                 <select class="form-control" id="category-select" name="category">
                                     @foreach($departments as $department)
                                         <optgroup label="{{ $department->name }}">
-                                        @foreach($department->category as $category)
-                                            <option value="{{ $category->slug }}">{{ $category->name }}</option>
-                                        @endforeach
+                                            @foreach($department->category as $category)
+                                                <option value="{{ $category->slug }}" @if($post->category->slug === $category->slug) selected @endif >{{ $category->name }}</option>
+                                    @endforeach
                                     @endforeach
                                 </select>
                                 @error('category')

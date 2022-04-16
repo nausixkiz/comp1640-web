@@ -18,7 +18,7 @@ class PostTransformer extends TransformerAbstract
             'short_description' => $post->short_description,
             'slug' => $post->slug,
             'contents' => $post->contents,
-            'thump_image_url' => $post->getFirstMediaUrl('thump'),
+            'thumbnail_url' => $post->getFirstMediaUrl('thumbnail'),
             'status' => $post->status,
             'start_date' => $post->birth != null ? Carbon::createFromFormat('Y-m-d H:m:i', $post->start_date)->toDateString() : null,
             'end_date' => $post->birth != null ? Carbon::createFromFormat('Y-m-d H:m:i', $post->end_date)->toDateString() : null,

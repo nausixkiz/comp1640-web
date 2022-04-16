@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('dislikes', function (Blueprint $table) {
             $table->id();
-            $table->morphs('dislike_able');
+            $table->morphs('dislikeable');
             $table->foreignId('user_id')
                 ->constrained('users')
                 ->onUpdate('cascade')

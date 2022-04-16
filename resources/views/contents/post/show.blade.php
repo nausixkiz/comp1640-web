@@ -9,7 +9,7 @@
                 <div class="card-body">
                     <div class="d-flex mb-4">
                         <div class="flex-shrink-0 me-3">
-                            <img class="rounded-circle avatar-lg" src="{{ $post->getFirstMediaUrl('thump') }}"
+                            <img class="rounded-circle avatar-lg" src="{{ $post->getFirstMediaUrl('thumbnail') }}"
                                  alt="{{ $post->name }}">
                         </div>
                         <div class="flex-grow-1">
@@ -63,22 +63,16 @@
                             @endforeach
                         </div>
                     @endif
+                </div>
+                <div class="card-footer">
                     <div class="d-flex mb-3">
-                        <div class="p-2">
-                            <a
-                                class="btn btn-secondary waves-effect mt-4">
-                                <i class="dripicons-thumbs-up"></i> Like
-                            </a>
-                            <a href="email-compose.html" class="btn btn-secondary waves-effect mt-4">
-                                <i class="dripicons-thumbs-down"></i> Dislike
-                            </a>
-                        </div>
+                        @include('contents.post.widgets._like_dislike_widget')
                         @if($post->hasMedia('documents'))
                             <div class="ms-auto p-2">
                                 <a href="{{ route('posts.download-all-documents', $post->slug) }}"
-                                   class="btn btn-secondary waves-effect mt-4"><i class="mdi mdi-download"></i> Download
-                                    All
-                                    Documents</a>
+                                   class="btn btn-secondary waves-effect mt-4">
+                                    <i class="mdi mdi-download"></i> Download All Documents
+                                </a>
                             </div>
                         @endif
                     </div>

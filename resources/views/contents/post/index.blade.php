@@ -27,33 +27,33 @@
 
 
                     <tbody>
-                    @foreach($posts['data'] as $post)
+                    @foreach($posts as $post)
                         <tr>
-                            <td>{{ $post['id'] }}</td>
-                            <td>{{ $post['name'] }}</td>
-                            <td>{{ $post['short_description'] }}</td>
-                            <td>{{ $post['slug'] }}</td>
-                            <td>{{ $post['contents'] }}</td>
-                            <td>{{ $post['created_at'] }}</td>
-                            <td>{{ $post['updated_at'] }}</td>
+                            <td>{{ $post->id}}</td>
+                            <td>{{ $post->name }}</td>
+                            <td>{{ $post->short_description }}</td>
+                            <td>{{ $post->slug }}</td>
+                            <td>{!! $post->contents !!}</td>
+                            <td>{{ $post->created_at }}</td>
+                            <td>{{ $post->updated_at }}</td>
                             <td>
                                 <div class="btn-group" role="group">
                                     <a type="button"
                                        class="btn btn-sm btn-warning waves-effect waves-light"
-                                       target="_blank" href="{{ route('posts.show', $post['slug']) }}">
+                                       target="_blank" href="{{ route('posts.show', $post->slug) }}">
                                         <i class="ri ri-eye-fill"></i>
                                     </a>
                                     <a type="button" class="btn btn-sm btn-primary waves-effect waves-light"
-                                       href="{{ route('posts.edit', $post['slug']) }}">
+                                       href="{{ route('posts.edit', $post->slug) }}">
                                         <i class="ri ri-edit-box-fill"></i>
                                     </a>
                                     <a type="button" class="btn btn-sm btn-danger waves-effect waves-light"
                                        onclick="event.preventDefault();
-                                           document.getElementById('{{ 'delete-post-' . $post['slug'] }}').submit();">
+                                           document.getElementById('{{ 'delete-post-' . $post->slug }}').submit();">
                                         <i class="ri ri-eraser-fill"></i>
                                     </a>
-                                    <form id="{{ 'delete-post-' . $post['slug'] }}"
-                                          action="{{ route('posts.destroy', $post['slug']) }}" method="POST"
+                                    <form id="{{ 'delete-post-' . $post->slug }}"
+                                          action="{{ route('posts.destroy', $post->slug) }}" method="POST"
                                           class="d-none">
                                         @method('DELETE')
                                         @csrf

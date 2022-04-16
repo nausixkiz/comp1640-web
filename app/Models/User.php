@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Contracts\Dislikeable;
 use App\Contracts\Likeable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -58,7 +59,7 @@ class User extends Authenticatable
         return $this->hasMany(Post::class);
     }
 
-    public function likes()
+    public function likes(): HasMany
     {
         return $this->hasMany(Like::class);
     }
@@ -88,13 +89,56 @@ class User extends Authenticatable
             ->exists();
     }
 
-    public function unlike($likeable): self
+    public function removeLike($likeable): self
     {
         if (!$this->hasLiked($likeable)) {
             return $this;
         }
 
         $likeable->likes()
+            ->whereHas('user', fn($q) => $q->whereId($this->id))
+            ->delete();
+
+        return $this;
+    }
+
+    public function dislikes(): HasMany
+    {
+        return $this->hasMany(Dislike::class);
+    }
+
+    public function dislike(Dislikeable $dislikeable)
+    {
+        if ($this->hasDisliked($dislikeable)) {
+            return $this;
+        }
+
+        (new Dislike())
+            ->user()->associate($this)
+            ->dislikeable()->associate($dislikeable)
+            ->save();
+
+        return $this;
+    }
+
+    public function hasDisliked(Dislikeable $dislikeable)
+    {
+        if (!$dislikeable->exists) {
+            return false;
+        }
+
+        return $dislikeable->dislikes()
+            ->whereHas('user', fn($q) => $q->whereId($this->id))
+            ->exists();
+    }
+
+    public function removeDislike($dislikeable): self
+    {
+        if (!$this->hasDisliked($dislikeable)) {
+            return $this;
+        }
+
+        $dislikeable->dislikes()
             ->whereHas('user', fn($q) => $q->whereId($this->id))
             ->delete();
 

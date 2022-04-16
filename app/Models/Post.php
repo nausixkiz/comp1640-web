@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
+use App\Contracts\Dislikeable;
 use App\Contracts\Likeable;
+use App\Traits\HasDislike;
 use App\Traits\HasLikes;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
@@ -15,10 +17,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use JetBrains\PhpStorm\ArrayShape;
+use Spatie\Image\Exceptions\InvalidManipulation;
 use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Post extends Model implements Viewable, HasMedia, Likeable
+class Post extends Model implements Viewable, HasMedia, Likeable, Dislikeable
 {
     use HasFactory;
     use InteractsWithViews;
@@ -26,6 +30,7 @@ class Post extends Model implements Viewable, HasMedia, Likeable
     use Sluggable;
     use SluggableScopeHelpers;
     use HasLikes;
+    use HasDislike;
 
 
     protected $fillable = [
@@ -72,6 +77,22 @@ class Post extends Model implements Viewable, HasMedia, Likeable
     public function getRouteKeyName(): string
     {
         return 'slug';
+    }
+
+    /**
+     * Register the conversions that should be performed.
+     *
+     * @param Media|null $media
+     * @return void
+     * @throws InvalidManipulation
+     */
+    public function registerMediaConversions(Media $media = null): void
+    {
+        $this
+            ->addMediaConversion('thumbnail')
+            ->width(260)
+            ->height(175)
+            ->withResponsiveImages();
     }
 
 }
