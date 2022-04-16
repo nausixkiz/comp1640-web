@@ -24,42 +24,42 @@
                     </thead>
 
                     <tbody>
-                    @foreach($users['data'] as $user)
+                    @foreach($users as $user)
                         <tr>
-                            <td>{{ $user['id'] }}</td>
+                            <td>{{ $user->id }}</td>
                             <td>
                                 <div class="d-flex mb-4">
                                     <div class="flex-shrink-0 me-3">
                                         <img class="rounded-circle avatar-sm"
-                                             src="{{ Avatar::create($user['name'])->toBase64() }}"
-                                             alt="{{ $user['name'] }}">
+                                             src="{{ Avatar::create($user->name)->toBase64() }}"
+                                             alt="{{ $user->name }}">
                                     </div>
                                     <div class="flex-grow-1">
-                                        <h4 class="font-size-16">{{ $user['name'] }}</h4>
-                                        <p class="text-muted font-size-13">{{ $user['email'] }}</p>
+                                        <h4 class="font-size-16">{{ $user->name }}</h4>
+                                        <p class="text-muted font-size-13">{{ $user->email }}</p>
                                     </div>
                                 </div>
                             </td>
-                            <td>{{ $user['role'] }}</td>
-                            <td>{{ $user['gender'] }}</td>
-                            <td>{{ $user['phone'] }}</td>
+                            <td>{{ $user->getRoleName() }}</td>
+                            <td>{{ $user->gender }}</td>
+                            <td>{{ $user->phone }}</td>
                             <td>
                                 <div class="btn-group" role="group">
                                     <button type="button"
                                             class="btn btn-sm btn-warning waves-effect waves-light"
                                             data-bs-toggle="modal"
-                                            data-bs-target="#{{ 'view-user-' . $user['id'] }}">
+                                            data-bs-target="#{{ 'view-user-' . $user->slug }}">
                                         <i class="mdi mdi-account-question"></i>
                                     </button>
-                                    <div id="{{ 'view-user-' . $user['id'] }}" class="modal fade"
+                                    <div id="{{ 'view-user-' . $user->slug }}" class="modal fade"
                                          tabindex="-1" role="dialog"
-                                         aria-labelledby="{{ 'view-user-' . $user['id'] }}"
+                                         aria-labelledby="{{ 'view-user-' . $user->slug }}"
                                          aria-hidden="true">
                                         <div class="modal-dialog modal-lg">
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h5 class="modal-title"
-                                                        id="{{ 'view-user-' . $user['id'] }}">{{ $user['name'] }}
+                                                        id="{{ 'view-user-' . $user->slug }}">{{ $user->name }}
                                                         Details</h5>
                                                     <button type="button" class="btn-close"
                                                             data-bs-dismiss="modal"
@@ -68,36 +68,36 @@
                                                 <div class="modal-body">
                                                     <div class="text-center">
                                                         <img class="avatar-xl rounded-circle"
-                                                             src="{{ Avatar::create($user['name'])->toBase64() }}"
-                                                             alt="{{ $user['name'] }}"
+                                                             src="{{ Avatar::create($user->name)->toBase64() }}"
+                                                             alt="{{ $user->name }}"
                                                              width="100" height="100">
                                                     </div>
 
 
                                                     <dl class="row mb-0">
                                                         <dt class="col-sm-3">Id</dt>
-                                                        <dd class="col-sm-9">{{ $user['id'] }}</dd>
+                                                        <dd class="col-sm-9">{{ $user->id }}</dd>
 
                                                         <dt class="col-sm-3">Name</dt>
-                                                        <dd class="col-sm-9">{{ $user['name'] }}</dd>
+                                                        <dd class="col-sm-9">{{ $user->name }}</dd>
 
                                                         <dt class="col-sm-3">Email</dt>
-                                                        <dd class="col-sm-9">{{ $user['email'] }}</dd>
+                                                        <dd class="col-sm-9">{{ $user->email }}</dd>
 
                                                         <dt class="col-sm-3 text-truncate">Role</dt>
-                                                        <dd class="col-sm-9">{{ $user['role'] }}</dd>
+                                                        <dd class="col-sm-9">{{ $user->getRoleName() }}</dd>
 
                                                         <dt class="col-sm-3 text-truncate">Gender</dt>
-                                                        <dd class="col-sm-9">{{ $user['gender'] }}</dd>
+                                                        <dd class="col-sm-9">{{ $user->gender }}</dd>
 
                                                         <dt class="col-sm-3 text-truncate">Phone</dt>
-                                                        <dd class="col-sm-9">{{ $user['phone'] }}</dd>
+                                                        <dd class="col-sm-9">{{ $user->phone }}</dd>
 
                                                         <dt class="col-sm-3 text-truncate">Birthday</dt>
-                                                        <dd class="col-sm-9">{{ $user['birth'] }}</dd>
+                                                        <dd class="col-sm-9">{{ $user->birth }}</dd>
 
                                                         <dt class="col-sm-3 text-truncate">Address</dt>
-                                                        <dd class="col-sm-9">{{ $user['address'] }}</dd>
+                                                        <dd class="col-sm-9">{{ $user->address }}</dd>
                                                     </dl>
 
 
@@ -107,16 +107,16 @@
                                     </div>
 
                                     <a type="button" class="btn btn-sm btn-primary waves-effect waves-light"
-                                       href="{{ route('users.edit', $user['id']) }}">
+                                       href="{{ route('users.edit', $user->slug) }}">
                                         <i class="mdi mdi-account-edit"></i>
                                     </a>
                                     <a type="button" class="btn btn-sm btn-danger waves-effect waves-light"
                                        onclick="event.preventDefault();
-                                                       document.getElementById('{{ 'delete-user-' . $user['id'] }}').submit();">
+                                                       document.getElementById('{{ 'delete-user-' . $user->slug}}').submit();">
                                         <i class="mdi mdi-account-remove"></i>
                                     </a>
-                                    <form id="{{ 'delete-user-' . $user['id'] }}"
-                                          action="{{ route('users.destroy', $user['id']) }}" method="POST"
+                                    <form id="{{ 'delete-user-' . $user->slug }}"
+                                          action="{{ route('users.destroy', $user->slug) }}" method="POST"
                                           class="d-none">
                                         @method('DELETE')
                                         @csrf

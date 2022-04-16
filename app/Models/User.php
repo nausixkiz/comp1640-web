@@ -20,8 +20,8 @@ class User extends Authenticatable
     use HasFactory;
     use Notifiable;
     use HasRoles;
-//    use Sluggable;
-//    use SluggableScopeHelpers;
+    use Sluggable;
+    use SluggableScopeHelpers;
 
     /**
      * The attributes that are mass assignable.
@@ -155,17 +155,17 @@ class User extends Authenticatable
         return $this->getRoleNames()[0];
     }
 
-//    #[ArrayShape(['slug' => "string[]"])] public function sluggable(): array
-//    {
-//        return [
-//            'slug' => [
-//                'source' => 'name'
-//            ]
-//        ];
-//    }
-//
-//    public function getRouteKeyName(): string
-//    {
-//        return 'slug';
-//    }
+    #[ArrayShape(['slug' => "string[]"])] public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'name'
+            ]
+        ];
+    }
+
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
+    }
 }

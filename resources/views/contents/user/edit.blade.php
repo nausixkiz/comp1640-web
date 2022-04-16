@@ -10,7 +10,7 @@
                     <p class="card-title-desc">Lorem</p>
                 </div>
                 <div class="card-body">
-                    <form class="create-new-idea-form" action="{{ route('users.update', $user->id) }}" method="POST">
+                    <form class="create-new-idea-form" action="{{ route('users.update', $user->slug) }}" method="POST">
                         @csrf
                         @method('PUT')
                         <div class="mb-3">

@@ -28,7 +28,7 @@ class UserController extends Controller
     public function index()
     {
         return view('contents.user.index', [
-            'users' => User::all()->transformWith(new UserTransformer())->toArray(),
+            'users' => User::all(),
         ]);
     }
 
@@ -91,13 +91,13 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param int $id
+     * @param string $slug
      * @return Application|Factory|View
      */
-    public function edit(int $id)
+    public function edit(string $slug)
     {
         return view('contents.user.edit', [
-            'user' => User::findOrFail($id),
+            'user' => User::findBySlugOrFail($slug),
             'roles' => Role::all()->pluck('name'),
         ]);
     }
@@ -106,19 +106,19 @@ class UserController extends Controller
      * Update the specified resource in storage.
      *
      * @param Request $request
-     * @param int $id
+     * @param string $slug
      * @return RedirectResponse
      * @throws ValidationException
      */
-    public function update(Request $request, int $id)
+    public function update(Request $request, string $slug)
     {
-        $user = User::findOrFail($id);
+        $user = User::findBySlugOrFail($slug);
 
         Validator::make($request->all(), [
             'name' => ['required', 'string', 'min:6', 'max:50'],
             'email' => ['required', 'string', 'email', 'min:6', 'max:255'],
             'password' => ['nullable', 'string', 'min:8', 'max:255', 'confirmed'],
-            'phone' => ['required', 'string', 'min:6', 'max:255', 'unique:users,phone,' . $id],
+            'phone' => ['required', 'string', 'min:6', 'max:255', 'unique:users,phone,' . $user->id],
             'role' => ['required', 'string', Rule::in(Role::all()->pluck('name'))],
             'birth' => ['nullable', 'date'],
             'gender' => ['required', Rule::in(['Male', 'Female', 'Other'])],
@@ -153,12 +153,13 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param int $id
+     * @param string $slug
      * @return RedirectResponse
      */
-    public function destroy($id)
+    public function destroy(string $slug)
     {
-        User::destroy($id);
+        $user = User::findBySlugOrFail($slug);
+        $user->delete();
 
         Session::flash('flash_success_message', 'User successfully deleted!');
 
