@@ -2,6 +2,7 @@
     "/js/plugins/datatable.js": "/js/plugins/datatable.js",
     "/js/plugins/dropzone.js": "/js/plugins/dropzone.js",
     "/js/plugins/bootstrap-fileinput.js": "/js/plugins/bootstrap-fileinput.js",
+    "/js/plugins/ckeditor.js": "/js/plugins/ckeditor.js",
     "/js/app.js": "/js/app.js",
     "/js/manifest.js": "/js/manifest.js",
     "/css/plugins.css": "/css/plugins.css",

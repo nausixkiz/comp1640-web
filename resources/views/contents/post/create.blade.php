@@ -42,24 +42,29 @@
                         @enderror
                         <textarea id="content-editor" name="contents">{{ old('contents') }}</textarea>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-3 d-flex">
+
                         <div class="col-6">
-                            <label for="contents" class="form-label">Image Preview</label>
-                            <input type="file" class="form-control @error('thump') is-invalid @enderror" id="thump"
-                                   name="thump" accept="image/*" required>
-                            @error('thump')
-                            <span class="invalid-feedback" role="alert">
+                            <div class="col-sm-8 justify-content-between align-content-center text-center  offset-sm-2">
+                                <label for="contents" class="form-label">Image Preview</label>
+                                <input type="file" class="form-control @error('thump') is-invalid @enderror" id="thump"
+                                       name="thump" accept="image/*" required>
+                                @error('thump')
+                                <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
+                                    </span>
+                                @enderror
+                            </div>
                         </div>
                         <div class="col-6">
-                            <label for="category-select" class="form-label">Category</label>
-                            <select class="form-control" id="category-select" name="category">
-                                @foreach($categories['data'] as $category)
-                                    <option value="{{ $category['id'] }}">{{ $category['name'] }}</option>
-                                @endforeach
-                            </select>
+                            <div class="col-sm-8 justify-content-between align-content-center text-center  offset-sm-2">
+                                <label for="category-select" class="form-label">Category</label>
+                                <select class="form-control" id="category-select" name="category">
+                                    @foreach($categories['data'] as $category)
+                                        <option value="{{ $category['id'] }}">{{ $category['name'] }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
                     </div>
                     <div class="mb-3">
@@ -143,9 +148,24 @@
 
 @push('page-scripts')
     <script src="{{ asset( mix('js/plugins/bootstrap-fileinput.js') ) }}"></script>
+    <script src="{{ asset( mix('js/plugins/ckeditor.js') ) }}"></script>
     <script type="text/javascript">
         ClassicEditor
-            .create(document.querySelector('#content-editor'))
+            .create(document.querySelector('#content-editor'), {
+                // plugins: [ CKFinder],
+                // toolbar: ['heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote'],
+                // heading: {
+                //     options: [
+                //         { model: 'paragraph', title: 'Paragraph', class: 'ck-heading_paragraph' },
+                //         { model: 'heading1', view: 'h1', title: 'Heading 1', class: 'ck-heading_heading1' },
+                //         { model: 'heading2', view: 'h2', title: 'Heading 2', class: 'ck-heading_heading2' },
+                //         { model: 'heading3', view: 'h3', title: 'Heading 3', class: 'ck-heading_heading3' },
+                //         { model: 'heading4', view: 'h4', title: 'Heading 4', class: 'ck-heading_heading4' },
+                //         { model: 'heading5', view: 'h5', title: 'Heading 5', class: 'ck-heading_heading5' },
+                //         { model: 'heading6', view: 'h6', title: 'Heading 6', class: 'ck-heading_heading6' }
+                //     ]
+                // }
+            })
             .catch(error => {
                 console.error(error);
             });

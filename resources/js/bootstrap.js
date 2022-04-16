@@ -8,9 +8,8 @@ window.Waves = require('node-waves');
 window.toastr = require('toastr');
 window.Swal = require('sweetalert2');
 require('flatpickr');
-window.ClassicEditor = require('@ckeditor/ckeditor5-build-classic')
 require('select2');
-
+window.ClassicEditor = require('@ckeditor/ckeditor5-build-classic');
 // } catch (e) {
 //     console.log(e);
 // }
