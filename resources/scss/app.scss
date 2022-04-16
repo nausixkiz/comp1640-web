@@ -30,15 +30,12 @@
 @import "~toastr/toastr.scss";
 @import "custom/plugins/apexcharts";
 @import "custom/plugins/bootstrap-touchspin";
-@import "custom/plugins/calendar";
 @import "custom/plugins/color-picker";
 @import "custom/plugins/custom-scrollbar";
 @import "custom/plugins/datatable";
 @import "custom/plugins/datepicker";
 @import "custom/plugins/flot";
 @import "custom/plugins/form-editors";
-@import "custom/plugins/form-upload";
-@import "custom/plugins/form-wizard";
 @import "custom/plugins/google-map";
 @import "custom/plugins/parsley";
 @import "custom/plugins/range-slider";
@@ -49,13 +46,10 @@
 @import "custom/plugins/sparkline-chart";
 @import "custom/plugins/sweatalert2";
 @import "custom/plugins/switch";
-@import "custom/plugins/table-editable";
 @import "custom/plugins/vector-maps";
-@import "custom/plugins/x-editable";
 
 // Pages
 @import "custom/pages/authentication";
 @import "custom/pages/email";
-@import "custom/pages/coming-soon";
 @import "custom/pages/timeline";
 @import "custom/pages/extras-pages";
