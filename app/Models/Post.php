@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use JetBrains\PhpStorm\ArrayShape;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
@@ -59,7 +60,7 @@ class Post extends Model implements Viewable, HasMedia, Likeable
         return $this->hasMany(Comment::class);
     }
 
-    public function sluggable(): array
+    #[ArrayShape(['slug' => "string[]"])] public function sluggable(): array
     {
         return [
             'slug' => [
@@ -68,12 +69,7 @@ class Post extends Model implements Viewable, HasMedia, Likeable
         ];
     }
 
-    /**
-     * Get the route key for the model.
-     *
-     * @return string
-     */
-    public function getRouteKeyName()
+    public function getRouteKeyName(): string
     {
         return 'slug';
     }

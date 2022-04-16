@@ -1,11 +1,6 @@
 @extends('layouts.main-layout')
 @section('title', __('Create New Idea'))
 
-@push('vendor-styles')
-    <!-- third party css -->
-    <link href="{{ asset( mix('css/plugins.css')) }}" rel="stylesheet"/>
-@endpush
-
 @section('content')
     <div class="col-xl-12">
         <div class="card">
@@ -147,9 +142,7 @@
 @stop
 
 @push('page-scripts')
-    <script src="{{ asset( mix('js/plugins/ckeditor-basic.js') ) }}"></script>
     <script src="{{ asset( mix('js/plugins/bootstrap-fileinput.js') ) }}"></script>
-    <script src="{{ asset( mix('js/plugins/select2.js') ) }}"></script>
     <script type="text/javascript">
         ClassicEditor
             .create(document.querySelector('#content-editor'))

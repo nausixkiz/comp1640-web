@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "12df2f9f18ea26a23685b6b9aebbf1fd",
+    "content-hash": "094da0e39d8e4ba0badb0cb33e5eab99",
     "packages": [
         {
             "name": "anhskohbo/no-captcha",
@@ -69,74 +69,6 @@
                 "source": "https://github.com/anhskohbo/no-captcha/tree/3.4.0"
             },
             "time": "2022-02-10T02:50:24+00:00"
-        },
-        {
-            "name": "brainstud/file-vault",
-            "version": "v2.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/brainstudnl/file-vault.git",
-                "reference": "55e6dfbe32b7bd96fef8313cf48f1ed71d4d4e0d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/brainstudnl/file-vault/zipball/55e6dfbe32b7bd96fef8313cf48f1ed71d4d4e0d",
-                "reference": "55e6dfbe32b7bd96fef8313cf48f1ed71d4d4e0d",
-                "shasum": ""
-            },
-            "require": {
-                "ext-openssl": "*",
-                "illuminate/support": "^8.0 || ^9.0 ",
-                "php": "^8.0"
-            },
-            "require-dev": {
-                "orchestra/testbench": "^6.0|^7.0",
-                "phpstan/phpstan": "^1.4",
-                "phpunit/phpunit": "^9.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Brainstud\\FileVault\\FileVaultServiceProvider"
-                    ],
-                    "aliases": {
-                        "FileVault": "Brainstud\\FileVault\\Facades\\FileVault"
-                    }
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Brainstud\\FileVault\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Niek Pijp",
-                    "email": "niek@brainstud.com",
-                    "role": "Developer"
-                }
-            ],
-            "homepage": "https://github.com/brainstudnl/file-vault",
-            "keywords": [
-                "CBC",
-                "decrypt",
-                "decryption",
-                "encrypt",
-                "encryption",
-                "file",
-                "file-vault",
-                "laravel",
-                "php"
-            ],
-            "support": {
-                "source": "https://github.com/brainstudnl/file-vault/tree/v2.0.0"
-            },
-            "time": "2022-03-22T07:13:25+00:00"
         },
         {
             "name": "brick/math",

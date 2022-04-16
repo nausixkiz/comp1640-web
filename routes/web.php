@@ -29,4 +29,5 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('posts/{slug}/{media}/download', [App\Http\Controllers\PostController::class, 'downloadADocument'])->name('posts.download-a-document');
     Route::resource('comments', App\Http\Controllers\CommentController::class)->only(['index', 'store', 'destroy']);
     Route::resource('categories', App\Http\Controllers\CategoryController::class);
+    Route::resource('departments', App\Http\Controllers\DepartmentController::class)->except(['create', 'show']);
 });

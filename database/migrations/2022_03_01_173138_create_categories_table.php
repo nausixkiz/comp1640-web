@@ -17,7 +17,10 @@ return new class extends Migration
             $table->id();
             $table->string('name', 120)->unique();
             $table->string('slug', 400)->nullable();
-            $table->string('status', 60)->default('published');
+            $table->foreignId('department_id')
+                ->constrained('departments')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }

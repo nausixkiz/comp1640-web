@@ -55,15 +55,19 @@
                     <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">
-                    <!-- item-->
-                    <a class="dropdown-item" href="#"><i class="ri-user-line align-middle me-1"></i> Profile</a>
+                    <p class="dropdown-item text-primary">{{ \Illuminate\Support\Facades\Auth::user()->getRoleName() }}</p>
+                    <div class="dropdown-divider"></div>
+                    <a href="{{ route('posts.create') }}" class="dropdown-item">
+                        <i class="mdi mdi-post"></i> {{ __('Create New Post (Idea)') }}
+                    </a>
+
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item text-danger" href="{{ route('logout') }}"
-                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                       onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                         <i class="ri-shut-down-line align-middle me-1 text-danger"></i>
                         {{ __('Logout') }}
                     </a>
+
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf
                     </form>
@@ -92,16 +96,15 @@
                         <a class="nav-link dropdown-toggle arrow-none" href="javascript:void(0)" id="topnav-apps" role="button">
                             <i class="ri-apps-2-line me-2"></i>{{ __('Management') }} <div class="arrow-down"></div>
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="topnav-apps">
-                            <a href="{{ route('dashboard') }}" class="dropdown-item">{{ __('Dashboard') }}</a>
-                            <a href="{{ route('users.index') }}" class="dropdown-item">{{ __('User Management') }}</a>
-                            <a href="{{ route('posts.index') }}" class="dropdown-item">{{ __('Post (Idea) Management') }}</a>
-                            <a href="{{ route('comments.index') }}" class="dropdown-item">{{ __('Comment Management') }}</a>
-                        </div>
-                    </li>
-
-                    <li class="nav-item">
-                        <a href="{{ route('posts.create') }}" class="nav-link"><i class="mdi mdi-post"></i> {{ __('Create New Post (Idea)') }}</a>
+                        @if(\Illuminate\Support\Facades\Auth::user()->hasRole('Super Administrator'))
+                            <div class="dropdown-menu" aria-labelledby="topnav-apps">
+                                <a href="{{ route('dashboard') }}" class="dropdown-item">{{ __('Dashboard') }}</a>
+                                <a href="{{ route('users.index') }}" class="dropdown-item">{{ __('User Management') }}</a>
+                                <a href="{{ route('categories.index') }}" class="dropdown-item">{{ __('Category Management') }}</a>
+                                <a href="{{ route('posts.index') }}" class="dropdown-item">{{ __('Post (Idea) Management') }}</a>
+                                <a href="{{ route('comments.index') }}" class="dropdown-item">{{ __('Comment Management') }}</a>
+                            </div>
+                        @endif
                     </li>
                 </ul>
             </div>

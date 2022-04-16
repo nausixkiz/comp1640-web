@@ -102,4 +102,8 @@ class User extends Authenticatable
             ->exists();
     }
 
+    public function getRoleName()
+    {
+        return $this->getRoleNames()[0];
+    }
 }
