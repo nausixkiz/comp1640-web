@@ -30,7 +30,7 @@ class UserSeeder extends Seeder
         $qam = User::create([
             'name' => 'Quality Assurance Manager',
             'email' => 'qam@comp1640.com',
-            'gender' => 'FeMale',
+            'gender' => 'Female',
             'phone' => '0963639071',
             'password' => Hash::make(self::PASSWORD)
         ]);
@@ -39,7 +39,7 @@ class UserSeeder extends Seeder
         $qa = User::create([
             'name' => 'Quality Assurance Coordinator',
             'email' => 'qa@comp1640.com',
-            'gender' => 'FeMale',
+            'gender' => 'Female',
             'phone' => '0963639072',
             'password' => Hash::make(self::PASSWORD)
         ]);
@@ -48,7 +48,7 @@ class UserSeeder extends Seeder
         $staff =  User::create([
             'name' => 'Staff',
             'email' => 'staff@comp1640.com',
-            'gender' => 'FeMale',
+            'gender' => 'Female',
             'phone' => '0963639073',
             'password' => Hash::make(self::PASSWORD)
         ]);
