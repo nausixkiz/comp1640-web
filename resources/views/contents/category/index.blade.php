@@ -32,7 +32,8 @@
                                 <td>{{ $category->id }}</td>
                                 <td>{{ $category->name }}</td>
                                 <td>
-                                    <a type="button" class="btn btn-sm btn-warning waves-effect waves-light" href="{{ route('categories.edit', $category->slug) }}">
+                                    <a type="button" class="btn btn-sm btn-warning waves-effect waves-light"
+                                       href="{{ route('categories.edit', $category->slug) }}">
                                         <i class="ri ri-pencil-fill"></i>
                                     </a>
                                     <a type="button" class="btn btn-sm btn-danger waves-effect waves-light"
@@ -59,7 +60,7 @@
                     <h4 class="card-title">Create a new category </h4>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('categories.store') }}" method="POST"  enctype="multipart/form-data">
+                    <form action="{{ route('categories.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-3">
                             <div class="form-group">

@@ -49,9 +49,11 @@
             <div class="dropdown d-inline-block user-dropdown">
                 <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="rounded-circle header-profile-user" src="{{ Avatar::create(Auth::user()->name)->toBase64() }}"
+                    <img class="rounded-circle header-profile-user"
+                         src="{{ Avatar::create(Auth::user()->name)->toBase64() }}"
                          alt="{{ \Illuminate\Support\Facades\Auth::user()->name }}">
-                    <span class="d-none d-xl-inline-block ms-1">{{ \Illuminate\Support\Facades\Auth::user()->name }}</span>
+                    <span
+                        class="d-none d-xl-inline-block ms-1">{{ \Illuminate\Support\Facades\Auth::user()->name }}</span>
                     <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">
@@ -93,17 +95,24 @@
                     </li>
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle arrow-none" href="javascript:void(0)" id="topnav-apps" role="button">
-                            <i class="ri-apps-2-line me-2"></i>{{ __('Management') }} <div class="arrow-down"></div>
+                        <a class="nav-link dropdown-toggle arrow-none" href="javascript:void(0)" id="topnav-apps"
+                           role="button">
+                            <i class="ri-apps-2-line me-2"></i>{{ __('Management') }}
+                            <div class="arrow-down"></div>
                         </a>
                         @if(\Illuminate\Support\Facades\Auth::user()->hasRole('Super Administrator'))
                             <div class="dropdown-menu" aria-labelledby="topnav-apps">
                                 <a href="{{ route('dashboard') }}" class="dropdown-item">{{ __('Dashboard') }}</a>
-                                <a href="{{ route('users.index') }}" class="dropdown-item">{{ __('User Management') }}</a>
-                                <a href="{{ route('departments.index') }}" class="dropdown-item">{{ __('Department Management') }}</a>
-                                <a href="{{ route('categories.index') }}" class="dropdown-item">{{ __('Category Management') }}</a>
-                                <a href="{{ route('posts.index') }}" class="dropdown-item">{{ __('Post (Idea) Management') }}</a>
-                                <a href="{{ route('comments.index') }}" class="dropdown-item">{{ __('Comment Management') }}</a>
+                                <a href="{{ route('users.index') }}"
+                                   class="dropdown-item">{{ __('User Management') }}</a>
+                                <a href="{{ route('departments.index') }}"
+                                   class="dropdown-item">{{ __('Department Management') }}</a>
+                                <a href="{{ route('categories.index') }}"
+                                   class="dropdown-item">{{ __('Category Management') }}</a>
+                                <a href="{{ route('posts.index') }}"
+                                   class="dropdown-item">{{ __('Post (Idea) Management') }}</a>
+                                <a href="{{ route('comments.index') }}"
+                                   class="dropdown-item">{{ __('Comment Management') }}</a>
                             </div>
                         @endif
                     </li>

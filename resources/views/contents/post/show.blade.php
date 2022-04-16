@@ -124,7 +124,10 @@
                                             </blockquote>
                                             <figcaption class="blockquote-footer">
                                                 By @if($comment->isAnonymousComment())
-                                                    Anonymous @else {{ $comment->user->name }} @endif in <cite
+                                                    Anonymous
+                                                @else
+                                                    {{ $comment->user->name }}
+                                                @endif in <cite
                                                     title="Source Title">{{ $comment->created_at }}</cite>
                                             </figcaption>
                                         </figure>

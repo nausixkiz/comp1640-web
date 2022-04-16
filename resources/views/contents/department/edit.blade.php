@@ -36,7 +36,8 @@
                                 <td>{{ $department->start_closure_date }}</td>
                                 <td>{{ $department->end_closure_date }}</td>
                                 <td>
-                                    <a type="button" class="btn btn-sm btn-warning waves-effect waves-light" href="{{ route('departments.edit', $department->slug) }}">
+                                    <a type="button" class="btn btn-sm btn-warning waves-effect waves-light"
+                                       href="{{ route('departments.edit', $department->slug) }}">
                                         <i class="ri ri-pencil-fill"></i>
                                     </a>
                                     <a type="button" class="btn btn-sm btn-danger waves-effect waves-light"
@@ -64,7 +65,8 @@
                     <p>Lorem</p>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('departments.update', $department->slug) }}" method="POST"  enctype="multipart/form-data">
+                    <form action="{{ route('departments.update', $department->slug) }}" method="POST"
+                          enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="mb-3">
@@ -83,7 +85,9 @@
                         <div class="mb-3">
                             <div class="form-group">
                                 <label class="form-label" for="start_closure_date">Closure Date (Start)</label>
-                                <input class="form-control @error('start_closure_date') is-invalid @enderror" id="start_closure_date" name="start_closure_date" value="{{ old('start_closure_date', $department->start_closure_date) }}">
+                                <input class="form-control @error('start_closure_date') is-invalid @enderror"
+                                       id="start_closure_date" name="start_closure_date"
+                                       value="{{ old('start_closure_date', $department->start_closure_date) }}">
                                 @error('start_closure_date')
                                 <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -94,7 +98,9 @@
                         <div class="mb-3">
                             <div class="form-group">
                                 <label class="form-label" for="end_closure_date">Closure Date (End)</label>
-                                <input class="form-control @error('end_closure_date') is-invalid @enderror" id="end_closure_date"  name="end_closure_date" value="{{ old('end_closure_date', $department->end_closure_date) }}">
+                                <input class="form-control @error('end_closure_date') is-invalid @enderror"
+                                       id="end_closure_date" name="end_closure_date"
+                                       value="{{ old('end_closure_date', $department->end_closure_date) }}">
                                 @error('end_closure_date')
                                 <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

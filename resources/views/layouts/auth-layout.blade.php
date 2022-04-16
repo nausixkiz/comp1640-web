@@ -22,11 +22,11 @@
 </head>
 
 <body class="bg-pattern">
-    <div class="bg-overlay"></div>
+<div class="bg-overlay"></div>
 
-    @yield('content')
+@yield('content')
 
-    @include('panels.scripts')
+@include('panels.scripts')
 
 </body>
 

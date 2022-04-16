@@ -32,7 +32,8 @@
                                 <td>{{ $category->id }}</td>
                                 <td>{{ $category->name }}</td>
                                 <td>
-                                    <a type="button" class="btn btn-sm btn-warning waves-effect waves-light" href="{{ route('categories.edit', $category->slug) }}">
+                                    <a type="button" class="btn btn-sm btn-warning waves-effect waves-light"
+                                       href="{{ route('categories.edit', $category->slug) }}">
                                         <i class="ri ri-pencil-fill"></i>
                                     </a>
                                     <a type="button" class="btn btn-sm btn-danger waves-effect waves-light"
@@ -60,7 +61,8 @@
                     <p>Lorem</p>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('categories.update', $category->slug) }}" method="POST"  enctype="multipart/form-data">
+                    <form action="{{ route('categories.update', $category->slug) }}" method="POST"
+                          enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="mb-3">
@@ -81,7 +83,8 @@
                                 <label for="department-select" class="form-label">Department</label>
                                 <select class="form-control" id="department-select" name="department">
                                     @foreach($departments as $department)
-                                        <option value="{{ $department->slug }}" @if($category->department->name === $department->name) selected @endif>{{ $department->name }}</option>
+                                        <option value="{{ $department->slug }}"
+                                                @if($category->department->name === $department->name) selected @endif>{{ $department->name }}</option>
                                     @endforeach
                                 </select>
                                 @error('department')

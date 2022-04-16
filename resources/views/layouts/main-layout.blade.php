@@ -22,25 +22,25 @@
 </head>
 
 <body data-topbar="light" data-layout="horizontal">
-    <div id="layout-wrapper">
-        @include('partials.menu')
-        <div class="main-content">
-            <div class="page-content">
-                <div class="container-fluid">
-                    <div class="row">
-                        @yield('content')
-                    </div>
+<div id="layout-wrapper">
+    @include('partials.menu')
+    <div class="main-content">
+        <div class="page-content">
+            <div class="container-fluid">
+                <div class="row">
+                    @yield('content')
                 </div>
             </div>
-
-            @include("partials/footer")
         </div>
+
+        @include("partials/footer")
     </div>
+</div>
 
-    <!-- Right bar overlay-->
-    <div class="rightbar-overlay"></div>
+<!-- Right bar overlay-->
+<div class="rightbar-overlay"></div>
 
-    @include('panels.scripts')
+@include('panels.scripts')
 
 </body>
 

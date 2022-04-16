@@ -7,15 +7,15 @@
 {!! Anhskohbo\NoCaptcha\Facades\NoCaptcha::renderJs() !!}
 
 @if(Session::has('flash_success_message'))
-<script>
-    Swal.fire({
-        title: 'Success!',
-        text: "{{ Session::get('flash_success_message') }}",
-        icon: "success",
-        showCancelButton: !1,
-        confirmButtonText: 'Agree'
-    })
-</script>
+    <script>
+        Swal.fire({
+            title: 'Success!',
+            text: "{{ Session::get('flash_success_message') }}",
+            icon: "success",
+            showCancelButton: !1,
+            confirmButtonText: 'Agree'
+        })
+    </script>
 @endif
 @if(Session::has('flash_error_message'))
     <script>
