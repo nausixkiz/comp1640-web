@@ -37,13 +37,13 @@ class DepartmentController extends Controller
      */
     public function store(Request $request)
     {
-        try {
-            Validator::make($request->all(), [
-                'name' => ['required', 'string', 'max:255'],
-                'start_closure_date' => ['required', 'date'],
-                'end_closure_date' => ['required', 'date'],
-            ])->validate();
+        Validator::make($request->all(), [
+            'name' => ['required', 'string', 'max:255'],
+            'start_closure_date' => ['required', 'date'],
+            'end_closure_date' => ['required', 'date'],
+        ])->validate();
 
+        try {
             Department::create([
                 'name' => $request->input('name'),
                 'start_closure_date' => $request->input('start_closure_date'),
@@ -79,16 +79,17 @@ class DepartmentController extends Controller
      * @param Request $request
      * @param string $slug
      * @return RedirectResponse
+     * @throws ValidationException
      */
     public function update(Request $request, string $slug)
     {
-        try {
-            Validator::make($request->all(), [
-                'name' => ['required', 'string', 'max:255'],
-                'start_closure_date' => ['required', 'date'],
-                'end_closure_date' => ['required', 'date'],
-            ])->validate();
+        Validator::make($request->all(), [
+            'name' => ['required', 'string', 'max:255'],
+            'start_closure_date' => ['required', 'date'],
+            'end_closure_date' => ['required', 'date'],
+        ])->validate();
 
+        try {
             $department = Department::findBySlugOrFail($slug);
             $department->update([
                 'name' => $request->input('name'),

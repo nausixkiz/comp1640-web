@@ -10,9 +10,7 @@ window.Swal = require('sweetalert2');
 require('flatpickr');
 require('select2');
 window.ClassicEditor = require('@ckeditor/ckeditor5-build-classic');
-// } catch (e) {
-//     console.log(e);
-// }
+window.ApexCharts = require('apexcharts');
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests

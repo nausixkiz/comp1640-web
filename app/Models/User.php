@@ -4,10 +4,13 @@ namespace App\Models;
 
 use App\Contracts\Dislikeable;
 use App\Contracts\Likeable;
+use Cviebrock\EloquentSluggable\Sluggable;
+use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use JetBrains\PhpStorm\ArrayShape;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 
@@ -17,6 +20,8 @@ class User extends Authenticatable
     use HasFactory;
     use Notifiable;
     use HasRoles;
+//    use Sluggable;
+//    use SluggableScopeHelpers;
 
     /**
      * The attributes that are mass assignable.
@@ -149,4 +154,18 @@ class User extends Authenticatable
     {
         return $this->getRoleNames()[0];
     }
+
+//    #[ArrayShape(['slug' => "string[]"])] public function sluggable(): array
+//    {
+//        return [
+//            'slug' => [
+//                'source' => 'name'
+//            ]
+//        ];
+//    }
+//
+//    public function getRouteKeyName(): string
+//    {
+//        return 'slug';
+//    }
 }

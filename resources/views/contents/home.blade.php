@@ -7,7 +7,8 @@
             <div class="card">
                 <div class="row g-0 align-items-center">
                     <div class="col-md-4">
-                        <img class="card-img img-fluid img-thumbnail" src="{{ $post->getFirstMediaUrl('thumbnail') }}" alt="{{ $post->name }}" style="width: 250px; height: 175px;">
+                        <img class="card-img img-fluid img-thumbnail" src="{{ $post->getFirstMediaUrl('thumbnail') }}"
+                             alt="{{ $post->name }}" style="width: 250px; height: 175px;">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">

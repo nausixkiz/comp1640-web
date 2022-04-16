@@ -48,7 +48,8 @@
                         <div class="col-6">
                             <div class="col-sm-8 justify-content-between align-content-center text-center  offset-sm-2">
                                 <label for="contents" class="form-label">Image Preview</label>
-                                <input type="file" class="form-control @error('thumbnail') is-invalid @enderror" id="thumbnail"
+                                <input type="file" class="form-control @error('thumbnail') is-invalid @enderror"
+                                       id="thumbnail"
                                        name="thumbnail" accept="image/*">
                                 @error('thumbnail')
                                 <span class="invalid-feedback" role="alert">
@@ -59,12 +60,14 @@
                         </div>
                         <div class="col-6">
                             <div class="col-sm-8 justify-content-between align-content-center text-center  offset-sm-2">
-                                <label for="category-select" class="form-label @error('$category') is-invalid @enderror">Category</label>
+                                <label for="category-select"
+                                       class="form-label @error('$category') is-invalid @enderror">Category</label>
                                 <select class="form-control" id="category-select" name="category">
                                     @foreach($departments as $department)
                                         <optgroup label="{{ $department->name }}">
                                             @foreach($department->category as $category)
-                                                <option value="{{ $category->slug }}" @if($post->category->slug === $category->slug) selected @endif >{{ $category->name }}</option>
+                                                <option value="{{ $category->slug }}"
+                                                        @if($post->category->slug === $category->slug) selected @endif >{{ $category->name }}</option>
                                     @endforeach
                                     @endforeach
                                 </select>
@@ -159,8 +162,7 @@
     <script src="{{ asset( mix('js/plugins/bootstrap-fileinput.js') ) }}"></script>
     <script type="text/javascript">
         ClassicEditor
-            .create(document.querySelector('#content-editor'), {
-            })
+            .create(document.querySelector('#content-editor'), {})
             .catch(error => {
                 console.error(error);
             });

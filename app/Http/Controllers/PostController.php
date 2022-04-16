@@ -117,17 +117,17 @@ class PostController extends Controller
      */
     public function update(Request $request, $slug)
     {
-        try {
-            Validator::make($request->all(), [
-                'name' => ['required', 'string', 'max:255'],
-                'short-description' => ['required', 'max:255'],
-                'contents' => ['required', 'string', 'min:10', 'max:10000'],
-                'category' => ['required', 'exists:categories,slug'],
-                'thumbnail' => ['image', 'mimes:jpg,jpeg,png,bmp'],
-                'documents.*' => ['file', 'mimes:pdf,doc,docx,xls,xlsx,ppt,pptx,zip,rar,txt,jpg,jpeg,png,bmp'],
-                'terms' => ['accepted', 'required'],
-            ])->validate();
+        Validator::make($request->all(), [
+            'name' => ['required', 'string', 'max:255'],
+            'short-description' => ['required', 'max:255'],
+            'contents' => ['required', 'string', 'min:10', 'max:10000'],
+            'category' => ['required', 'exists:categories,slug'],
+            'thumbnail' => ['image', 'mimes:jpg,jpeg,png,bmp'],
+            'documents.*' => ['file', 'mimes:pdf,doc,docx,xls,xlsx,ppt,pptx,zip,rar,txt,jpg,jpeg,png,bmp'],
+            'terms' => ['accepted', 'required'],
+        ])->validate();
 
+        try {
             $post = Post::findBySlugOrFail($slug);
             $post->name = $request->input('name');
             $post->short_description = $request->input('short-description');

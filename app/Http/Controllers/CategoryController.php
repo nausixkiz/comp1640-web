@@ -10,9 +10,9 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
 
 class CategoryController extends Controller
 {
@@ -34,15 +34,16 @@ class CategoryController extends Controller
      *
      * @param Request $request
      * @return RedirectResponse
+     * @throws ValidationException
      */
     public function store(Request $request)
     {
-        try {
-            Validator::make($request->all(), [
-                'name' => ['required', 'string', 'max:255'],
-                'department' => ['required', 'exists:departments,slug'],
-            ])->validate();
+        Validator::make($request->all(), [
+            'name' => ['required', 'string', 'max:255'],
+            'department' => ['required', 'exists:departments,slug'],
+        ])->validate();
 
+        try {
             $department = Department::findBySlugOrFail($request->input('department'));
             $category = new Category();
             $category->name = $request->input('name');
@@ -79,15 +80,16 @@ class CategoryController extends Controller
      * @param Request $request
      * @param string $slug
      * @return RedirectResponse
+     * @throws ValidationException
      */
     public function update(Request $request, string $slug)
     {
-        try {
-            Validator::make($request->all(), [
-                'name' => ['required', 'string', 'max:255'],
-                'department' => ['required', 'exists:departments,slug'],
-            ])->validate();
+        Validator::make($request->all(), [
+            'name' => ['required', 'string', 'max:255'],
+            'department' => ['required', 'exists:departments,slug'],
+        ])->validate();
 
+        try {
             $department = Department::findBySlugOrFail($request->input('department'));
             $category = Category::findBySlugOrFail($slug);
             $category->name = $request->input('name');

@@ -22,9 +22,9 @@ Auth::routes([
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
     Route::get('home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-    Route::get('dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
-    Route::resource('users', App\Http\Controllers\UserController::class)->except(['show']);
+
     Route::resource('posts', App\Http\Controllers\PostController::class);
+
     Route::prefix('posts')->group(function (){
         Route::get('{post}/download-all-documents', [App\Http\Controllers\PostController::class, 'downloadAllDocuments'])->name('posts.download-all-documents');
         Route::get('{post}/{media}/download', [App\Http\Controllers\PostController::class, 'downloadADocument'])->name('posts.download-a-document');
@@ -34,7 +34,14 @@ Route::group(['middleware' => 'auth'], function () {
         Route::delete('{post}/remove-dislike', [App\Http\Controllers\PostController::class, 'removeDislike'])->name('posts.remove-dislike');
     });
 
-    Route::resource('comments', App\Http\Controllers\CommentController::class)->only(['index', 'store', 'destroy']);
-    Route::resource('categories', App\Http\Controllers\CategoryController::class);
-    Route::resource('departments', App\Http\Controllers\DepartmentController::class)->except(['create', 'show']);
+    Route::group(['role:Quality Assurance Manager'], function (){
+        Route::get('dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
+    });
+
+    Route::group(['role:Super Administrator'], function () {
+        Route::resource('users', App\Http\Controllers\UserController::class)->except(['show']);
+        Route::resource('comments', App\Http\Controllers\CommentController::class)->only(['index', 'store', 'destroy']);
+        Route::resource('categories', App\Http\Controllers\CategoryController::class);
+        Route::resource('departments', App\Http\Controllers\DepartmentController::class)->except(['create', 'show']);
+    });
 });
