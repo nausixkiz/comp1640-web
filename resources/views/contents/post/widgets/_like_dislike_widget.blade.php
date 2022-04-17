@@ -1,7 +1,7 @@
 <div class="row col-2">
     <div class="col-sm">
         @can('like', $post)
-            <form action="{{ route('posts.like', $post->slug) }}" method="POST">
+            <form action="{{ route('ideas.like', $post->slug) }}" method="POST">
                 @csrf
                 @method('PUT')
                 <button class="btn btn-secondary btn-sm waves-effect">
@@ -10,7 +10,7 @@
             </form>
         @endcan
         @can('remove-like', $post)
-            <form action="{{ route('posts.remove-like', $post->slug) }}" method="POST">
+            <form action="{{ route('ideas.remove-like', $post->slug) }}" method="POST">
                 @csrf
                 @method('DELETE')
                 <button class="btn btn-primary btn-sm waves-effect active">
@@ -21,7 +21,7 @@
     </div>
     <div class="col-sm">
         @can('dislike', $post)
-            <form action="{{ route('posts.dislike', $post->slug) }}" method="POST">
+            <form action="{{ route('ideas.dislike', $post->slug) }}" method="POST">
                 @csrf
                 @method('PUT')
                 <button class="btn btn-secondary btn-sm waves-effect">
@@ -30,7 +30,7 @@
             </form>
         @endcan
         @can('remove-dislike', $post)
-            <form action="{{ route('posts.remove-dislike', $post->slug) }}" method="POST">
+            <form action="{{ route('ideas.remove-dislike', $post->slug) }}" method="POST">
                 @csrf
                 @method('DELETE')
                 <button class="btn btn-danger btn-sm waves-effect active">

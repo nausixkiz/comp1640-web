@@ -6,7 +6,7 @@
         <div class="card">
             <div class="card-body">
 
-                <h4 class="card-title">List of members on the system </h4>
+                <h4 class="card-title">User management only for super administrator</h4>
                 <p class="card-title-desc"><a href="{{ route('users.create') }}">Click here to create new user</a></p>
 
                 <table aria-describedby="list-user" id="datatable-buttons"

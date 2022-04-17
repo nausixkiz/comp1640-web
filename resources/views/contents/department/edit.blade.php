@@ -123,6 +123,7 @@
         });
         $('#end_closure_date').flatpickr({
             enableTime: false,
+            minDate: $('#start_closure_date').val()
         });
     </script>
 @endpush

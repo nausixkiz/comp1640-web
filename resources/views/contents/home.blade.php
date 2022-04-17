@@ -16,7 +16,7 @@
                             <p class="card-text">{{ $post->short_description }}</p>
                             <p class="card-text"><small class="text-muted">Last updated
                                     in {{ $post->updated_at }}</small></p>
-                            <a href="{{ route('posts.show', $post->slug) }}"
+                            <a href="{{ route('ideas.show', $post->slug) }}"
                                class="btn btn-primary waves-effect waves-light">{{ __('Read More') }}</a>
                         </div>
                     </div>

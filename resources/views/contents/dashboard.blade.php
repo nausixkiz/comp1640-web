@@ -12,12 +12,12 @@
                         </div>
                         <div class="flex-grow-1 overflow-hidden">
                             <p class="mb-1">Users</p>
-                            <h5 class="mb-3">{{ $total_users }}</h5>
+                            <h5 class="mb-3">{{ $user_data['total_users_in_month'] }}</h5>
 
                             <p class="text-truncate mb-0">
-                                <span class="text-success me-2"> 0.02%
+                                <span class="text-success me-2"> {{ ceil($user_data['total_users_in_month'] / $user_data['total_users_in_previous_month'] * 100) }}%
                                     <i class="ri-arrow-right-up-line align-bottom ms-1"></i>
-                                </span> From previous
+                                </span> From previous month
                             </p>
                         </div>
                     </div>
@@ -665,7 +665,7 @@
 @push('page-scripts')
     <script>
         const userChart = new ApexCharts(document.querySelector("#user-chart"), {
-            series: [72],
+            series: [{{ ceil($user_data['total_users_in_month'] / $user_data['total_users'] * 100) }}],
             chart: {
                 type: 'radialBar',
                 width: 72,
@@ -685,7 +685,7 @@
                 radialBar: {
                     hollow: {
                         margin: 0,
-                        size: '70%'
+                        size: {{ ceil($user_data['total_users_in_month'] / $user_data['total_users'] * 100) }} + '%'
                     },
                     track: {
                         margin: 0,

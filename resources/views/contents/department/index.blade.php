@@ -12,8 +12,7 @@
             <div class="card">
                 <div class="card-body">
 
-                    <h4 class="card-title">List of departments on the system </h4>
-                    <p class="card-title-desc">Lorem</p>
+                    <h4 class="card-title">Department management only for super administrator</h4>
 
                     <table id="datatable-buttons"
                            class="table table-striped table-bordered dt-responsive nowrap"
@@ -120,6 +119,7 @@
         });
         $('#end_closure_date').flatpickr({
             enableTime: false,
+            minDate: $('#start_closure_date').val()
         });
     </script>
 @endpush

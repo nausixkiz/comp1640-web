@@ -53,16 +53,20 @@
                          src="{{ Avatar::create(Auth::user()->name)->toBase64() }}"
                          alt="{{ \Illuminate\Support\Facades\Auth::user()->name }}">
                     <span
-                        class="d-none d-xl-inline-block ms-1">{{ \Illuminate\Support\Facades\Auth::user()->name }}</span>
+                        class="d-none d-xl-inline-block ms-1 text-center">{{ \Illuminate\Support\Facades\Auth::user()->name }}</span>
                     <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">
-                    <p class="dropdown-item text-primary">{{ \Illuminate\Support\Facades\Auth::user()->getRoleName() }}</p>
-                    <div class="dropdown-divider"></div>
-                    <a href="{{ route('posts.create') }}" class="dropdown-item">
-                        <i class="mdi mdi-post"></i> {{ __('Create New Post (Idea)') }}
-                    </a>
-
+                    <p class="dropdown-item text-primary text-center">{{ \Illuminate\Support\Facades\Auth::user()->getRoleName() }}</p>
+                    @role('Staff')
+                        <div class="dropdown-divider"></div>
+                        <a href="{{ route('ideas.create') }}" class="dropdown-item justify-content-between align-content-center text-center">
+                            <i class="mdi mdi-post"></i> {{ __('Create New Idea') }}
+                        </a>
+                        <a href="{{ route('ideas.index') }}" class="dropdown-item justify-content-between align-content-center text-center">
+                            <i class="mdi mdi-post"></i> {{ __('Manage Your Idea') }}
+                        </a>
+                    @endrole
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item text-danger" href="{{ route('logout') }}"
                        onclick="event.preventDefault();document.getElementById('logout-form').submit();">
@@ -100,6 +104,13 @@
                             <span>{{ __('Dashboard') }}</span>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{ route('categories.index') }}"
+                           class="nav-link">
+                            <i class="ri-apps-2-line me-2"></i>
+                            <span>{{ __('Category Management') }}</span>
+                        </a>
+                    </li>
                     @endrole
                     @role('Super Administrator')
                     <li class="nav-item dropdown">
@@ -113,8 +124,6 @@
                                class="dropdown-item">{{ __('User Management') }}</a>
                             <a href="{{ route('departments.index') }}"
                                class="dropdown-item">{{ __('Department Management') }}</a>
-                            <a href="{{ route('categories.index') }}"
-                               class="dropdown-item">{{ __('Category Management') }}</a>
                             <a href="{{ route('posts.index') }}"
                                class="dropdown-item">{{ __('Post (Idea) Management') }}</a>
                             <a href="{{ route('comments.index') }}"
@@ -122,7 +131,6 @@
                         </div>
                     </li>
                     @endrole
-
                 </ul>
             </div>
         </nav>

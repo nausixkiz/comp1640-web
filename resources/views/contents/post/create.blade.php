@@ -6,10 +6,9 @@
         <div class="card">
             <div class="card-header">
                 <h4 class="card-title">{{ __('CREATE NEW IDEA') }}</h4>
-                <p class="card-title-desc">Lorem</p>
             </div>
             <div class="card-body">
-                <form class="create-new-idea-form" action="{{ route('posts.store') }}" method="POST"
+                <form class="create-new-idea-form" action="{{ route('ideas.store') }}" method="POST"
                       enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
