@@ -10,25 +10,28 @@
                         <button type="button" data-bs-target="#carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                         <button type="button" data-bs-target="#carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
                         <button type="button" data-bs-target="#carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                        <button type="button" data-bs-target="#carousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                        <button type="button" data-bs-target="#carousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                        <button type="button" data-bs-target="#carousel" data-bs-slide-to="5" aria-label="Slide 6"></button>
                     </div>
                     <div class="carousel-inner">
                         <div class="carousel-item active" data-bs-interval="10000">
-                            <img src="{{ asset('images/carousel/carousel1.jpg') }}" class="d-block w-100 h-100" alt="">
+                            <img src="{{ asset('images/carousel/carousel1.jpg') }}" class="d-block w-100 h-100" alt="Slide 1">
                         </div>
                         <div class="carousel-item" data-bs-interval="2000">
-                            <img src="{{ asset('images/carousel/carousel2.jpg') }}" class="d-block w-100 h-100" alt="...">
+                            <img src="{{ asset('images/carousel/carousel2.jpg') }}" class="d-block w-100 h-100" alt="Slide 2">
                         </div>
                         <div class="carousel-item">
-                            <img src="{{ asset('images/carousel/carousel3.jpg') }}" class="d-block w-100 h-100" alt="...">
+                            <img src="{{ asset('images/carousel/carousel3.jpg') }}" class="d-block w-100 h-100" alt="Slide 3">
                         </div>
                         <div class="carousel-item">
-                            <img src="{{ asset('images/carousel/carousel4.jpg') }}" class="d-block w-100 h-100" alt="...">
+                            <img src="{{ asset('images/carousel/carousel4.jpg') }}" class="d-block w-100 h-100" alt="Slide 4">
                         </div>
                         <div class="carousel-item">
-                            <img src="{{ asset('images/carousel/carousel5.jpg') }}" class="d-block w-100 h-100" alt="...">
+                            <img src="{{ asset('images/carousel/carousel5.jpg') }}" class="d-block w-100 h-100" alt="Slide 5">
                         </div>
                         <div class="carousel-item">
-                            <img src="{{ asset('images/carousel/carousel6.jpg') }}" class="d-block w-100" alt="...">
+                            <img src="{{ asset('images/carousel/carousel6.jpg') }}" class="d-block w-100" alt="Slide 6">
                         </div>
                     </div>
                     <a class="carousel-control-prev" href="#carousel" role="button" data-bs-slide="prev">

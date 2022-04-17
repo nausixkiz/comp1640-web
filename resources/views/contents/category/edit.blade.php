@@ -21,6 +21,7 @@
                         <tr>
                             <th>Id</th>
                             <th>Name</th>
+                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -30,6 +31,10 @@
                             <tr>
                                 <td>{{ $cate->id }}</td>
                                 <td>{{ $cate->name }}</td>
+                                <td>
+                                    <i class="mdi mdi-checkbox-blank-circle @if($category->hasExpired()) text-danger @else text-success @endif me-1"></i>
+                                    @if($category->hasExpired()) Expired @else Active @endif
+                                </td>
                                 <td>
                                     <a type="button" class="btn btn-sm btn-warning waves-effect waves-light"
                                        href="{{ route('categories.edit', $cate->slug) }}">
