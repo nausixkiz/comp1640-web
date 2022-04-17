@@ -28,7 +28,7 @@ class HomeController extends Controller
      * @param $slug
      * @return Application|Factory|View
      */
-    public function show($slug)
+    public function showIdea($slug)
     {
         $post = Post::findBySlugOrFail($slug);
 
