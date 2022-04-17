@@ -12,8 +12,7 @@
             <div class="card">
                 <div class="card-body">
 
-                    <h4 class="card-title">List of categories on the system </h4>
-                    <p class="card-title-desc">Lorem</p>
+                    <h4 class="card-title">Category management only for super administrator</h4>
 
                     <table id="datatable-buttons"
                            class="table table-striped table-bordered dt-responsive nowrap"
@@ -27,21 +26,21 @@
                         </thead>
 
                         <tbody>
-                        @foreach($categories as $category)
+                        @foreach($categories as $cate)
                             <tr>
-                                <td>{{ $category->id }}</td>
-                                <td>{{ $category->name }}</td>
+                                <td>{{ $cate->id }}</td>
+                                <td>{{ $cate->name }}</td>
                                 <td>
                                     <a type="button" class="btn btn-sm btn-warning waves-effect waves-light"
-                                       href="{{ route('categories.edit', $category->slug) }}">
+                                       href="{{ route('categories.edit', $cate->slug) }}">
                                         <i class="ri ri-pencil-fill"></i>
                                     </a>
                                     <a type="button" class="btn btn-sm btn-danger waves-effect waves-light"
-                                       onclick="event.preventDefault();document.getElementById('{{ 'delete-category-' . $category->slug }}').submit();">
+                                       onclick="event.preventDefault();document.getElementById('{{ 'delete-category-' . $cate->slug }}').submit();">
                                         <i class="ri ri-delete-bin-5-line"></i>
                                     </a>
-                                    <form id="{{ 'delete-category-' . $category->slug}}"
-                                          action="{{ route('categories.destroy', $category->slug) }}" method="POST"
+                                    <form id="{{ 'delete-category-' . $cate->slug}}"
+                                          action="{{ route('categories.destroy', $cate->slug) }}" method="POST"
                                           class="d-none">
                                         @method('DELETE')
                                         @csrf
@@ -58,7 +57,6 @@
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title">Update {{ $category->name }}</h4>
-                    <p>Lorem</p>
                 </div>
                 <div class="card-body">
                     <form action="{{ route('categories.update', $category->slug) }}" method="POST"
