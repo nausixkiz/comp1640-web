@@ -29,7 +29,7 @@ class IdeaController extends Controller
     public function index()
     {
         return view('contents.post.index_for_staff', [
-            'posts' => Auth::user()->posts,
+            'ideas' => Auth::user()->posts,
         ]);
     }
 

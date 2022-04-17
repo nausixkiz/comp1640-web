@@ -36,7 +36,7 @@ $(document).ready(function () {
         "drawCallback": function () {
             $('.dataTables_paginate > .pagination').addClass('pagination-rounded');
         },
-        buttons: ['copy', 'excel', 'pdf', 'colvis']
+        // buttons: ['copy', 'excel', 'pdf', 'colvis']
     });
 
     table.buttons().container()

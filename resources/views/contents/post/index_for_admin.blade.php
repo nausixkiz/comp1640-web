@@ -42,10 +42,6 @@
                                        target="_blank" href="{{ route('ideas.show', $post->slug) }}">
                                         <i class="ri ri-eye-fill"></i>
                                     </a>
-                                    <a type="button" class="btn btn-sm btn-primary waves-effect waves-light"
-                                       href="{{ route('posts.edit', $post->slug) }}">
-                                        <i class="ri ri-edit-box-fill"></i>
-                                    </a>
                                     <a type="button" class="btn btn-sm btn-danger waves-effect waves-light"
                                        onclick="event.preventDefault();
                                            document.getElementById('{{ 'delete-post-' . $post->slug }}').submit();">
