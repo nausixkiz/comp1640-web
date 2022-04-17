@@ -8,11 +8,11 @@
                 <div class="card-body">
                     <div class="d-flex text-muted">
                         <div class="flex-shrink-0 me-3 align-self-center">
-                            <div id="radialchart-1" class="apex-charts" dir="ltr"></div>
+                            <div id="user-chart" class="apex-charts" dir="ltr"></div>
                         </div>
                         <div class="flex-grow-1 overflow-hidden">
                             <p class="mb-1">Users</p>
-                            <h5 class="mb-3">2.2k</h5>
+                            <h5 class="mb-3">{{ $total_users }}</h5>
 
                             <p class="text-truncate mb-0">
                                 <span class="text-success me-2"> 0.02%
@@ -661,3 +661,48 @@
         <!-- end col -->
     </div>
 @stop
+
+@push('page-scripts')
+    <script>
+        const userChart = new ApexCharts(document.querySelector("#user-chart"), {
+            series: [72],
+            chart: {
+                type: 'radialBar',
+                width: 72,
+                height: 72,
+                sparkline: {
+                    enabled: true
+                }
+            },
+            dataLabels: {
+                enabled: false
+            },
+            colors: ['#0ab39c'],
+            stroke: {
+                lineCap: 'round'
+            },
+            plotOptions: {
+                radialBar: {
+                    hollow: {
+                        margin: 0,
+                        size: '70%'
+                    },
+                    track: {
+                        margin: 0,
+                    },
+
+                    dataLabels: {
+                        name: {
+                            show: false
+                        },
+                        value: {
+                            offsetY: 5,
+                            show: true
+                        }
+                    }
+                }
+            }
+        });
+        userChart.render();
+    </script>
+@endpush

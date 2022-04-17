@@ -13,3 +13,13 @@
 <link href="{{ asset( mix('css/app.css') ) }}" id="app-style" rel="stylesheet" type="text/css"/>
 
 @stack('page-styles')
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N63S0Z2SP8"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-N63S0Z2SP8');
+</script>

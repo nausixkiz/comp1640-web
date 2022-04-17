@@ -45,7 +45,7 @@ class PostController extends Controller
     {
         Validator::make($request->all(), [
             'name' => ['required', 'string', 'max:255'],
-            'short-description' => ['required', 'max:255'],
+            'short-description' => ['required', 'max:50'],
             'contents' => ['required', 'string', 'min:10', 'max:10000'],
             'category' => ['required', 'exists:categories,slug'],
             'thumbnail' => ['required', 'image', 'mimes:jpg,jpeg,png,bmp'],
@@ -119,7 +119,7 @@ class PostController extends Controller
     {
         Validator::make($request->all(), [
             'name' => ['required', 'string', 'max:255'],
-            'short-description' => ['required', 'max:255'],
+            'short-description' => ['required', 'max:50'],
             'contents' => ['required', 'string', 'min:10', 'max:10000'],
             'category' => ['required', 'exists:categories,slug'],
             'thumbnail' => ['image', 'mimes:jpg,jpeg,png,bmp'],

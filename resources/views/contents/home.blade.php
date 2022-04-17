@@ -4,7 +4,7 @@
 @section('content')
     @foreach($posts as $post)
         <div class="col-lg-6">
-            <div class="card">
+            <div class="card" style="height: 250px;">
                 <div class="row g-0 align-items-center">
                     <div class="col-md-4">
                         <img class="card-img img-fluid img-thumbnail" src="{{ $post->getFirstMediaUrl('thumbnail') }}"
