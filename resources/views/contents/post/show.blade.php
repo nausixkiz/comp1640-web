@@ -55,7 +55,7 @@
 
 
                                         <div class="py-2 text-center">
-                                            <a href="{{ route('posts.download-a-document', [ $post->slug, $document]) }}"
+                                            <a href="{{ route('ideas.download-a-document', [ $post->slug, $document]) }}"
                                                class="fw-medium">Download</a>
                                         </div>
                                     </div>
@@ -69,7 +69,7 @@
                         @include('contents.post.widgets._like_dislike_widget')
                         @if($post->hasMedia('documents'))
                             <div class="ms-auto p-2">
-                                <a href="{{ route('posts.download-all-documents', $post->slug) }}"
+                                <a href="{{ route('ideas.download-all-documents', $post->slug) }}"
                                    class="btn btn-secondary waves-effect mt-4">
                                     <i class="mdi mdi-download"></i> Download All Documents
                                 </a>
