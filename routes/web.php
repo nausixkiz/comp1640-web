@@ -23,19 +23,21 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
     Route::get('home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-    Route::prefix('ideas')->group(function (){
-        Route::get('ideas/{idea}', [App\Http\Controllers\HomeController::class, 'showIdea'])->name('ideas.show');
-        Route::get('{idea}/download-all-documents', [App\Http\Controllers\HomeController::class, 'downloadAllDocuments'])->name('ideas.download-all-documents');
-        Route::get('{idea}/{media}/download', [App\Http\Controllers\HomeController::class, 'downloadADocument'])->name('ideas.download-a-document');
-        Route::put('{idea}/like', [App\Http\Controllers\HomeController::class, 'like'])->name('ideas.like');
-        Route::delete('{idea}/remove-like', [App\Http\Controllers\HomeController::class, 'removeLike'])->name('ideas.remove-like');
-        Route::put('{idea}/dislike', [App\Http\Controllers\HomeController::class, 'dislike'])->name('ideas.dislike');
-        Route::delete('{idea}/remove-dislike', [App\Http\Controllers\HomeController::class, 'removeDislike'])->name('ideas.remove-dislike');
-    });
+    Route::get('ideas/{idea}', [App\Http\Controllers\HomeController::class, 'showIdea'])->name('ideas.show');
 
     Route::group(['role:Staff'], function (){
         Route::resource('ideas', App\Http\Controllers\IdeaController::class)->except(['show', 'destroy']);
+
+        Route::prefix('ideas')->group(function (){
+            Route::get('{idea}/download-all-documents', [App\Http\Controllers\IdeaController::class, 'downloadAllDocuments'])->name('ideas.download-all-documents');
+            Route::get('{idea}/{media}/download', [App\Http\Controllers\IdeaController::class, 'downloadADocument'])->name('ideas.download-a-document');
+            Route::put('{idea}/like', [App\Http\Controllers\IdeaController::class, 'like'])->name('ideas.like');
+            Route::delete('{idea}/remove-like', [App\Http\Controllers\IdeaController::class, 'removeLike'])->name('ideas.remove-like');
+            Route::put('{idea}/dislike', [App\Http\Controllers\IdeaController::class, 'dislike'])->name('ideas.dislike');
+            Route::delete('{idea}/remove-dislike', [App\Http\Controllers\IdeaController::class, 'removeDislike'])->name('ideas.remove-dislike');
+        });
     });
+
 
     Route::group(['role:Quality Assurance Manager'], function (){
         Route::get('dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
@@ -44,8 +46,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::group(['role:Super Administrator'], function () {
         Route::resource('users', App\Http\Controllers\UserController::class)->except(['show']);
-        Route::resource('comments', App\Http\Controllers\CommentController::class)->only(['index', 'store', 'destroy']);
         Route::resource('departments', App\Http\Controllers\DepartmentController::class)->except(['create', 'show']);
         Route::resource('posts', App\Http\Controllers\PostController::class)->only(['index', 'destroy']);
     });
+
+    Route::resource('comments', App\Http\Controllers\CommentController::class)->only(['index', 'store', 'destroy']);
 });

@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Department;
 use App\Models\Post;
 use Carbon\Carbon;
+use Exception;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -30,18 +31,6 @@ class IdeaController extends Controller
     {
         return view('contents.post.index_for_staff', [
             'ideas' => Auth::user()->posts,
-        ]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Application|Factory|View
-     */
-    public function create()
-    {
-        return view('contents.post.create', [
-            'departments' => Department::all(),
         ]);
     }
 
@@ -149,7 +138,6 @@ class IdeaController extends Controller
         }
     }
 
-
     public function downloadADocument($slug, Media $media)
     {
         Post::findBySlugOrFail($slug);
@@ -172,6 +160,18 @@ class IdeaController extends Controller
         }
 
         return back()->with('flash_error_message', 'No documents found');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return Application|Factory|View
+     */
+    public function create()
+    {
+        return view('contents.post.create', [
+            'departments' => Department::all(),
+        ]);
     }
 
     public function like(string $slug)

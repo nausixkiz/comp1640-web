@@ -10,15 +10,16 @@ class DashboardController extends Controller
     public function index()
     {
         return view('contents.dashboard', [
-           'user_data' => self::getUserDataAnalyst(),
+            'user_data' => self::getUserDataAnalyst(),
             'view_idea_data' => self::getViewIdeaDataAnalyst(),
         ]);
     }
 
-    protected function getUserDataAnalyst(){
+    protected function getUserDataAnalyst()
+    {
         return [
             'total_users' => User::count(),
-            'total_users_in_month' =>  User::whereMonth('created_at', '=', Carbon::now()->month)->count(),
+            'total_users_in_month' => User::whereMonth('created_at', '=', Carbon::now()->month)->count(),
             'total_users_in_previous_month' => User::whereMonth('created_at', '<', Carbon::now()->month)
                 ->whereMonth('created_at', '>=', Carbon::now()->subMonth()->month)
                 ->count(),

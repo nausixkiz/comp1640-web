@@ -144,57 +144,61 @@
             @endif
         </div>
     </div>
-    <div class="row d-flex justify-content-center">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-body">
-                    <div>
-                        <form action="{{ route('comments.store') }}" method="POST" enctype="multipart/form-data">
-                            @csrf
-                            <input type="hidden" name="post-slug" value="{{ $post->slug }}" hidden>
-                            <div class="mb-3">
-                                <textarea class="form-control @error('contents') is-invalid @enderror" name="contents"
-                                          rows="3" placeholder="Leave an comment for this post..."></textarea>
-                                @error('contents')
-                                <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                {!! NoCaptcha::display() !!}
-                                @error('g-recaptcha-response')
-                                <span class="help-block">
-                                        <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <div class="mb-3">
-                                <div class="d-flex btn-toolbar mb-3 mt-5">
-                                    <div class="p-2">
-                                        <input
-                                            class="form-check-input @error('comment-as-anonymous') is-invalid @enderror"
-                                            type="checkbox"
-                                            id="comment-as-anonymous" name="comment-as-anonymous">
-                                        <label class="form-check-label" for="comment-as-anonymous">
-                                            Post this comment anonymously
-                                        </label>
-                                        @error('comment-as-anonymous')
-                                        <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                    <div class="ms-auto p-2">
-                                        <button class="btn btn-info waves-effect waves-light"><span>Send</span>
-                                            <i class="fab fa-telegram-plane ms-2"></i></button>
+
+    @if(!$post->hasExpried())
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div>
+                            <form action="{{ route('comments.store') }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <input type="hidden" name="post-slug" value="{{ $post->slug }}" hidden>
+                                <div class="mb-3">
+                                    <textarea class="form-control @error('contents') is-invalid @enderror" name="contents"
+                                              rows="3" placeholder="Leave an comment for this post..."></textarea>
+                                    @error('contents')
+                                    <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    {!! NoCaptcha::display() !!}
+                                    @error('g-recaptcha-response')
+                                    <span class="help-block">
+                                            <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="mb-3">
+                                    <div class="d-flex btn-toolbar mb-3 mt-5">
+                                        <div class="p-2">
+                                            <input
+                                                class="form-check-input @error('comment-as-anonymous') is-invalid @enderror"
+                                                type="checkbox"
+                                                id="comment-as-anonymous" name="comment-as-anonymous">
+                                            <label class="form-check-label" for="comment-as-anonymous">
+                                                Post this comment anonymously
+                                            </label>
+                                            @error('comment-as-anonymous')
+                                            <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                        <div class="ms-auto p-2">
+                                            <button class="btn btn-info waves-effect waves-light"><span>Send</span>
+                                                <i class="fab fa-telegram-plane ms-2"></i></button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    @endif
+
 @stop

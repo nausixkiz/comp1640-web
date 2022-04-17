@@ -6,6 +6,7 @@ use App\Contracts\Dislikeable;
 use App\Contracts\Likeable;
 use App\Traits\HasDislike;
 use App\Traits\HasLikes;
+use Carbon\Carbon;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
 use CyrildeWit\EloquentViewable\Contracts\Viewable;
@@ -93,6 +94,11 @@ class Post extends Model implements Viewable, HasMedia, Likeable, Dislikeable
             ->width(260)
             ->height(175)
             ->withResponsiveImages();
+    }
+
+    public function hasExpried()
+    {
+        return $this->category->department->end_closure_date < Carbon::now();
     }
 
 }

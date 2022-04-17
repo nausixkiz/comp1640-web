@@ -7,7 +7,6 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
-use Spatie\Analytics\Period;
 
 class HomeController extends Controller
 {
@@ -29,7 +28,7 @@ class HomeController extends Controller
      * @param $slug
      * @return Application|Factory|View
      */
-    public function showIdea($slug)
+    public function show($slug)
     {
         $post = Post::findBySlugOrFail($slug);
 
@@ -41,5 +40,4 @@ class HomeController extends Controller
             'comment_total' => $post->comments()->count(),
         ]);
     }
-
 }

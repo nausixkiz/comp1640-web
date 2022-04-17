@@ -2,6 +2,48 @@
 @section('title', 'Homepage')
 
 @section('content')
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <div id="carousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active" data-bs-interval="10000">
+                            <img src="{{ asset('images/carousel/carousel1.jpg') }}" class="d-block w-100 h-100" alt="">
+                        </div>
+                        <div class="carousel-item" data-bs-interval="2000">
+                            <img src="{{ asset('images/carousel/carousel2.jpg') }}" class="d-block w-100 h-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{{ asset('images/carousel/carousel3.jpg') }}" class="d-block w-100 h-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{{ asset('images/carousel/carousel4.jpg') }}" class="d-block w-100 h-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{{ asset('images/carousel/carousel5.jpg') }}" class="d-block w-100 h-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{{ asset('images/carousel/carousel6.jpg') }}" class="d-block w-100" alt="...">
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carousel" role="button" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carousel" role="button" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
     @foreach($posts as $post)
         <div class="col-lg-6">
             <div class="card" style="height: 250px;">
