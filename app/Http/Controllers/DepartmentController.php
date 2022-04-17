@@ -38,7 +38,7 @@ class DepartmentController extends Controller
     public function store(Request $request)
     {
         Validator::make($request->all(), [
-            'name' => ['required', 'string', 'min:3', 'max:255'],
+            'name' => ['required', 'string', 'min:6', 'max:255'],
             'start_closure_date' => ['required', 'date'],
             'end_closure_date' => ['required', 'date', 'after:start_closure_date'],
         ])->validate();
@@ -84,7 +84,7 @@ class DepartmentController extends Controller
     public function update(Request $request, string $slug)
     {
         Validator::make($request->all(), [
-            'name' => ['required', 'string', 'min:3', 'max:255'],
+            'name' => ['required', 'string', 'min:6', 'max:255'],
             'start_closure_date' => ['required', 'date'],
             'end_closure_date' => ['required', 'date', 'after:start_closure_date'],
         ])->validate();

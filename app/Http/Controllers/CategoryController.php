@@ -39,7 +39,7 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         Validator::make($request->all(), [
-            'name' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'min:6', 'max:255'],
             'department' => ['required', 'exists:departments,slug'],
         ])->validate();
 
@@ -85,7 +85,7 @@ class CategoryController extends Controller
     public function update(Request $request, string $slug)
     {
         Validator::make($request->all(), [
-            'name' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'min:6', 'max:255'],
             'department' => ['required', 'exists:departments,slug'],
         ])->validate();
 
