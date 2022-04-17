@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Contracts\Support\Renderable;
+use Spatie\Analytics\Period;
 
 class HomeController extends Controller
 {

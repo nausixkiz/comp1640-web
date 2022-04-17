@@ -15,11 +15,11 @@
 @stack('page-styles')
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-N63S0Z2SP8"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-226191143-1"></script>
 <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
 
-    gtag('config', 'G-N63S0Z2SP8');
+    gtag('config', 'UA-226191143-1');
 </script>
