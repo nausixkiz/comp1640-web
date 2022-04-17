@@ -17,7 +17,7 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             @if (session('status'))
-                                                <div class="alert alert-warning alert-dismissible">
+                                                <div class="alert alert-success alert-dismissible">
                                                     <button type="button" class="btn-close" data-bs-dismiss="alert"
                                                             aria-label="Close"></button>
                                                     {{ session('status') }}
@@ -46,13 +46,6 @@
                             </div>
                         </div>
                     </div>
-                    @if (\Illuminate\Support\Facades\Route::has('register'))
-                        <div class="mt-5 text-center">
-                            <p class="text-white-50">Don't have an account ? <a href="{{ route('register') }}"
-                                                                                class="fw-medium text-primary">
-                                    Register </a></p>
-                        </div>
-                    @endif
                 </div>
             </div>
         </div>

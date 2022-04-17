@@ -8,13 +8,6 @@
                     <div class="card">
                         <div class="card-body p-4">
                             <div class="">
-                                <div class="text-center">
-                                    <a href="{{ route('home') }}" class="">
-                                        <img src="assets/images/logo-light.png" alt="" height="24"
-                                             class="auth-logo logo-light mx-auto">
-                                    </a>
-                                </div>
-                                <!-- end row -->
                                 <h4 class="font-size-18 text-muted mt-2 text-center">Welcome Back !</h4>
                                 <p class="mb-5 text-center">Sign in to continue
                                     to {{ \Illuminate\Support\Facades\Config::get('app.name') }}.</p>
@@ -41,9 +34,9 @@
                                                        class="form-control @error('password') is-invalid @enderror"
                                                        name="password" required autocomplete="current-password">
                                                 @error('password')
-                                                <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
                                                 @enderror
                                             </div>
 
@@ -81,7 +74,6 @@
                     </div>
                 </div>
             </div>
-            <!-- end row -->
         </div>
     </div>
 @stop
