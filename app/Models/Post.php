@@ -96,7 +96,7 @@ class Post extends Model implements Viewable, HasMedia, Likeable, Dislikeable
             ->withResponsiveImages();
     }
 
-    public function hasExpried()
+    public function hasExpired()
     {
         return $this->category->department->end_closure_date < Carbon::now();
     }
