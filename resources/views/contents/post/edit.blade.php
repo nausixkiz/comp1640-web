@@ -9,7 +9,7 @@
                 <p class="card-title-desc">Lorem</p>
             </div>
             <div class="card-body">
-                <form class="create-new-idea-form" action="{{ route('posts.update', $post->slug) }}" method="POST"
+                <form class="create-new-idea-form" action="{{ route('ideas.update', $post->slug) }}" method="POST"
                       enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
