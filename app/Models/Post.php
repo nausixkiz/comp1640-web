@@ -18,6 +18,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use JetBrains\PhpStorm\ArrayShape;
+use Kyslik\ColumnSortable\Sortable;
 use Spatie\Image\Exceptions\InvalidManipulation;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -32,13 +33,21 @@ class Post extends Model implements Viewable, HasMedia, Likeable, Dislikeable
     use SluggableScopeHelpers;
     use HasLikes;
     use HasDislike;
-
+    use Sortable;
 
     protected $fillable = [
         'name',
         'short_description',
         'contents',
         'slug',
+    ];
+
+    public $sortable = [
+        'id',
+        'name',
+        'email',
+        'created_at',
+        'updated_at'
     ];
 
     /**

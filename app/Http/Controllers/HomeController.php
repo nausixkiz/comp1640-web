@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Department;
 use App\Models\Post;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Support\Renderable;
@@ -19,8 +20,9 @@ class HomeController extends Controller
     public function index()
     {
         return view('contents.home', [
+            'departments' => Department::all(),
             'categories' => Category::all(),
-            'posts' => Post::orderBy('updated_at', 'desc')->get(),
+            'posts' => Post::sortable('name')->get(),
         ]);
     }
 

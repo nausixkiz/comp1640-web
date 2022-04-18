@@ -47,7 +47,34 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-10">
+    <div class="col-lg-9">
+        <div class="row">
+            <div class="justify-content-end">
+                <div class="btn-toolbar justify-content-md-end" role="toolbar">
+                    <div class="btn-group ms-md-2 mb-3">
+                        <button type="button" class="btn btn-primary waves-light waves-effect dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            Sort By: <i class="mdi mdi-chevron-down ms-1"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-end">
+                            <a class="dropdown-item" href="#">Most View</a>
+                            <a class="dropdown-item" href="#">Most Like</a>
+                            <a class="dropdown-item" href="#">Most Comment</a>
+                        </div>
+                    </div>
+
+                    <div class="btn-group ms-2 mb-3">
+                        <button type="button" class="btn btn-primary waves-light waves-effect dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            More <i class="mdi mdi-dots-vertical ms-1"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-end">
+                            <a class="dropdown-item" href="#">Xem CC</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-9">
         <div class="row">
             @foreach($posts as $post)
                 <div class="col-md-6">
@@ -71,21 +98,43 @@
                     </div>
                 </div>
             @endforeach
+
+{{--                {!! $posts->appends(Request::except('page'))->render() !!}--}}
         </div>
     </div>
-    <div class="col-lg-2">
+    <div class="col-lg-3 pt-5">
         <div class="card">
             <div class="card-header">
                 <h4 class="card-title">{{ __('Top Categories') }}</h4>
             </div>
             <div class="card-body">
-                <ul class="list-group">
-                    @foreach($categories as $category)
-                        <li class="list-group-item">
-                            <a class="list-group-item list-group-item-action" href="javascript:void(0)">{{ $category->name }}</a>
-                        </li>
+                <div id="accordion">
+                    @foreach($departments as $department)
+                        @if($department->category->count() > 0)
+                            <div class="card mb-0">
+                                <div class="card-header" id="heading-{{$department->slug}}">
+                                    <h5 class="m-0 font-size-14">
+                                        <a data-bs-toggle="collapse" data-parent="#accordion" href="#collapse-{{$department->slug}}" aria-expanded="true" aria-controls="collapse-{{$department->slug}}" class="text-dark">
+                                            {{ $department->name }}
+                                        </a>
+                                    </h5>
+                                </div>
+
+                                <div id="collapse-{{$department->slug}}" class="collapse" aria-labelledby="heading-{{$department->slug}}" data-parent="#accordion">
+                                    <div class="card-body">
+{{--                                        <ul class="list-group">--}}
+                                            @foreach($department->category as $category)
+                                                <li class="list-group-item">
+                                                    <a href="javascript:void(0)">{{ $category->name }}</a>
+                                                </li>
+                                            @endforeach
+{{--                                        </ul>--}}
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
                     @endforeach
-                </ul>
+                </div>
             </div>
         </div>
     </div>
