@@ -98,23 +98,7 @@
                 <div class="card-body">
                     <div class="d-flex align-items-center">
                         <div class="flex-grow-1">
-                            <h5 class="card-title">Overview</h5>
-                        </div>
-                        <div class="flex-shrink-0">
-                            <div>
-                                <button type="button" class="btn btn-soft-secondary btn-sm">
-                                    ALL
-                                </button>
-                                <button type="button" class="btn btn-soft-primary btn-sm">
-                                    1M
-                                </button>
-                                <button type="button" class="btn btn-soft-secondary btn-sm">
-                                    6M
-                                </button>
-                                <button type="button" class="btn btn-soft-secondary btn-sm active">
-                                    1Y
-                                </button>
-                            </div>
+                            <h5 class="card-title">Overview visitor</h5>
                         </div>
                     </div>
 
@@ -131,7 +115,7 @@
                 <div class="card-body">
                     <div class="d-flex  align-items-center">
                         <div class="flex-grow-1">
-                            <h5 class="card-title">Top Browsers</h5>
+                            <h5 class="card-title">Top Visitor by Browsers</h5>
                         </div>
                     </div>
 
@@ -187,13 +171,31 @@
         <div class="col-lg-4">
             <div class="card">
                 <div class="card-body">
-                    <div id="chart" class="apex-charts" dir="ltr"></div>
+                    <h4 class="card-title mb-4">Top Visitor by Country</h4>
+
+                    <div class="pe-3" data-simplebar style="max-height: 287px;">
+                        @foreach($top_countries as $country)
+                            <a href="#" class="text-body d-block">
+                                <div class="d-flex py-3">
+                                    <div class="flex-shrink-0 me-3 align-self-center">
+                                        {!! $country[2] !!}
+                                    </div>
+
+                                    <div class="flex-grow-1 overflow-hidden">
+                                        <h5 class="font-size-14 mb-1">{{ $country[0] }}</h5>
+                                    </div>
+                                    <div class="flex-shrink-0 font-size-13">
+                                        {{ $country[1] }}
+                                    </div>
+                                </div>
+                            </a>
+                        @endforeach
+                    </div>
                 </div>
                 <!-- end card-body -->
             </div>
             <!-- end card -->
         </div>
-        <!-- end col -->
     </div>
 
     <div class="row">
@@ -441,59 +443,34 @@
             }
         }).render();
         new ApexCharts(document.querySelector("#mixed-chart"), {
-            series: [{
-                name: 'Expenses',
-                type: 'column',
-                data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30, 18]
-            }, {
-                name: 'Maintenance',
-                type: 'area',
-                data: [44, 55, 41, 42, 22, 43, 21, 41, 56, 27, 43, 27]
-            }, {
-                name: 'Profit',
-                type: 'line',
-                data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39, 51]
-            }],
             chart: {
                 height: 350,
-                type: 'line',
-                stacked: false,
-                toolbar: {
-                    show: false
-                },
+                type: 'area',
+            },
+            dataLabels: {
+                enabled: false
             },
             stroke: {
-                width: [0, 1, 1],
-                dashArray: [0, 0, 5],
-                curve: 'smooth'
+                curve: 'smooth',
+                width: 3,
             },
-            plotOptions: {
-                bar: {
-                    columnWidth: '18%'
-                }
+            series: [{
+                name: 'Views',
+                data: [34, 40, 28, 52, 42, 109, 100]
+            },],
+            colors: ['#3d8ef8'],
+            xaxis: {
+                type: 'datetime',
+                categories: ["2018-09-19T00:00:00", "2018-09-19T01:30:00", "2018-09-19T02:30:00", "2018-09-19T03:30:00", "2018-09-19T04:30:00", "2018-09-19T05:30:00", "2018-09-19T06:30:00"],
             },
-
-            legend: {
-                show: false,
+            grid: {
+                borderColor: '#f1f1f1',
             },
-
-            fill: {
-                opacity: [0.85, 0.25, 1],
-                gradient: {
-                    inverseColors: false,
-                    shade: 'light',
-                    type: "vertical",
-                    opacityFrom: 0.85,
-                    opacityTo: 0.55,
-                    stops: [0, 100, 100, 100]
-                }
-            },
-            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-            markers: {
-                size: 0
-            },
-            colors: ['#0bb197', '#eff2f7', '#ff3d60', '#489279', '#d072a7'],
-
+            tooltip: {
+                x: {
+                    format: 'dd/MM/yy HH:mm'
+                },
+            }
         }).render();
     </script>
 @endpush

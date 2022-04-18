@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Models\User;
 use Carbon\Carbon;
 use CyrildeWit\EloquentViewable\Support\Period as CyrildeWitPeriod;
+use Io238\ISOCountries\Models\Country;
 use Spatie\Analytics\Period;
 use Analytics;
 
@@ -14,11 +15,11 @@ class DashboardController extends Controller
 {
     public function index()
     {
-;
         return view('contents.dashboard', [
             'user_data' => self::getUserDataAnalytics(),
             'view_idea_data' => self::getViewIdeaDataAnalytics(),
             'top_browsers' => self::getTopBrowsersDataAnalytics(),
+            'top_countries' => self::getTopCountryDataAnalytics(),
             'top_ideas' => Post::orderByViews()->take(5)->get(),
             'visitor_data' => self::getVisitorDataAnalytics(),
             'total_visitors' => \Analytics::performQuery(Period::months(1), 'ga:sessions')->rows[0][0],
@@ -74,6 +75,35 @@ class DashboardController extends Controller
             }
             $response[] = $item;
         }
+        return $response;
+    }
+
+    protected function getTopCountryDataAnalytics()
+    {
+        $response = [];
+
+        $data = Analytics::performQuery(Period::days(7), 'ga:sessions', [
+            'dimensions' => 'ga:country',
+            'sort' => '-ga:sessions',
+        ])->rows;
+        foreach ($data as $item){
+            $item[2] = match ($item[0]) {
+                'Vietnam' => '<img src="https://flagcdn.com/32x24/vn.png" srcset="https://flagcdn.com/64x48/vn.png 2x,https://flagcdn.com/96x72/vn.png 3x"
+                                  width="32"
+                                  height="24"
+                                  alt="Viet Nam">',
+                'United States' => '<img src="https://flagcdn.com/32x24/us.png" srcset="https://flagcdn.com/64x48/us.png 2x,https://flagcdn.com/96x72/us.png 3x"
+                                      width="32"
+                                      height="24"
+                                      alt="United States">',
+                default => '<img src="https://flagcdn.com/32x24/vn.png" srcset="https://flagcdn.com/64x48/vn.png 2x,https://flagcdn.com/96x72/vn.png 3x"
+                                      width="32"
+                                      height="24"
+                                      alt="Viet Nam">',
+            };
+            $response[] = $item;
+        }
+
         return $response;
     }
 
