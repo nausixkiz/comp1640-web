@@ -55,19 +55,35 @@
                         <h4 class="align-content-center text-center mr-3 pt-2">Sort By: </h4>
                     </div>
                     <div class="btn-group me-2 mb-3">
-                        <button type="button" class="btn btn-primary waves-light waves-effect">
-                            <i class="ri ri-eye-fill" style="vertical-align: middle;"></i> Most Viewed
-                        </button>
+                        <form method="POST" action="{{ route('home.sorted') }}">
+                            @csrf
+                            <input type="hidden" name="sort" value="most-view">
+                            <input type="hidden" name="order" value="asc">
+                            <button type="submit" class="btn btn-primary waves-light waves-effect @if($sorted['most-view']) active @endif">
+                                <em class="ri ri-eye-fill" style="vertical-align: middle;"></em> Most Viewed
+                            </button>
+                        </form>
                     </div>
                     <div class="btn-group me-2 mb-3">
-                        <button type="button" class="btn btn-primary waves-light waves-effect">
-                            <i class="ri ri-chat-4-fill" style="vertical-align: middle;"></i> Most Comment
-                        </button>
+                        <form method="POST" action="{{ route('home.sorted') }}">
+                            @csrf
+                            <input type="hidden" name="sort" value="most-comment">
+                            <input type="hidden" name="order" value="asc">
+                            <button type="submit" class="btn btn-primary waves-light waves-effect @if($sorted['most-comment']) active @endif">
+                                <em class="ri ri-chat-4-fill" style="vertical-align: middle;"></em> Most Comment
+                            </button>
+                        </form>
                     </div>
                     <div class="btn-group me-2 mb-3">
-                        <button type="button" class="btn btn-primary waves-light waves-effect">
-                            <i class="ri ri-thumb-up-fill" style="vertical-align: middle;"></i> Most Like
-                        </button>
+                        <form method="POST" action="{{ route('home.sorted') }}">
+                            @csrf
+                            <input type="hidden" name="sort" value="most-like">
+                            <input type="hidden" name="order" value="asc">
+
+                            <button type="submit" class="btn btn-primary waves-light waves-effect @if($sorted['most-like']) active @endif">
+                                <em class="ri ri-thumb-up-fill" style="vertical-align: middle;"></em> Most Like
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>

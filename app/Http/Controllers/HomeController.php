@@ -9,6 +9,9 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class HomeController extends Controller
 {
@@ -22,7 +25,44 @@ class HomeController extends Controller
         return view('contents.home', [
             'departments' => Department::all(),
             'categories' => Category::all(),
-            'posts' => Post::sortable()->paginate(10),
+            'posts' => Post::paginate(10),
+            'sorted' => [
+                'most-view' => false,
+                'most-comment' => false,
+                'most-like' => false,
+            ],
+        ]);
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return Renderable
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function indexSorted(Request $request)
+    {
+        Validator::make($request->all(), [
+            'sort' => ['required', Rule::in(['most-view', 'most-comment', 'most-like'])],
+            'order' => ['required', 'in:asc,desc'],
+        ])->validate();
+
+        $posts = match ($request->input('sort')) {
+            'most-view' => Post::orderByViews($request->input('order'))->paginate(10),
+            'most-comment' => Post::orderByComments($request->input('order'))->paginate(10),
+            'most-like' => Post::orderByLikes($request->input('order'))->paginate(10),
+            default => Post::paginate(10),
+        };
+
+        return view('contents.home', [
+            'departments' => Department::all(),
+            'categories' => Category::all(),
+            'posts' => $posts,
+            'sorted' => [
+                'most-view' => $request->input('sort') === 'most-view',
+                'most-comment' => $request->input('sort') === 'most-comment',
+                'most-like' => $request->input('sort') === 'most-like',
+            ],
         ]);
     }
 

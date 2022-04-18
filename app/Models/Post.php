@@ -4,7 +4,8 @@ namespace App\Models;
 
 use App\Contracts\Dislikeable;
 use App\Contracts\Likeable;
-use App\Traits\HasDislike;
+use App\Traits\HasComments;
+use App\Traits\HasDislikes;
 use App\Traits\HasLikes;
 use Carbon\Carbon;
 use Cviebrock\EloquentSluggable\Sluggable;
@@ -18,11 +19,10 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use JetBrains\PhpStorm\ArrayShape;
-use Kyslik\ColumnSortable\Sortable;
 use Spatie\Image\Exceptions\InvalidManipulation;
 use Spatie\MediaLibrary\HasMedia;
-use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class Post extends Model implements Viewable, HasMedia, Likeable, Dislikeable
 {
@@ -32,22 +32,16 @@ class Post extends Model implements Viewable, HasMedia, Likeable, Dislikeable
     use Sluggable;
     use SluggableScopeHelpers;
     use HasLikes;
-    use HasDislike;
-    use Sortable;
+    use HasDislikes;
+    use HasComments;
+
+    protected $removeViewsOnDelete = true;
 
     protected $fillable = [
         'name',
         'short_description',
         'contents',
         'slug',
-    ];
-
-    public $sortable = [
-        'id',
-        'name',
-        'email',
-        'created_at',
-        'updated_at'
     ];
 
     /**

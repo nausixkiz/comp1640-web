@@ -21,6 +21,7 @@ Auth::routes([
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::post('/', [App\Http\Controllers\HomeController::class, 'indexSorted'])->name('home.sorted');
 
     Route::group(['role:Staff'], function (){
         Route::resource('ideas', App\Http\Controllers\IdeaController::class)->except(['show', 'destroy']);
