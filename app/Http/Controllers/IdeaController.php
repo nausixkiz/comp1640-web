@@ -78,22 +78,18 @@ class IdeaController extends Controller
      * Store a newly a comment resource in storage.
      *
      * @param Request $request
+     * @param string $slug
      * @return RedirectResponse
      * @throws ValidationException
      */
-    public function storeComment(Request $request)
+    public function storeComment(Request $request, string $slug)
     {
-        if(!Auth::user()->hasRole('Staff')){
-            abort(403);
-        }
-
         Validator::make($request->all(), [
             'contents' => ['required', 'string', 'max:255'],
-            'post-slug' => ['required', 'string', 'max:255', 'exists:posts,slug'],
             'g-recaptcha-response' => ['required', 'captcha'],
         ])->validate();
 
-        $post = Post::findBySlugOrFail($request->input('post-slug'));
+        $post = Post::findBySlugOrFail($slug);
 
         if($post->hasExpired()) {
             Session::flash('flash_error_message', 'Post has expired');
