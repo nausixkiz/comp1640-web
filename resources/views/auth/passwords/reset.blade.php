@@ -42,7 +42,8 @@
                                                 @enderror
                                             </div>
                                             <div class="mt-4">
-                                                <label for="password-confirm" class="form-label">{{ __('Confirm Password') }}</label>
+                                                <label for="password-confirm"
+                                                       class="form-label">{{ __('Confirm Password') }}</label>
                                                 <input id="password-confirm" type="password"
                                                        class="form-control @error('password_confirmation') is-invalid @enderror"
                                                        name="password_confirmation" required

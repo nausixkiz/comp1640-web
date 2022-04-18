@@ -154,7 +154,8 @@
                             <form action="{{ route('ideas.store-comment', $post->slug) }}" method="POST">
                                 @csrf
                                 <div class="mb-3">
-                                    <textarea class="form-control @error('contents') is-invalid @enderror" name="contents"
+                                    <textarea class="form-control @error('contents') is-invalid @enderror"
+                                              name="contents"
                                               rows="3" placeholder="Leave an comment for this post..."></textarea>
                                     @error('contents')
                                     <span class="invalid-feedback" role="alert">

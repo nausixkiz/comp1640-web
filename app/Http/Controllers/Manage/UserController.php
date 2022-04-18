@@ -55,7 +55,7 @@ class UserController extends Controller
     {
         Validator::make($request->all(), [
             'name' => ['required', 'string', 'min:6', 'max:50'],
-            'email' => ['required', 'string', 'email', 'min:6', 'max:255'],
+            'email' => ['required', 'string', 'email', 'min:6', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'max:255', 'confirmed'],
             'phone' => ['required', 'string', 'min:6', 'max:255', 'unique:users,phone'],
             'role' => ['required', 'string', Rule::in(Role::all()->pluck('name'))],
@@ -116,7 +116,7 @@ class UserController extends Controller
 
         Validator::make($request->all(), [
             'name' => ['required', 'string', 'min:6', 'max:50'],
-            'email' => ['required', 'string', 'email', 'min:6', 'max:255'],
+            'email' => ['required', 'string', 'email', 'min:6', 'max:255', 'unique:users,id,' . $user->id],
             'password' => ['nullable', 'string', 'min:8', 'max:255', 'confirmed'],
             'phone' => ['required', 'string', 'min:6', 'max:255', 'unique:users,phone,' . $user->id],
             'role' => ['required', 'string', Rule::in(Role::all()->pluck('name'))],

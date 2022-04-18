@@ -10,7 +10,9 @@
                             <div class="">
                                 <div class="text-center">
                                     <a href="{{ route('home') }}" class="">
-                                        <img src="{{ asset('images/logo.jpg') }}" alt="{{ \Illuminate\Support\Facades\Config::get('app.name') }}" height="24" class="auth-logo logo-dark mx-auto">
+                                        <img src="{{ asset('images/logo.jpg') }}"
+                                             alt="{{ \Illuminate\Support\Facades\Config::get('app.name') }}" height="24"
+                                             class="auth-logo logo-dark mx-auto">
                                     </a>
                                 </div>
                                 <h4 class="font-size-18 text-muted mt-2 text-center">Welcome Back !</h4>
@@ -39,7 +41,7 @@
                                                        class="form-control @error('password') is-invalid @enderror"
                                                        name="password" required autocomplete="current-password">
                                                 @error('password')
-                                                    <span class="invalid-feedback" role="alert">
+                                                <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
                                                 @enderror

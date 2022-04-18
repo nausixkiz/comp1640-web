@@ -13,12 +13,7 @@
                         <div class="flex-grow-1 overflow-hidden">
                             <p class="mb-1">Users</p>
                             <h5 class="mb-3">{{ $user_data['total_users_in_month'] }}</h5>
-
-                            <p class="text-truncate mb-0">
-                                <span class="text-success me-2"> {{ ceil($user_data['total_users_in_month'] / $user_data['total_users_in_previous_month'] * 100) }}%
-                                    <i class="ri-arrow-right-up-line align-bottom ms-1"></i>
-                                </span> From previous month
-                            </p>
+                            <p class="text-truncate mb-0"> Within this month</p>
                         </div>
                     </div>
                 </div>
@@ -36,32 +31,9 @@
                             <div id="view-chart" class="apex-charts" dir="ltr"></div>
                         </div>
                         <div class="flex-grow-1 overflow-hidden">
-                            <p class="mb-1">Views per months</p>
+                            <p class="mb-1">Views</p>
                             <h5 class="mb-3">{{ $view_idea_data['total_views_in_month'] }}</h5>
-                            <p class="text-truncate mb-0"><span class="text-success me-2"> 1.7%
-                                    <i class="ri-arrow-right-up-line align-bottom ms-1"></i></span> From previous</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- end card-body -->
-            </div>
-            <!-- end card -->
-        </div>
-        <!-- end col -->
-
-        <div class="col-xl-3 col-sm-6">
-            <div class="card">
-                <div class="card-body">
-                    <div class="d-flex text-muted">
-                        <div class="flex-shrink-0 me-3 align-self-center">
-                            <div id="radialchart-3" class="apex-charts" dir="ltr"></div>
-                        </div>
-                        <div class="flex-grow-1 overflow-hidden">
-                            <p class="mb-1">Returning Visitor</p>
-                            <h5 class="mb-3">24.03 %</h5>
-                            <p class="text-truncate mb-0"><span class="text-danger me-2"> 0.01% <i
-                                        class="ri-arrow-right-down-line align-bottom ms-1"></i></span> From
-                                previous</p>
+                            <p class="text-truncate mb-0"> Within this month</p>
                         </div>
                     </div>
                 </div>
@@ -78,16 +50,38 @@
                         <div class="flex-shrink-0  me-3 align-self-center">
                             <div class="avatar-sm">
                                 <div class="avatar-title bg-light rounded-circle text-primary font-size-20">
-                                    <i class="ri-group-line"></i>
+                                    {!!  $visitor_data['returning_visitors']['type_icon'] !!}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex-grow-1 overflow-hidden">
+                            <p class="mb-1">Returning Visitors</p>
+                            <h5 class="mb-3">{{ $visitor_data['returning_visitors']['sessions'] }}</h5>
+                            <p class="text-truncate mb-0"> Within this month</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- end card-body -->
+            </div>
+            <!-- end card -->
+        </div>
+        <!-- end col -->
+
+        <div class="col-xl-3 col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex text-muted">
+                        <div class="flex-shrink-0  me-3 align-self-center">
+                            <div class="avatar-sm">
+                                <div class="avatar-title bg-light rounded-circle text-primary font-size-20">
+                                    {!!  $visitor_data['new_visitors']['type_icon'] !!}
                                 </div>
                             </div>
                         </div>
                         <div class="flex-grow-1 overflow-hidden">
                             <p class="mb-1">New Visitors</p>
-                            <h5 class="mb-3">435</h5>
-                            <p class="text-truncate mb-0"><span class="text-success me-2"> 0.01% <i
-                                        class="ri-arrow-right-up-line align-bottom ms-1"></i></span> From
-                                previous</p>
+                            <h3 class="mb-3">{{ $visitor_data['new_visitors']['sessions'] }}</h3>
+                            <p class="text-truncate mb-0"> Within this month</p>
                         </div>
                     </div>
                 </div>
@@ -128,48 +122,9 @@
                         <div id="mixed-chart" class="apex-charts" dir="ltr"></div>
                     </div>
                 </div>
-                <!-- end card-body -->
 
-                <div class="card-body border-top">
-                    <div class="text-muted text-center">
-                        <div class="row">
-                            <div class="col-4 border-end">
-                                <div>
-                                    <p class="mb-2">
-                                        <i class="mdi mdi-circle font-size-12 text-primary me-1"></i> Expenses
-                                    </p>
-                                    <h5 class="font-size-16 mb-0">$ 8,524 <span
-                                            class="text-success font-size-12">
-                                                    <i class="mdi mdi-menu-up font-size-14 me-1"></i>1.2 %</span>
-                                    </h5>
-                                </div>
-                            </div>
-                            <div class="col-4 border-end">
-                                <div>
-                                    <p class="mb-2"><i class="mdi mdi-circle font-size-12 text-light me-1"></i>
-                                        Maintenance</p>
-                                    <h5 class="font-size-16 mb-0">$ 8,524 <span
-                                            class="text-success font-size-12"><i
-                                                class="mdi mdi-menu-up font-size-14 me-1"></i>2.0 %</span></h5>
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <div>
-                                    <p class="mb-2"><i class="mdi mdi-circle font-size-12 text-danger me-1"></i>
-                                        Profit</p>
-                                    <h5 class="font-size-16 mb-0">$ 8,524 <span
-                                            class="text-success font-size-12"><i
-                                                class="mdi mdi-menu-up font-size-14 me-1"></i>0.4 %</span></h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- end card-body -->
             </div>
-            <!-- end card -->
         </div>
-        <!-- end col -->
 
         <div class="col-xl-4">
             <div class="card">
@@ -181,7 +136,7 @@
                     </div>
 
                     <div>
-                        <div id="radialBar-chart" class="apex-charts" dir="ltr"></div>
+                        <div id="top-browsers-chart" class="apex-charts" dir="ltr"></div>
                     </div>
 
                     <div class="row">
@@ -211,219 +166,28 @@
         <div class="col-xl-4">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Order Stats</h5>
-                    <div>
-                        <ul class="list-unstyled">
-                            <li class="py-3">
-                                <div class="d-flex">
-                                    <div class="avatar-xs align-self-center me-3">
-                                        <div
-                                            class="avatar-title rounded-circle bg-light text-primary font-size-18">
-                                            <i class="ri-checkbox-circle-line"></i>
-                                        </div>
-                                    </div>
-                                    <div class="flex-grow-1">
-                                        <p class="text-muted mb-2">Completed</p>
-                                        <div class="progress progress-sm animated-progess">
-                                            <div class="progress-bar bg-success" role="progressbar"
-                                                 style="width: 70%" aria-valuenow="70" aria-valuemin="0"
-                                                 aria-valuemax="100"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="py-3">
-                                <div class="d-flex">
-                                    <div class="avatar-xs align-self-center me-3">
-                                        <div
-                                            class="avatar-title rounded-circle bg-light text-primary font-size-18">
-                                            <i class="ri-calendar-2-line"></i>
-                                        </div>
-                                    </div>
-                                    <div class="flex-grow-1">
-                                        <p class="text-muted mb-2">Pending</p>
-                                        <div class="progress progress-sm animated-progess">
-                                            <div class="progress-bar bg-warning" role="progressbar"
-                                                 style="width: 45%" aria-valuenow="45" aria-valuemin="0"
-                                                 aria-valuemax="100"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="py-3">
-                                <div class="d-flex">
-                                    <div class="avatar-xs align-self-center me-3">
-                                        <div
-                                            class="avatar-title rounded-circle bg-light text-primary font-size-18">
-                                            <i class="ri-close-circle-line"></i>
-                                        </div>
-                                    </div>
-                                    <div class="flex-grow-1">
-                                        <p class="text-muted mb-2">Cancel</p>
-                                        <div class="progress progress-sm animated-progess">
-                                            <div class="progress-bar bg-danger" role="progressbar"
-                                                 style="width: 19%" aria-valuenow="19" aria-valuemin="0"
-                                                 aria-valuemax="100"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
+                    <h4 class="card-title mb-4">User & Categories Chart</h4>
 
-                    <hr>
-
-                    <div class="text-center">
-                        <div class="row">
-                            <div class="col-4">
-                                <div class="mt-2">
-                                    <p class="text-muted mb-2">Completed</p>
-                                    <h5 class="font-size-16 mb-0">70</h5>
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="mt-2">
-                                    <p class="text-muted mb-2">Pending</p>
-                                    <h5 class="font-size-16 mb-0">45</h5>
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="mt-2">
-                                    <p class="text-muted mb-2">Cancel</p>
-                                    <h5 class="font-size-16 mb-0">19</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <div id="user_and_category_chart" class="apex-charts" dir="ltr"></div>
                 </div>
-                <!-- end card-body -->
             </div>
-            <!-- end card -->
+
         </div>
-        <!-- end col -->
 
         <div class="col-lg-4">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Notifications</h4>
+                    <h4 class="card-title mb-4">Ideas & Categories Chart</h4>
 
-                    <div class="pe-3" data-simplebar style="max-height: 287px;">
-                        <a href="#" class="text-body d-block">
-                            <div class="d-flex py-3">
-                                <div class="flex-shrink-0 me-3 align-self-center">
-                                    <img class="rounded-circle avatar-xs" alt=""
-                                         src="assets/images/users/avatar-2.jpg">
-                                </div>
-
-                                <div class="flex-grow-1 overflow-hidden">
-                                    <h5 class="font-size-14 mb-1">Scott Elliott</h5>
-                                    <p class="text-truncate mb-0">
-                                        If several languages coalesce
-                                    </p>
-                                </div>
-                                <div class="flex-shrink-0 font-size-13">
-                                    20 min ago
-                                </div>
-                            </div>
-                        </a>
-                        <a href="#" class="text-body d-block">
-                            <div class="d-flex py-3">
-                                <div class="flex-shrink-0 me-3 align-self-center">
-                                    <div class="avatar-xs">
-                                                            <span
-                                                                class="avatar-title bg-soft-primary rounded-circle text-primary">
-                                                                <i class="mdi mdi-account-supervisor"></i>
-                                                            </span>
-                                    </div>
-                                </div>
-                                <div class="flex-grow-1 overflow-hidden">
-                                    <h5 class="font-size-14 mb-1">Team A</h5>
-                                    <p class="text-truncate mb-0">
-                                        Team A Meeting 9:15 AM
-                                    </p>
-                                </div>
-                                <div class="flex-shrink-0 font-size-13">
-                                    9:00 am
-                                </div>
-                            </div>
-                        </a>
-                        <a href="#" class="text-body d-block">
-                            <div class="d-flex py-3">
-                                <div class="flex-shrink-0 me-3 align-self-center">
-                                    <img class="rounded-circle avatar-xs" alt=""
-                                         src="assets/images/users/avatar-3.jpg">
-                                </div>
-                                <div class="flex-grow-1 overflow-hidden">
-                                    <h5 class="font-size-14 mb-1">Frank Martin</h5>
-                                    <p class="text-truncate mb-0">
-                                        Neque porro quisquam est
-                                    </p>
-                                </div>
-                                <div class="flex-shrink-0 font-size-13">
-                                    8:54 am
-                                </div>
-                            </div>
-                        </a>
-                        <a href="#" class="text-body d-block">
-                            <div class="d-flex py-3">
-                                <div class="flex-shrink-0 me-3 align-self-center">
-                                    <div class="avatar-xs">
-                                                            <span
-                                                                class="avatar-title bg-soft-primary rounded-circle text-primary">
-                                                                <i class="mdi mdi-email-outline"></i>
-                                                            </span>
-                                    </div>
-                                </div>
-                                <div class="flex-grow-1 overflow-hidden">
-                                    <h5 class="font-size-14 mb-1">Updates</h5>
-                                    <p class="text-truncate mb-0">
-                                        It will be as simple as fact
-                                    </p>
-                                </div>
-                                <div class="flex-shrink-0 font-size-13">
-                                    27-03-2020
-                                </div>
-                            </div>
-                        </a>
-
-                        <a href="#" class="text-body d-block">
-                            <div class="d-flex py-3">
-                                <div class="flex-shrink-0 me-3 align-self-center">
-                                    <img class="rounded-circle avatar-xs" alt=""
-                                         src="assets/images/users/avatar-4.jpg">
-                                </div>
-                                <div class="flex-grow-1 overflow-hidden">
-                                    <h5 class="font-size-14 mb-1">Terry Garrick</h5>
-                                    <p class="text-truncate mb-0">
-                                        At vero eos et accusamus et
-                                    </p>
-                                </div>
-                                <div class="flex-shrink-0 font-size-13">
-                                    27-03-2020
-                                </div>
-                            </div>
-                        </a>
-
-                    </div>
+                    <div id="idea_and_category_chart" class="apex-charts" dir="ltr"></div>
                 </div>
-                <!-- end card-body -->
             </div>
-            <!-- end card -->
         </div>
-        <!-- end col -->
 
         <div class="col-lg-4">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title mb-3">Revenue by Location</h5>
-
-                    <div>
-                        <div id="usa" style="height: 226px"></div>
-                    </div>
-
-                    <div class="text-center mt-4">
-                        <a href="#" class="btn btn-primary btn-sm">View More</a>
-                    </div>
+                    <div id="chart" class="apex-charts" dir="ltr"></div>
                 </div>
                 <!-- end card-body -->
             </div>
@@ -442,12 +206,6 @@
                         <table class="table table-centered table-nowrap mb-0">
                             <thead>
                             <tr>
-                                <th scope="col" style="width: 50px;">
-                                    <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" id="customCheckall">
-                                        <label class="form-check-label" for="customCheckall"></label>
-                                    </div>
-                                </th>
                                 <th scope="col">Name</th>
                                 <th scope="col">View</th>
                                 <th scope="col">Unique View</th>
@@ -456,21 +214,15 @@
                             </tr>
                             </thead>
                             <tbody>
-                                @foreach($top_ideas as $idea)
-                                    <tr>
-                                        <td>
-                                            <div class="form-check">
-                                                <input type="checkbox" class="form-check-input" id="customCheck1">
-                                                <label class="form-check-label" for="customCheck1"></label>
-                                            </div>
-                                        </td>
-                                        <td>{{ $idea->name }}</td>
-                                        <td>{{ views($idea)->count() }}</td>
-                                        <td>{{ views($idea)->unique()->count() }}</td>
-                                        <td>{{ $idea->created_at->diffforHumans() }}</td>
-                                        <td>{{ $idea->created_at->diffforHumans() }}</td>
-                                    </tr>
-                                @endforeach
+                            @foreach($top_ideas as $idea)
+                                <tr>
+                                    <td>{{ $idea->name }}</td>
+                                    <td>{{ views($idea)->count() }}</td>
+                                    <td>{{ views($idea)->unique()->count() }}</td>
+                                    <td>{{ $idea->created_at->diffforHumans() }}</td>
+                                    <td>{{ $idea->created_at->diffforHumans() }}</td>
+                                </tr>
+                            @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -498,7 +250,7 @@
             dataLabels: {
                 enabled: false
             },
-            colors: ['#0ab39c'],
+            colors: ['#1c1cf0'],
             stroke: {
                 lineCap: 'round'
             },
@@ -537,7 +289,7 @@
             dataLabels: {
                 enabled: false
             },
-            colors: ['#0ab39c'],
+            colors: ['#1c1cf0'],
             stroke: {
                 lineCap: 'round'
             },
@@ -545,7 +297,7 @@
                 radialBar: {
                     hollow: {
                         margin: 0,
-                            size: '80%'
+                        size: '80%'
                     },
                     track: {
                         margin: 0,
@@ -562,6 +314,186 @@
                     }
                 }
             }
+        }).render();
+        new ApexCharts(document.querySelector("#user_and_category_chart"), {
+            chart: {
+                height: 370,
+                type: 'radialBar',
+            },
+            plotOptions: {
+                radialBar: {
+                    dataLabels: {
+                        name: {
+                            fontSize: '22px',
+                        },
+                        value: {
+                            fontSize: '16px',
+                        },
+                        total: {
+                            show: true,
+                            label: 'Total',
+                            formatter: function (w) {
+                                // By default this function returns the average of all series. The below is just an example to show the use of custom formatter function
+                                return {{ \App\Models\User::count() }}
+                            }
+                        }
+                    }
+                }
+            },
+            series: [{{ $user_and_category_data[0][1] }}, {{ $user_and_category_data[1][1] }}, {{ $user_and_category_data[2][1] }}, {{ $user_and_category_data[3][1] }}, {{ $user_and_category_data[4][1] }}],
+            labels: ['{{ $user_and_category_data[0][0] }}', '{{ $user_and_category_data[1][0] }}', '{{ $user_and_category_data[2][0] }}', '{{ $user_and_category_data[3][0] }}', '{{ $user_and_category_data[4][0] }}'],
+            colors: ['#3d8ef8', '#11c46e', '#f1b44c', '#fb4d53', '#6dc02f'],
+
+        }).render();
+        new ApexCharts(document.querySelector("#idea_and_category_chart"), {
+            chart: {
+                height: 370,
+                type: 'radialBar',
+            },
+            plotOptions: {
+                radialBar: {
+                    dataLabels: {
+                        name: {
+                            fontSize: '22px',
+                        },
+                        value: {
+                            fontSize: '16px',
+                        },
+                        total: {
+                            show: true,
+                            label: 'Total',
+                            formatter: function (w) {
+                                return {{ \App\Models\Post::count() }}
+                            }
+                        }
+                    }
+                }
+            },
+            series: [{{ $idea_and_category_data[0][1] }}, {{ $idea_and_category_data[1][1] }}, {{ $idea_and_category_data[2][1] }}, {{ $idea_and_category_data[3][1] }}, {{ $idea_and_category_data[4][1] }}],
+            labels: ['{{ $idea_and_category_data[0][0] }}', '{{ $idea_and_category_data[1][0] }}', '{{ $idea_and_category_data[2][0] }}', '{{ $idea_and_category_data[3][0] }}', '{{ $idea_and_category_data[4][0] }}'],
+            colors: ['#3d8ef8', '#11c46e', '#f1b44c', '#fb4d53', '#f099f4'],
+
+        }).render();
+        new ApexCharts(document.querySelector("#top-browsers-chart"), {
+            chart: {
+                height: 370,
+                type: 'radialBar',
+            },
+            plotOptions: {
+                radialBar: {
+                    dataLabels: {
+                        name: {
+                            fontSize: '22px',
+                        },
+                        value: {
+                            fontSize: '16px',
+                        },
+                        total: {
+                            show: true,
+                            label: 'Total',
+                            formatter: function (w) {
+                                return {{ $total_visitors }}
+                            }
+                        }
+                    }
+                }
+            },
+            series: [{{ $idea_and_category_data[2][1] }}, {{ $idea_and_category_data[3][1] }}, {{ $idea_and_category_data[4][1] }}],
+            labels: ['{{ $idea_and_category_data[2][0] }}', '{{ $idea_and_category_data[3][0] }}', '{{ $idea_and_category_data[4][0] }}'],
+            colors: ['#da67de', '#af7326', '#175c3c'],
+
+        }).render();
+        new ApexCharts(document.querySelector("#chart"), {
+            series: [{
+                name: 'Series 1',
+                data: [80, 50, 30, 40, 100, 20],
+            }, {
+                name: 'Series 2',
+                data: [20, 30, 40, 80, 20, 80],
+            }, {
+                name: 'Series 3',
+                data: [44, 76, 78, 13, 43, 10],
+            }],
+            chart: {
+                height: 350,
+                type: 'radar',
+                dropShadow: {
+                    enabled: true,
+                    blur: 1,
+                    left: 1,
+                    top: 1
+                }
+            },
+            title: {
+                text: 'Radar Chart - Multi Series'
+            },
+            stroke: {
+                width: 2
+            },
+            fill: {
+                opacity: 0.1
+            },
+            markers: {
+                size: 0
+            },
+            xaxis: {
+                categories: ['2011', '2012', '2013', '2014', '2015', '2016']
+            }
+        }).render();
+        new ApexCharts(document.querySelector("#mixed-chart"), {
+            series: [{
+                name: 'Expenses',
+                type: 'column',
+                data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30, 18]
+            }, {
+                name: 'Maintenance',
+                type: 'area',
+                data: [44, 55, 41, 42, 22, 43, 21, 41, 56, 27, 43, 27]
+            }, {
+                name: 'Profit',
+                type: 'line',
+                data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39, 51]
+            }],
+            chart: {
+                height: 350,
+                type: 'line',
+                stacked: false,
+                toolbar: {
+                    show: false
+                },
+            },
+            stroke: {
+                width: [0, 1, 1],
+                dashArray: [0, 0, 5],
+                curve: 'smooth'
+            },
+            plotOptions: {
+                bar: {
+                    columnWidth: '18%'
+                }
+            },
+
+            legend: {
+                show: false,
+            },
+
+            fill: {
+                opacity: [0.85, 0.25, 1],
+                gradient: {
+                    inverseColors: false,
+                    shade: 'light',
+                    type: "vertical",
+                    opacityFrom: 0.85,
+                    opacityTo: 0.55,
+                    stops: [0, 100, 100, 100]
+                }
+            },
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            markers: {
+                size: 0
+            },
+            colors: ['#0bb197', '#eff2f7', '#ff3d60', '#489279', '#d072a7'],
+
         }).render();
     </script>
 @endpush

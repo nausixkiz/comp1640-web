@@ -2,24 +2,28 @@
 
 namespace App\Http\Controllers;
 
-use Analytics;
+use App\Models\Category;
 use App\Models\Post;
 use App\Models\User;
 use Carbon\Carbon;
 use CyrildeWit\EloquentViewable\Support\Period as CyrildeWitPeriod;
 use Spatie\Analytics\Period;
+use Analytics;
 
 class DashboardController extends Controller
 {
     public function index()
     {
-
+;
         return view('contents.dashboard', [
             'user_data' => self::getUserDataAnalytics(),
             'view_idea_data' => self::getViewIdeaDataAnalytics(),
             'top_browsers' => self::getTopBrowsersDataAnalytics(),
             'top_ideas' => Post::orderByViews()->take(5)->get(),
             'visitor_data' => self::getVisitorDataAnalytics(),
+            'total_visitors' => \Analytics::performQuery(Period::months(1), 'ga:sessions')->rows[0][0],
+            'user_and_category_data' => self::getUserAndCategoryDataAnalytics(),
+            'idea_and_category_data' => self::getIdeaAndCategoryDataAnalytics(),
         ]);
     }
 
@@ -45,7 +49,7 @@ class DashboardController extends Controller
     protected function getTopBrowsersDataAnalytics()
     {
         $response = [];
-        $data = Analytics::fetchTopBrowsers(Period::months(1))->take(3);
+        $data = Analytics::fetchTopBrowsers(Period::months(1));
 
         foreach ($data as $item) {
             switch ($item['browser']) {
@@ -65,7 +69,7 @@ class DashboardController extends Controller
                     $item['browser_icon'] = '<i class="ri ri-safari-fill"></i>';
                     break;
                 default:
-                    $item['browser_icon'] = '<i class="ri ri-gradienter-line"></i>';
+                    $item['browser_icon'] = '<i class="ri ri-gradienter-fill"></i>';
                     break;
             }
             $response[] = $item;
@@ -75,6 +79,56 @@ class DashboardController extends Controller
 
     protected function getVisitorDataAnalytics()
     {
-        return Analytics::fetchUserTypes(Period::months(1));
+        $response = [];
+
+        $data = Analytics::fetchUserTypes(Period::months(1));
+        foreach ($data as $item) {
+            if ($item['type'] == 'Returning Visitor') {
+                $item['type_icon'] = '<i class="ri ri-user-received-fill"></i>';
+                $response['returning_visitors'] = $item;
+            }
+
+            if ($item['type'] == 'New Visitor') {
+                $item['type_icon'] = '<i class="ri ri-user-add-fill"></i>';
+                $response['new_visitors'] = $item;
+            }
+        }
+
+        return $response;
+    }
+
+    protected function getUserAndCategoryDataAnalytics()
+    {
+        $users_count = User::count();
+
+        $response = [];
+
+        foreach (Category::all() as $category) {
+            $response[] = [
+                $category->name,
+                ceil($category->posts()->leftJoin('users', 'posts.user_id', '=', 'users.id')
+                        ->distinct('users')
+                        ->select('users.name as user_name')
+                        ->groupBy('user_name')
+                        ->get()->count() / $users_count * 100),
+            ];
+        }
+
+        return $response;
+    }
+
+    protected function getIdeaAndCategoryDataAnalytics()
+    {
+        $ideas_count = Post::count();
+        $response = [];
+
+        foreach (Category::all() as $category) {
+            $response[] = [
+                $category->name,
+                ceil($category->posts()->get()->count() / $ideas_count * 100),
+            ];
+        }
+
+        return $response;
     }
 }
