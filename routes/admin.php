@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['role:Super Administrator'], function () {
+Route::middleware(['role:Super Administrator'])->group(function () {
     Route::resource('users', UserController::class)->except(['show']);
     Route::resource('departments', DepartmentController::class)->except(['create', 'show']);
     Route::resource('posts', PostController::class)->only(['index', 'destroy']);

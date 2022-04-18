@@ -23,7 +23,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::post('/', [App\Http\Controllers\HomeController::class, 'indexSorted'])->name('home.sorted');
 
-    Route::group(['role:Staff'], function (){
+    Route::middleware(['role:Staff'])->group(function () {
         Route::resource('ideas', App\Http\Controllers\IdeaController::class)->except(['show', 'destroy']);
 
         Route::prefix('ideas')->group(function (){
@@ -39,7 +39,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('ideas/{idea}', [App\Http\Controllers\HomeController::class, 'showIdea'])->name('ideas.show');
 
-    Route::group(['role:Quality Assurance Manager'], function (){
+    Route::middleware(['role:Quality Assurance Manager'])->group(function () {
         Route::get('dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
         Route::resource('categories', App\Http\Controllers\CategoryController::class)->except(['show']);
         Route::get('categories/export-csv', [App\Http\Controllers\CategoryController::class, 'exportCSV'])->name('categories.export.csv');
