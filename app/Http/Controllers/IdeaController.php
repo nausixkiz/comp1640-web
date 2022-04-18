@@ -54,12 +54,18 @@ class IdeaController extends Controller
             'documents.*' => ['required', 'file', 'mimes:pdf,doc,docx,xls,xlsx,ppt,pptx,zip,rar,txt,jpg,jpeg,png,bmp'],
             'terms' => ['accepted', 'required'],
         ])->validate();
+        $category = Category::findBySlugOrFail($request->input('category'));
+
+        if($category->hasExpired()) {
+            Session::flash('flash_error_message', 'This category has expired');
+            return redirect()->back();
+        }
 
         $post = new Post();
         $post->name = $request->input('name');
         $post->short_description = $request->input('short-description');
         $post->contents = $request->input('contents');
-        $post->category()->associate(Category::findBySlugOrFail($request->input('category')));
+        $post->category()->associate();
         $post->user()->associate(Auth::user());
         $post->save();
         $post->addMediaFromRequest('thumbnail')
