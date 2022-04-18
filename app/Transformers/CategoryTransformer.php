@@ -4,7 +4,6 @@ namespace App\Transformers;
 
 
 use App\Models\Category;
-use JetBrains\PhpStorm\ArrayShape;
 use League\Fractal\TransformerAbstract;
 
 class CategoryTransformer extends TransformerAbstract

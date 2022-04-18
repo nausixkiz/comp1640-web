@@ -8,25 +8,18 @@ use App\Actions\Category\ExportCategoryToCSVAction;
 use App\Actions\Category\ExportCategoryToZipAction;
 use App\Models\Category;
 use LaravelViews\Actions\RedirectAction;
+use LaravelViews\Facades\Header;
 use LaravelViews\Facades\UI;
 use LaravelViews\Views\TableView;
-use LaravelViews\Facades\Header;
 
 class CategoryTableView extends TableView
 {
+    public $searchBy = ['name', 'id'];
     /**
      * Sets a model class to get the initial data
      */
     protected $model = Category::class;
-
-    public $searchBy = ['name', 'id'];
-
     protected $paginate = 10;
-
-    protected function repository()
-    {
-        return Category::query();
-    }
 
     /**
      * Sets the headers of the table as you want to be displayed
@@ -52,6 +45,11 @@ class CategoryTableView extends TableView
             $model->created_at->diffforHumans(),
             $model->updated_at->diffforHumans()
         ];
+    }
+
+    protected function repository()
+    {
+        return Category::query();
     }
 
     /** For actions by item */

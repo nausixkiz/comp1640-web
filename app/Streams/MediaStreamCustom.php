@@ -16,16 +16,16 @@ class MediaStreamCustom implements Responsable
 
     protected ArchiveOptions $zipOptions;
 
-    public static function create(string $zipName): self
-    {
-        return new self($zipName);
-    }
-
     public function __construct(protected string $zipName)
     {
         $this->mediaItems = collect();
 
         $this->zipOptions = new ArchiveOptions();
+    }
+
+    public static function create(string $zipName): self
+    {
+        return new self($zipName);
     }
 
     public function useZipOptions(callable $zipOptionsCallable): self
@@ -53,7 +53,7 @@ class MediaStreamCustom implements Responsable
 
                 return $item;
             })
-            ->each(fn (Media $media) => $this->mediaItems->push($media));
+            ->each(fn(Media $media) => $this->mediaItems->push($media));
 
         return $this;
     }
@@ -74,7 +74,7 @@ class MediaStreamCustom implements Responsable
                         return $carry;
                     }, []);
                 }
-                return $item->reduce(function (array $carry, MediaCollection $mediaCollection){
+                return $item->reduce(function (array $carry, MediaCollection $mediaCollection) {
                     $carry[] = $mediaCollection->reduce(function (array $carryChild, Media $media) {
                         $carryChild[] = $media;
 
@@ -84,7 +84,7 @@ class MediaStreamCustom implements Responsable
                     return $carry;
                 }, []);
             })->each(function (array $array) {
-                foreach ($array as $media){
+                foreach ($array as $media) {
                     $this->mediaItems->push($media);
                 }
             });
@@ -104,7 +104,7 @@ class MediaStreamCustom implements Responsable
             'Content-Type' => 'application/octet-stream',
         ];
 
-        return new StreamedResponse(fn () => $this->getZipStream(), 200, $headers);
+        return new StreamedResponse(fn() => $this->getZipStream(), 200, $headers);
     }
 
     public function getZipStream(): ZipStream
@@ -128,10 +128,15 @@ class MediaStreamCustom implements Responsable
 
     protected function getZipStreamContents(): Collection
     {
-        return $this->mediaItems->map(fn (Media $media, $mediaItemIndex) => [
-            'fileNameInZip' => $this->getZipFileNamePrefix($this->mediaItems, $mediaItemIndex).$this->getFileNameWithSuffix($this->mediaItems, $mediaItemIndex),
+        return $this->mediaItems->map(fn(Media $media, $mediaItemIndex) => [
+            'fileNameInZip' => $this->getZipFileNamePrefix($this->mediaItems, $mediaItemIndex) . $this->getFileNameWithSuffix($this->mediaItems, $mediaItemIndex),
             'media' => $media,
         ]);
+    }
+
+    protected function getZipFileNamePrefix(Collection $mediaItems, int $currentIndex): string
+    {
+        return $mediaItems[$currentIndex]->hasCustomProperty('zip_filename_prefix') ? $mediaItems[$currentIndex]->getCustomProperty('zip_filename_prefix') : '';
     }
 
     protected function getFileNameWithSuffix(Collection $mediaItems, int $currentIndex): string
@@ -145,7 +150,7 @@ class MediaStreamCustom implements Responsable
                 break;
             }
 
-            if ($this->getZipFileNamePrefix($mediaItems, $index).$media->file_name === $this->getZipFileNamePrefix($mediaItems, $currentIndex).$fileName) {
+            if ($this->getZipFileNamePrefix($mediaItems, $index) . $media->file_name === $this->getZipFileNamePrefix($mediaItems, $currentIndex) . $fileName) {
                 $fileNameCount++;
             }
         }
@@ -158,10 +163,5 @@ class MediaStreamCustom implements Responsable
         $fileNameWithoutExtension = pathinfo($fileName, PATHINFO_FILENAME);
 
         return "{$fileNameWithoutExtension} ({$fileNameCount}).{$extension}";
-    }
-
-    protected function getZipFileNamePrefix(Collection $mediaItems, int $currentIndex): string
-    {
-        return $mediaItems[$currentIndex]->hasCustomProperty('zip_filename_prefix') ? $mediaItems[$currentIndex]->getCustomProperty('zip_filename_prefix') : '';
     }
 }

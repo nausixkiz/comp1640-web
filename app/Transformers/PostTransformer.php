@@ -4,7 +4,6 @@ namespace App\Transformers;
 
 
 use App\Models\Post;
-use App\Models\User;
 use Carbon\Carbon;
 use League\Fractal\TransformerAbstract;
 

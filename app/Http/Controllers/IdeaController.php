@@ -47,7 +47,7 @@ class IdeaController extends Controller
     {
         Validator::make($request->all(), [
             'name' => ['required', 'string', 'min:6', 'max:30'],
-            'short-description' => ['required','min:6', 'max:50'],
+            'short-description' => ['required', 'min:6', 'max:50'],
             'contents' => ['required', 'string', 'min:10', 'max:10000'],
             'category' => ['required', 'exists:categories,slug'],
             'thumbnail' => ['required', 'image', 'mimes:jpg,jpeg,png,bmp'],
@@ -56,7 +56,7 @@ class IdeaController extends Controller
         ])->validate();
         $category = Category::findBySlugOrFail($request->input('category'));
 
-        if($category->hasExpired()) {
+        if ($category->hasExpired()) {
             Session::flash('flash_error_message', 'This category has expired');
             return redirect()->back();
         }
@@ -97,7 +97,7 @@ class IdeaController extends Controller
 
         $post = Post::findBySlugOrFail($slug);
 
-        if($post->hasExpired()) {
+        if ($post->hasExpired()) {
             Session::flash('flash_error_message', 'Post has expired');
             return redirect()->back();
         }
@@ -141,7 +141,7 @@ class IdeaController extends Controller
     {
         Validator::make($request->all(), [
             'name' => ['required', 'string', 'min:6', 'max:30'],
-            'short-description' => ['required','min:6', 'max:50'],
+            'short-description' => ['required', 'min:6', 'max:50'],
             'contents' => ['required', 'string', 'min:10', 'max:10000'],
             'category' => ['required', 'exists:categories,slug'],
             'thumbnail' => ['image', 'mimes:jpg,jpeg,png,bmp'],
@@ -151,7 +151,7 @@ class IdeaController extends Controller
 
         $category = Category::findBySlugOrFail($request->input('category'));
 
-        if($category->hasExpired()) {
+        if ($category->hasExpired()) {
             Session::flash('flash_error_message', 'This category has expired');
             return redirect()->back();
         }

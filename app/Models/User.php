@@ -64,11 +64,6 @@ class User extends Authenticatable
         return $this->hasMany(Post::class);
     }
 
-    public function likes(): HasMany
-    {
-        return $this->hasMany(Like::class);
-    }
-
     public function like(Likeable $likeable): self
     {
         if ($this->hasLiked($likeable)) {
@@ -94,6 +89,11 @@ class User extends Authenticatable
             ->exists();
     }
 
+    public function likes(): HasMany
+    {
+        return $this->hasMany(Like::class);
+    }
+
     public function removeLike($likeable): self
     {
         if (!$this->hasLiked($likeable)) {
@@ -105,11 +105,6 @@ class User extends Authenticatable
             ->delete();
 
         return $this;
-    }
-
-    public function dislikes(): HasMany
-    {
-        return $this->hasMany(Dislike::class);
     }
 
     public function dislike(Dislikeable $dislikeable)
@@ -135,6 +130,11 @@ class User extends Authenticatable
         return $dislikeable->dislikes()
             ->whereHas('user', fn($q) => $q->whereId($this->id))
             ->exists();
+    }
+
+    public function dislikes(): HasMany
+    {
+        return $this->hasMany(Dislike::class);
     }
 
     public function removeDislike($dislikeable): self

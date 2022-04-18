@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
@@ -42,10 +43,10 @@ class LoginController extends Controller
     /**
      * Validate the user login request.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @return void
      *
-     * @throws \Illuminate\Validation\ValidationException
+     * @throws ValidationException
      */
     protected function validateLogin(Request $request)
     {

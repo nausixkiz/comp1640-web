@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use App\Contracts\Likeable;
 use App\Contracts\Dislikeable;
+use App\Contracts\Likeable;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;

@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Exports\CategoryExport;
 use App\Models\Category;
 use App\Models\Department;
-use App\Models\Post;
 use App\Streams\MediaStreamCustom;
 use Carbon\Carbon;
 use Exception;
@@ -21,7 +20,6 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
 use Maatwebsite\Excel\Facades\Excel;
-use Spatie\MediaLibrary\Support\MediaStream;
 use ZipStream\Option\Archive as ArchiveOptions;
 
 class CategoryController extends Controller
@@ -133,12 +131,12 @@ class CategoryController extends Controller
 
     public function exportCSV(Request $request)
     {
-        if(!$request->has('category')) {
+        if (!$request->has('category')) {
             return back()->with('flash_error_message', 'Bạn chưa có tuổi');
         }
 
         try {
-            return Excel::download(new CategoryExport(Crypt::decrypt($request->input('category'))), 'categories_' . Carbon::now()->toTimeString() .'.csv', \Maatwebsite\Excel\Excel::CSV, [
+            return Excel::download(new CategoryExport(Crypt::decrypt($request->input('category'))), 'categories_' . Carbon::now()->toTimeString() . '.csv', \Maatwebsite\Excel\Excel::CSV, [
                 'Content-Type' => 'text/csv',
             ]);
         } catch (DecryptException $e) {
@@ -148,24 +146,22 @@ class CategoryController extends Controller
 
     public function exportZip(Request $request)
     {
-        if(!$request->has('category')) {
+        if (!$request->has('category')) {
             return back()->with('flash_error_message', 'Bạn chưa có tuổi');
         }
 
-        try
-        {
+        try {
             $documents = [];
             $category = Category::whereIn('id', Crypt::decrypt($request->input('category')))->get();
             foreach ($category as $cate) {
-                foreach ($cate->posts as $post)
-                {
-                    if($post->hasMedia('documents')) {
+                foreach ($cate->posts as $post) {
+                    if ($post->hasMedia('documents')) {
                         $documents[] = $post->getMedia('documents');
                     }
                 }
             }
 
-            if(!empty($documents)){
+            if (!empty($documents)) {
                 $collection = Collection::make($documents);
 
                 return MediaStreamCustom::create('Documents-' . Carbon::now()->format('Y-m-d') . '.zip')
