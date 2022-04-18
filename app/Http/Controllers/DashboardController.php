@@ -28,6 +28,8 @@ class DashboardController extends Controller
 
     protected function getViewIdeaDataAnalyst()
     {
-        return [];
+        return [
+
+        ];
     }
 }

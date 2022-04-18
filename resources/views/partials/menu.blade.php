@@ -70,10 +70,10 @@
                     <p class="dropdown-item text-primary text-center">{{ \Illuminate\Support\Facades\Auth::user()->getRoleName() }}</p>
                     @role('Staff')
                         <div class="dropdown-divider"></div>
-                        <a href="{{ route('ideas.create') }}" class="dropdown-item justify-content-between align-content-center text-center">
+                        <a href="{{ route('ideas.create') }}" class="dropdown-item">
                             <i class="mdi mdi-post"></i> {{ __('Create New Idea') }}
                         </a>
-                        <a href="{{ route('ideas.index') }}" class="dropdown-item justify-content-between align-content-center text-center">
+                        <a href="{{ route('ideas.index') }}" class="dropdown-item">
                             <i class="mdi mdi-post"></i> {{ __('Manage Your Idea') }}
                         </a>
                     @endrole
