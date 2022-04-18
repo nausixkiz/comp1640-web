@@ -2,6 +2,8 @@
 <script src="{{ asset( mix('js/vendor.js') ) }}"></script>
 <script src="{{ asset( mix('js/app.js') ) }}"></script>
 
+@laravelViewsScripts(laravel-views,livewire,alpine)
+
 @stack('page-scripts')
 
 {!! Anhskohbo\NoCaptcha\Facades\NoCaptcha::renderJs() !!}

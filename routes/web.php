@@ -41,6 +41,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::group(['role:Quality Assurance Manager'], function (){
         Route::get('dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
-        Route::resource('categories', App\Http\Controllers\CategoryController::class);
+        Route::resource('categories', App\Http\Controllers\CategoryController::class)->except(['show']);
+        Route::get('categories/export-csv', [App\Http\Controllers\CategoryController::class, 'exportCSV'])->name('categories.export.csv');
     });
 });

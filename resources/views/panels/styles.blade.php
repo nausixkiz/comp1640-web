@@ -12,6 +12,8 @@
 <!-- App Css-->
 <link href="{{ asset( mix('css/app.css') ) }}" id="app-style" rel="stylesheet" type="text/css"/>
 
+@laravelViewsStyles(laravel-views,tailwindcss,livewire)
+
 @stack('page-styles')
 
 <!-- Global site tag (gtag.js) - Google Analytics -->

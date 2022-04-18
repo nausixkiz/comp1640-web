@@ -2,17 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\CategoryExport;
 use App\Models\Category;
 use App\Models\Department;
+use Carbon\Carbon;
 use Exception;
+use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
+use Maatwebsite\Excel\Facades\Excel;
 
 class CategoryController extends Controller
 {
@@ -118,6 +123,21 @@ class CategoryController extends Controller
         } catch (Exception $exception) {
             Log::error($exception->getMessage());
             return back()->with('flash_error_message', 'Category deletion failed');
+        }
+    }
+
+    public function exportCSV(Request $request)
+    {
+        if(!$request->has('category')) {
+            return back()->with('flash_error_message', 'Bạn chưa có tuổi');
+        }
+
+        try {
+            return Excel::download(new CategoryExport(Crypt::decrypt($request->input('category'))), 'categories_' . Carbon::now()->toTimeString() .'.csv', \Maatwebsite\Excel\Excel::CSV, [
+                'Content-Type' => 'text/csv',
+            ]);
+        } catch (DecryptException $e) {
+            return back()->with('flash_error_message', 'Spam CC');
         }
     }
 }
