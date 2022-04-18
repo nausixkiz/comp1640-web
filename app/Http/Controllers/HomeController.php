@@ -22,7 +22,7 @@ class HomeController extends Controller
         return view('contents.home', [
             'departments' => Department::all(),
             'categories' => Category::all(),
-            'posts' => Post::sortable('name')->get(),
+            'posts' => Post::sortable()->paginate(10),
         ]);
     }
 

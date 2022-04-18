@@ -173,7 +173,6 @@ return [
         CyrildeWit\EloquentViewable\EloquentViewableServiceProvider::class,
         Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
         Spatie\Analytics\AnalyticsServiceProvider::class,
-        Kyslik\ColumnSortable\ColumnSortableServiceProvider::class,
 
         /*
          * Application Service Providers...

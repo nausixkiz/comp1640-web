@@ -32,8 +32,8 @@
                                 <td>{{ $cate->id }}</td>
                                 <td>{{ $cate->name }}</td>
                                 <td>
-                                    <i class="mdi mdi-checkbox-blank-circle @if($category->hasExpired()) text-danger @else text-success @endif me-1"></i>
-                                    @if($category->hasExpired()) Expired @else Active @endif
+                                    <i class="mdi mdi-checkbox-blank-circle @if($cate->hasExpired()) text-danger @else text-success @endif me-1"></i>
+                                    @if($cate->hasExpired()) Expired @else Active @endif
                                 </td>
                                 <td>
                                     <a type="button" class="btn btn-sm btn-warning waves-effect waves-light"

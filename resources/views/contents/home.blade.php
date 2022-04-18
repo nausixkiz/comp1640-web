@@ -49,32 +49,31 @@
     </div>
     <div class="col-lg-9">
         <div class="row">
-            <div class="justify-content-end">
-                <div class="btn-toolbar justify-content-md-end" role="toolbar">
-                    <div class="btn-group ms-md-2 mb-3">
-                        <button type="button" class="btn btn-primary waves-light waves-effect dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                            Sort By: <i class="mdi mdi-chevron-down ms-1"></i>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-end">
-                            <a class="dropdown-item" href="#">Most View</a>
-                            <a class="dropdown-item" href="#">Most Like</a>
-                            <a class="dropdown-item" href="#">Most Comment</a>
-                        </div>
+            <div class="col-md-12 ">
+                <div class="btn-toolbar justify-content-end align-content-end" role="toolbar">
+                    <div class="form-group me-2 mb-3">
+                        <h4 class="align-content-center text-center mr-3 pt-2">Sort By: </h4>
                     </div>
-
-                    <div class="btn-group ms-2 mb-3">
-                        <button type="button" class="btn btn-primary waves-light waves-effect dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                            More <i class="mdi mdi-dots-vertical ms-1"></i>
+                    <div class="btn-group me-2 mb-3">
+                        <button type="button" class="btn btn-primary waves-light waves-effect">
+                            <i class="ri ri-eye-fill" style="vertical-align: middle;"></i> Most Viewed
                         </button>
-                        <div class="dropdown-menu dropdown-menu-end">
-                            <a class="dropdown-item" href="#">Xem CC</a>
-                        </div>
+                    </div>
+                    <div class="btn-group me-2 mb-3">
+                        <button type="button" class="btn btn-primary waves-light waves-effect">
+                            <i class="ri ri-chat-4-fill" style="vertical-align: middle;"></i> Most Comment
+                        </button>
+                    </div>
+                    <div class="btn-group me-2 mb-3">
+                        <button type="button" class="btn btn-primary waves-light waves-effect">
+                            <i class="ri ri-thumb-up-fill" style="vertical-align: middle;"></i> Most Like
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-lg-9">
+    <div class="col-lg-9 mb-5">
         <div class="row">
             @foreach($posts as $post)
                 <div class="col-md-6">
@@ -100,6 +99,7 @@
             @endforeach
 
 {{--                {!! $posts->appends(Request::except('page'))->render() !!}--}}
+                {!! $posts->links('contents.custom.pagination') !!}
         </div>
     </div>
     <div class="col-lg-3 pt-5">
@@ -108,6 +108,10 @@
                 <h4 class="card-title">{{ __('Top Categories') }}</h4>
             </div>
             <div class="card-body">
+                @if($departments->count() == 0)
+                    <p>{{ __('No categories found.') }}</p>
+                @endif
+
                 <div id="accordion">
                     @foreach($departments as $department)
                         @if($department->category->count() > 0)
