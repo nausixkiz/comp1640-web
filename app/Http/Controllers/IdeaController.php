@@ -77,7 +77,7 @@ class IdeaController extends Controller
             }
         }
 
-        return redirect()->route('posts.index')->with('flash_success_message', 'Post created successfully');
+        return redirect()->route('home')->with('flash_success_message', 'Post created successfully');
     }
 
     /**
@@ -179,10 +179,10 @@ class IdeaController extends Controller
                 }
             }
 
-            return redirect()->route('posts.index')->with('flash_success_message', 'Post updated successfully');
+            return redirect()->route('home')->with('flash_success_message', 'Post updated successfully');
         } catch (Exception $e) {
             Log::error($e->getMessage());
-            return redirect()->route('posts.index')->with('flash_error_message', 'Post update failed');
+            return redirect()->route('home')->with('flash_error_message', 'Post update failed');
         }
     }
 
