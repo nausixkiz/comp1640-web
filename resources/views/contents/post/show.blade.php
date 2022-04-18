@@ -151,9 +151,8 @@
                 <div class="card">
                     <div class="card-body">
                         <div>
-                            <form action="{{ route('ideas.store-comment') }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('ideas.store-comment', $post->slug) }}" method="POST">
                                 @csrf
-                                <input type="hidden" name="post-slug" value="{{ $post->slug }}" hidden>
                                 <div class="mb-3">
                                     <textarea class="form-control @error('contents') is-invalid @enderror" name="contents"
                                               rows="3" placeholder="Leave an comment for this post..."></textarea>

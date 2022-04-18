@@ -42,12 +42,4 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
         Route::resource('categories', App\Http\Controllers\CategoryController::class);
     });
-
-//    Route::group(['role:Super Administrator'], function () {
-//        Route::resource('users', \App\Http\Controllers\Manage\UserController::class)->except(['show']);
-//        Route::resource('departments', \App\Http\Controllers\Manage\DepartmentController::class)->except(['create', 'show']);
-//        Route::resource('posts', \App\Http\Controllers\Manage\PostController::class)->only(['index', 'destroy']);
-//    });
-//
-//    Route::resource('comments', App\Http\Controllers\CommentController::class)->only(['index', 'store', 'destroy']);
 });

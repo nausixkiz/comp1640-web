@@ -1,6 +1,9 @@
 <?php
 
-use App\Http\Controllers\Api\DevController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\Manage\DepartmentController;
+use App\Http\Controllers\Manage\PostController;
+use App\Http\Controllers\Manage\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,8 +18,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(['role:Super Administrator'], function () {
-    Route::resource('users', \App\Http\Controllers\Manage\UserController::class)->except(['show']);
-    Route::resource('departments', \App\Http\Controllers\Manage\DepartmentController::class)->except(['create', 'show']);
-    Route::resource('posts', \App\Http\Controllers\Manage\PostController::class)->only(['index', 'destroy']);
-    Route::resource('comments', App\Http\Controllers\CommentController::class)->only(['index', 'destroy']);
+    Route::resource('users', UserController::class)->except(['show']);
+    Route::resource('departments', DepartmentController::class)->except(['create', 'show']);
+    Route::resource('posts', PostController::class)->only(['index', 'destroy']);
+    Route::resource('comments', CommentController::class)->only(['index', 'destroy']);
 });

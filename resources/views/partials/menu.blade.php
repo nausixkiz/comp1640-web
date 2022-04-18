@@ -1,6 +1,16 @@
 <header id="page-topbar">
     <div class="navbar-header">
         <div class="d-flex">
+            <div class="navbar-brand-box text-center">
+                <a href="{{ route('home') }}" class="logo logo-dark">
+                    <span class="logo-sm">
+                        <img src="{{ asset('images/logo-sm.jpg') }}" alt="{{ \Illuminate\Support\Facades\Config::get('app.name') }}" height="20">
+                    </span>
+                    <span class="logo-lg">
+                        <img src="{{ asset('images/logo.jpg') }}" alt="{{ \Illuminate\Support\Facades\Config::get('app.name') }}" height="25">
+                    </span>
+                </a>
+            </div>
             <button type="button" class="btn btn-sm px-3 font-size-24 d-lg-none header-item" data-bs-toggle="collapse"
                     data-bs-target="#topnav-menu-content">
                 <i class="ri-menu-2-line align-middle"></i>

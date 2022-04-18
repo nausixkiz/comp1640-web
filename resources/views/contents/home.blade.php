@@ -47,27 +47,47 @@
             </div>
         </div>
     </div>
-    @foreach($posts as $post)
-        <div class="col-lg-6">
-            <div class="card" style="height: 250px;">
-                <div class="row g-0 align-items-center">
-                    <div class="col-md-4">
-                        <img class="card-img img-fluid img-thumbnail" src="{{ $post->getFirstMediaUrl('thumbnail') }}"
-                             alt="{{ $post->name }}" style="width: 250px; height: 175px;">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $post->name  }}</h5>
-                            <p class="card-text">{{ $post->short_description }}</p>
-                            <p class="card-text"><small class="text-muted">Last updated
-                                    in {{ $post->updated_at }}</small></p>
-                            <a href="{{ route('ideas.show', $post->slug) }}"
-                               class="btn btn-primary waves-effect waves-light">{{ __('Read More') }}</a>
+    <div class="col-lg-10">
+        <div class="row">
+            @foreach($posts as $post)
+                <div class="col-md-6">
+                    <div class="card" style="height: 250px;">
+                        <div class="row g-0 align-items-center">
+                            <div class="col-md-4">
+                                <img class="card-img img-fluid img-thumbnail" src="{{ $post->getFirstMediaUrl('thumbnail') }}"
+                                     alt="{{ $post->name }}" style="width: 250px; height: 175px;">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ $post->name  }}</h5>
+                                    <p class="card-text">{{ $post->short_description }}</p>
+                                    <p class="card-text"><small class="text-muted">Last updated
+                                            in {{ $post->updated_at }}</small></p>
+                                    <a href="{{ route('ideas.show', $post->slug) }}"
+                                       class="btn btn-primary waves-effect waves-light">{{ __('Read More') }}</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+            @endforeach
+        </div>
+    </div>
+    <div class="col-lg-2">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">{{ __('Top Categories') }}</h4>
+            </div>
+            <div class="card-body">
+                <ul class="list-group">
+                    @foreach($categories as $category)
+                        <li class="list-group-item">
+                            <a class="list-group-item list-group-item-action" href="javascript:void(0)">{{ $category->name }}</a>
+                        </li>
+                    @endforeach
+                </ul>
             </div>
         </div>
-    @endforeach
+    </div>
 @stop
 
