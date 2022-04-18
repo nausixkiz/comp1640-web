@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Actions\Category\DeleteCategoryAction;
 use App\Actions\Category\EditCategoryAction;
 use App\Actions\Category\ExportCategoryToCSVAction;
+use App\Actions\Category\ExportCategoryToZipAction;
 use App\Models\Category;
 use LaravelViews\Actions\RedirectAction;
 use LaravelViews\Facades\UI;
@@ -66,7 +67,8 @@ class CategoryTableView extends TableView
     protected function bulkActions()
     {
         return [
-            new ExportCategoryToCSVAction()
+            new ExportCategoryToCSVAction(),
+            new ExportCategoryToZipAction(),
         ];
     }
 }

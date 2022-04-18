@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Exports\CategoryExport;
 use App\Models\Category;
 use App\Models\Department;
+use App\Models\Post;
+use App\Streams\MediaStreamCustom;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Contracts\Encryption\DecryptException;
@@ -13,11 +15,14 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
 use Maatwebsite\Excel\Facades\Excel;
+use Spatie\MediaLibrary\Support\MediaStream;
+use ZipStream\Option\Archive as ArchiveOptions;
 
 class CategoryController extends Controller
 {
@@ -137,7 +142,44 @@ class CategoryController extends Controller
                 'Content-Type' => 'text/csv',
             ]);
         } catch (DecryptException $e) {
-            return back()->with('flash_error_message', 'Spam CC');
+            return back()->with('flash_error_message', 'This file could not be downloaded. Please try again later!');
+        }
+    }
+
+    public function exportZip(Request $request)
+    {
+        if(!$request->has('category')) {
+            return back()->with('flash_error_message', 'Bạn chưa có tuổi');
+        }
+
+        try
+        {
+            $documents = [];
+            $category = Category::whereIn('id', Crypt::decrypt($request->input('category')))->get();
+            foreach ($category as $cate) {
+                foreach ($cate->posts as $post)
+                {
+                    if($post->hasMedia('documents')) {
+                        $documents[] = $post->getMedia('documents');
+                    }
+                }
+            }
+
+            if(!empty($documents)){
+                $collection = Collection::make($documents);
+
+                return MediaStreamCustom::create('Documents-' . Carbon::now()->format('Y-m-d') . '.zip')
+                    ->useZipOptions(function (ArchiveOptions $zipOptions) {
+                        $zipOptions->setZeroHeader(true);
+                    })
+                    ->addMediaCollection($collection);
+            }
+
+            return back()->with('flash_error_message', 'This file could not be downloaded or you made the wrong choice. Please try again later!');
+
+        } catch (DecryptException $e) {
+            Log::error($e->getMessage());
+            return back()->with('flash_error_message', 'This file could not be downloaded. Please try again later!');
         }
     }
 }

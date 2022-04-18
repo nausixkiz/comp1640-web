@@ -43,5 +43,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
         Route::resource('categories', App\Http\Controllers\CategoryController::class)->except(['show']);
         Route::get('categories/export-csv', [App\Http\Controllers\CategoryController::class, 'exportCSV'])->name('categories.export.csv');
+        Route::get('categories/export-zip', [App\Http\Controllers\CategoryController::class, 'exportZip'])->name('categories.export.zip');
     });
 });

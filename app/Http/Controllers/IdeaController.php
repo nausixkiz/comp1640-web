@@ -65,7 +65,7 @@ class IdeaController extends Controller
         $post->name = $request->input('name');
         $post->short_description = $request->input('short-description');
         $post->contents = $request->input('contents');
-        $post->category()->associate();
+        $post->category()->associate($category);
         $post->user()->associate(Auth::user());
         $post->save();
         $post->addMediaFromRequest('thumbnail')
@@ -149,12 +149,19 @@ class IdeaController extends Controller
             'terms' => ['accepted', 'required'],
         ])->validate();
 
+        $category = Category::findBySlugOrFail($request->input('category'));
+
+        if($category->hasExpired()) {
+            Session::flash('flash_error_message', 'This category has expired');
+            return redirect()->back();
+        }
+
         try {
             $post = Post::findBySlugOrFail($slug);
             $post->name = $request->input('name');
             $post->short_description = $request->input('short-description');
             $post->contents = $request->input('contents');
-            $post->category()->associate(Category::findBySlugOrFail($request->input('category')));
+            $post->category()->associate($category);
             $post->save();
 
             if ($request->hasFile('thumbnail')) {

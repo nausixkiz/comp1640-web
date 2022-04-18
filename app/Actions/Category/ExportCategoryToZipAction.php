@@ -6,19 +6,19 @@ use Illuminate\Support\Facades\Crypt;
 use LaravelViews\Actions\Action;
 use LaravelViews\Views\View;
 
-class ExportCategoryToCSVAction extends Action
+class ExportCategoryToZipAction extends Action
 {
     /**
      * Any title you want to be displayed
      * @var String
      * */
-    public $title = "Export To CSV";
+    public $title = "Export To Zip";
 
     /**
      * This should be a valid Feather icon string
      * @var String
      */
-    public $icon = "download";
+    public $icon = "archive";
 
     /**
      * Execute the action when the user clicked on the button
@@ -28,7 +28,7 @@ class ExportCategoryToCSVAction extends Action
      */
     public function handle($selectedModels, View $view)
     {
-        return redirect()->route('categories.export.csv', [
+        return redirect()->route('categories.export.zip', [
             'category' => Crypt::encrypt($selectedModels),
         ]);
     }
