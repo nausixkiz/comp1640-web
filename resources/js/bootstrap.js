@@ -5,7 +5,6 @@ window.bootstrap = require('bootstrap');
 require('simplebar');
 require('metismenu');
 window.Waves = require('node-waves');
-window.toastr = require('toastr');
 window.Swal = require('sweetalert2');
 require('flatpickr');
 require('select2');
