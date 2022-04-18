@@ -8,6 +8,11 @@
                     <div class="card">
                         <div class="card-body p-4">
                             <div class="">
+                                <div class="text-center">
+                                    <a href="{{ route('home') }}" class="">
+                                        <img src="{{ asset('images/logo.jpg') }}" alt="{{ \Illuminate\Support\Facades\Config::get('app.name') }}" height="24" class="auth-logo logo-dark mx-auto">
+                                    </a>
+                                </div>
                                 <h4 class="font-size-18 text-muted mt-2 text-center">Welcome Back !</h4>
                                 <p class="mb-5 text-center">Sign in to continue
                                     to {{ \Illuminate\Support\Facades\Config::get('app.name') }}.</p>
@@ -37,6 +42,15 @@
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
+                                                @enderror
+                                            </div>
+
+                                            <div class="justify-content-center align-items-center text-center mb-4">
+                                                {!! NoCaptcha::display() !!}
+                                                @error('g-recaptcha-response')
+                                                <span class="help-block">
+                                                    <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
+                                                </span>
                                                 @enderror
                                             </div>
 

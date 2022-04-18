@@ -46,8 +46,8 @@ class IdeaController extends Controller
     public function store(Request $request)
     {
         Validator::make($request->all(), [
-            'name' => ['required', 'string', 'max:255'],
-            'short-description' => ['required', 'max:50'],
+            'name' => ['required', 'string', 'min:6', 'max:30'],
+            'short-description' => ['required','min:6', 'max:50'],
             'contents' => ['required', 'string', 'min:10', 'max:10000'],
             'category' => ['required', 'exists:categories,slug'],
             'thumbnail' => ['required', 'image', 'mimes:jpg,jpeg,png,bmp'],
@@ -134,8 +134,8 @@ class IdeaController extends Controller
     public function update(Request $request, $slug)
     {
         Validator::make($request->all(), [
-            'name' => ['required', 'string', 'max:255'],
-            'short-description' => ['required', 'max:50'],
+            'name' => ['required', 'string', 'min:6', 'max:30'],
+            'short-description' => ['required','min:6', 'max:50'],
             'contents' => ['required', 'string', 'min:10', 'max:10000'],
             'category' => ['required', 'exists:categories,slug'],
             'thumbnail' => ['image', 'mimes:jpg,jpeg,png,bmp'],

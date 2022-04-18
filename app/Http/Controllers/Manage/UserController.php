@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
 use Spatie\Permission\Models\Role;
+use Spatie\Permission\PermissionRegistrar;
 
 class UserController extends Controller
 {
@@ -137,6 +138,7 @@ class UserController extends Controller
             $user->address = $request->input('address');
             $user->save();
 
+            $user->removeRole($user->getRoleName());
             $user->assignRole($request->input('role'));
 
             Session::flash('flash_success_message', 'User successfully updated!');
