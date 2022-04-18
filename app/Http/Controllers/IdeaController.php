@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Department;
 use App\Models\Post;
 use Carbon\Carbon;
@@ -14,6 +15,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -70,6 +72,43 @@ class IdeaController extends Controller
         }
 
         return redirect()->route('posts.index')->with('flash_success_message', 'Post created successfully');
+    }
+
+    /**
+     * Store a newly a comment resource in storage.
+     *
+     * @param Request $request
+     * @return RedirectResponse
+     * @throws ValidationException
+     */
+    public function storeComment(Request $request)
+    {
+        if(!Auth::user()->hasRole('Staff')){
+            abort(403);
+        }
+
+        Validator::make($request->all(), [
+            'contents' => ['required', 'string', 'max:255'],
+            'post-slug' => ['required', 'string', 'max:255', 'exists:posts,slug'],
+            'g-recaptcha-response' => ['required', 'captcha'],
+        ])->validate();
+
+        $post = Post::findBySlugOrFail($request->input('post-slug'));
+
+        if($post->hasExpired()) {
+            Session::flash('flash_error_message', 'Post has expired');
+            return redirect()->back();
+        }
+
+        $comment = new Comment();
+        $comment->contents = $request->input('contents');
+        $comment->is_anonymous = $request->input('comment-as-anonymous', 'off') === 'on';
+
+        $comment->user()->associate(Auth::user());
+        $comment->post()->associate($post);
+        $comment->save();
+
+        return redirect()->back()->with('flash_success_message', 'Comment created successfully');
     }
 
     /**

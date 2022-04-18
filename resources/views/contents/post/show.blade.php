@@ -151,7 +151,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div>
-                            <form action="{{ route('comments.store') }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('ideas.store-comment') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <input type="hidden" name="post-slug" value="{{ $post->slug }}" hidden>
                                 <div class="mb-3">

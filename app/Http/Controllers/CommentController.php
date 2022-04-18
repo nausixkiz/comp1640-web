@@ -23,45 +23,10 @@ class CommentController extends Controller
      */
     public function index(): View|Factory|Application
     {
-        if(!Auth::user()->hasRole('Super Administrator')){
-            abort(403);
-        }
-
         return view('contents.comment.index', [
             'comments' => Comment::all()->transformWith(new CommentTransfermer())->toArray(),
         ]);
     }
-
-    public function store(Request $request)
-    {
-        if(!Auth::user()->hasRole('Staff')){
-            abort(403);
-        }
-
-        Validator::make($request->all(), [
-            'contents' => ['required', 'string', 'max:255'],
-            'post-slug' => ['required', 'string', 'max:255', 'exists:posts,slug'],
-            'g-recaptcha-response' => ['required', 'captcha'],
-        ])->validate();
-
-        $post = Post::findBySlugOrFail($request->input('post-slug'));
-
-        if($post->hasExpried()) {
-            Session::flash('flash_error_message', 'Post has expired');
-            return redirect()->back();
-        }
-
-        $comment = new Comment();
-        $comment->contents = $request->input('contents');
-        $comment->is_anonymous = $request->input('comment-as-anonymous', 'off') === 'on';
-
-        $comment->user()->associate(Auth::user());
-        $comment->post()->associate($post);
-        $comment->save();
-
-        return redirect()->back()->with('flash_success_message', 'Comment created successfully');
-    }
-
 
     /**
      * Remove the specified resource from storage.
@@ -71,10 +36,6 @@ class CommentController extends Controller
      */
     public function destroy($id): RedirectResponse
     {
-        if(!Auth::user()->hasRole('Super Administrator')){
-            abort(403);
-        }
-
         Comment::destroy($id);
 
         Session::flash('flash_success_message', 'Comment successfully deleted!');
