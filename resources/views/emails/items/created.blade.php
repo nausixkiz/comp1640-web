@@ -2,7 +2,7 @@
 
     New idea has been created!
 
-    {{ $idea->user->name }} has created a new idea:
+    {{ $user->name }} has created a new idea:
     {{ $idea->created_at }}
 
     Thanks,<br>

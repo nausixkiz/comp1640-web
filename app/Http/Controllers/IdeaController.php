@@ -82,7 +82,7 @@ class IdeaController extends Controller
         }
 
         foreach (User::role('Quality Assurance Coordinator')->get() as $user) {
-            Mail::to($user->email)->send(new ItemCreated($post));
+            Mail::to($user->email)->send(new ItemCreated($post, Auth::user()));
         }
 
         return redirect()->route('home')->with('flash_success_message', 'Post created successfully');
