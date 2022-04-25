@@ -10,7 +10,7 @@ use Illuminate\Queue\SerializesModels;
 
 class ItemCreated extends Mailable
 {
-    public $item;
+    public $idea;
 
     use Queueable, SerializesModels;
 
@@ -19,9 +19,9 @@ class ItemCreated extends Mailable
      *
      * @return void
      */
-    public function __construct(Post $item)
+    public function __construct(Post $idea)
     {
-        $this->item = $item;
+        $this->idea = $idea;
     }
 
     /**
