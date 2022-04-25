@@ -8,20 +8,20 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class IdeaCreated extends Mailable
+class ItemCreated extends Mailable
 {
-    use Queueable, SerializesModels;
+    public $item;
 
-    public $idea;
+    use Queueable, SerializesModels;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(Post $idea)
+    public function __construct(Post $item)
     {
-        $this->idea = $idea;
+        $this->item = $item;
     }
 
     /**
@@ -31,6 +31,6 @@ class IdeaCreated extends Mailable
      */
     public function build()
     {
-        return $this->view('mails.idea_created');
+        return $this->markdown('emails.items.created');
     }
 }
