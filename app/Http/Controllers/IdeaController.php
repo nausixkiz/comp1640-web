@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\IdeaCreated;
 use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Department;
 use App\Models\Post;
+use App\Models\User;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Contracts\Foundation\Application;
@@ -15,6 +17,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
@@ -75,6 +78,10 @@ class IdeaController extends Controller
             foreach ($request->file('documents') as $document) {
                 $post->addMedia($document)->toMediaCollection('documents');
             }
+        }
+
+        foreach (User::with('Quality Assurance Coordinator')->get() as $user) {
+            Mail::to($user->email)->send(new IdeaCreated($post));
         }
 
         return redirect()->route('home')->with('flash_success_message', 'Post created successfully');
