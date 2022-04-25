@@ -2,9 +2,8 @@
 
     New idea has been created!
 
-    @component('mail::button', ['url' => route('ideas.show', $idea->slug)])
-        View Idea
-    @endcomponent
+    {{ $idea->user->name }} has created a new idea:
+    {{ $idea->created_at }}
 
     Thanks,<br>
     {{ config('app.name') }}
