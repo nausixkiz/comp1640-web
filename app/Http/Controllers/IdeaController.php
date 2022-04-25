@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\IdeaCreated;
+use App\Mail\ItemCreated;
 use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Department;
@@ -81,7 +82,7 @@ class IdeaController extends Controller
         }
 
         foreach (User::role('Quality Assurance Coordinator')->get() as $user) {
-            Mail::to($user->email)->send(new IdeaCreated($post));
+            Mail::to($user->email)->send(new ItemCreated($post));
         }
 
         return redirect()->route('home')->with('flash_success_message', 'Post created successfully');
