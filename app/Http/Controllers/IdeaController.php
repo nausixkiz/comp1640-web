@@ -80,7 +80,7 @@ class IdeaController extends Controller
             }
         }
 
-        foreach (User::with('Quality Assurance Coordinator')->get() as $user) {
+        foreach (User::role('Quality Assurance Coordinator')->get() as $user) {
             Mail::to($user->email)->send(new IdeaCreated($post));
         }
 
